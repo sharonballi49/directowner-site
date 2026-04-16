@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Browse Listings — DirectOwner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Browse owner-listed cars and RVs on DirectOwner. Verified owners. No dealerships. Financing options available." />
+
+  <style>
+    :root{
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --bg:#ffffff;
+      --soft:#f9fafb;
+      --chip:#eef2ff;
+      --primary:#111827;
+      --primaryText:#ffffff;
+      --shadow: 0 10px 25px rgba(17,24,39,0.06);
+      --radius: 10px;
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+
+    /* Header */
+    header{
+      padding:18px 22px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      position:sticky;
+      top:0;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:saturate(180%) blur(10px);
+      z-index:10;
+    }
+    header .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:800;
+      letter-spacing:0.2px;
+      text-decoration:none;
+      color:var(--text);
+      font-size:1.1rem;
+    }
+    nav{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      text-decoration:none;
+      color:#374151;
+      font-weight:600;
+      font-size:0.95rem;
+      padding:8px 10px;
+      border-radius:8px;
+    }
+    nav a:hover{ background:var(--soft); }
+    .active{ background:var(--soft); color:var(--text); }
+
+    /* Page layout */
+    .wrap{
+      max-width:1150px;
+      margin:0 auto;
+      padding:24px 18px 70px;
+    }
+    .topbar{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:18px;
+      flex-wrap:wrap;
+      margin:10px 0 16px;
+    }
+    .title h1{
+      margin:0;
+      font-size:2rem;
+      line-height:1.2;
+    }
+    .title p{
+      margin:8px 0 0;
+      color:var(--muted);
+      max-width:720px;
+    }
+
+    /* Filters */
+    .filters{
+      border:1px solid var(--line);
+      background:var(--soft);
+      border-radius:var(--radius);
+      padding:14px;
+      display:grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap:10px;
+      margin:18px 0 18px;
+    }
+    .filters label{
+      font-size:0.78rem;
+      font-weight:700;
+      color:#374151;
+      display:block;
+      margin-bottom:6px;
+    }
+    .filters input, .filters select{
+      width:100%;
+      padding:10px 10px;
+      border:1px solid #d1d5db;
+      border-radius:10px;
+      background:#fff;
+      font-size:0.95rem;
+      outline:none;
+    }
+    .filters .actions{
+      display:flex;
+      gap:10px;
+      align-items:flex-end;
+      grid-column: span 2;
+      justify-content:flex-end;
+    }
+    .btn{
+      display:inline-block;
+      padding:11px 14px;
+      border-radius:10px;
+      border:1px solid #d1d5db;
+      background:#fff;
+      color:#111827;
+      text-decoration:none;
+      font-weight:800;
+      cursor:pointer;
+      width:100%;
+      text-align:center;
+    }
+    .btn.primary{
+      background:var(--primary);
+      border-color:var(--primary);
+      color:var(--primaryText);
+    }
+
+    /* Cards */
+    .results-meta{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:10px 0 16px;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+    .chips{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+    .chip{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid #dbeafe;
+      background: #eff6ff;
+      color:#1e3a8a;
+      font-size:0.82rem;
+      font-weight:800;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap:16px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      background:#fff;
+      box-shadow: var(--shadow);
+      display:flex;
+      flex-direction:column;
+      min-height: 360px;
+    }
+    .thumb{
+      background: linear-gradient(135deg, #e5e7eb, #f3f4f6);
+      height:170px;
+      position:relative;
+    }
+    .badges{
+      position:absolute;
+      top:10px;
+      left:10px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+    .badge{
+      font-size:0.78rem;
+      font-weight:900;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,0.92);
+      border:1px solid #e5e7eb;
+      color:#111827;
+    }
+    .badge.green{ border-color:#bbf7d0; background:#ecfdf5; color:#065f46; }
+    .badge.blue{ border-color:#bfdbfe; background:#eff6ff; color:#1e3a8a; }
+    .content{
+      padding:14px 14px 16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      flex:1;
+    }
+    .price{
+      font-size:1.35rem;
+      font-weight:900;
+      margin:0;
+    }
+    .subtitle{
+      margin:0;
+      color:#111827;
+      font-weight:800;
+      font-size:1.02rem;
+    }
+    .meta{
+      margin:0;
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+    .row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-top:auto;
+    }
+    .small{
+      font-size:0.86rem;
+      color:var(--muted);
+      font-weight:700;
+    }
+    .link{
+      text-decoration:none;
+      font-weight:900;
+      color:#111827;
+      border:1px solid #d1d5db;
+      padding:10px 12px;
+      border-radius:10px;
+    }
+    .link:hover{ background:var(--soft); }
+    .fineprint{
+      margin-top:20px;
+      padding:14px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:var(--soft);
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 980px){
+      .filters{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .filters .actions{ grid-column: span 2; }
+      header{ position:static; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="brand" href="index.html">DirectOwner</a>
+    <nav>
+      <a class="active" href="browse.html">Browse</a>
+      <a href="sell.html">Sell</a>
+      <a href="financing.html">Financing</a>
+      <a href="how-it-works.html">How It Works</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="topbar">
+      <div class="title">
+        <h1>Browse Owner Listings</h1>
+        <p>
+          Explore cars and RVs listed directly by verified owners. No dealerships, no middlemen.
+          Financing options may be available through third‑party partners.
+        </p>
+      </div>
+    </div>
+
+    <!-- Filters (Phase 1: UI only) -->
+    <section class="filters" aria-label="Filters">
+      <div>
+        <label for="type">Type</label>
+        <select id="type">
+          <option>All</option>
+          <option>Car</option>
+          <option>RV</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="price">Max Price</label>
+        <select id="price">
+          <option>Any</option>
+          <option>$25,000</option>
+          <option>$50,000</option>
+          <option>$75,000</option>
+          <option>$100,000</option>
+          <option>$150,000+</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="location">Location</label>
+        <input id="location" placeholder="City or ZIP" />
+      </div>
+
+      <div>
+        <label for="year">Year (min)</label>
+        <select id="year">
+          <option>Any</option>
+          <option>2015</option>
+          <option>2018</option>
+          <option>2020</option>
+          <option>2022</option>
+          <option>2024</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="finance">Financing</label>
+        <select id="finance">
+          <option>Any</option>
+          <option>Financing Available</option>
+        </select>
+      </div>
+
+      <div class="actions">
+        <button class="btn" type="button" onclick="alert('Phase 1: filters are visual only. Next phase will make these functional.')">Reset</button>
+        <button class="btn primary" type="button" onclick="alert('Phase 1: filters are visual only. Next phase will make these functional.')">Search</button>
+      </div>
+    </section>
+
+    <div class="results-meta">
+      <div><strong>Showing 6 listings</strong> (sample listings for Phase 1)</div>
+      <div class="chips">
+        <span class="chip">Verified Owner</span>
+        <span class="chip">Financing Options</span>
+        <span class="chip">No Dealerships</span>
+      </div>
+    </div>
+
+    <!-- Listings grid -->
+    <section class="grid" aria-label="Listings">
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="thumb">
+          <div class="badges">
+            <span class="badge green">Verified Owner</span>
+            <span class="badge blue">Financing Available</span>
+          </div>
+        </div>
+        <div class="content">
+          <p class="price">$38,500</p>
+          <p class="subtitle">2021 Toyota 4Runner SR5</p>
+          <p class="meta">San Antonio, TX • 42k miles</p>
+          <div class="row">
+            <span class="small">Clean title • Private owner</span>
+            <a class="link" href="listing.html">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="thumb">
+          <div class="badges">
+            <span class="badge green">Verified Owner</span>
+          </div>
+        </div>
+        <div class="content">
+          <p class="price">$24,900</p>
+          <p class="subtitle">2018 Honda Accord Touring</p>
+          <p class="meta">Austin, TX • 61k miles</p>
+          <div class="row">
+            <span class="small">Service records • Private owner</span>
+            <a class="link" href="listing.html">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card">
+        <div class="thumb">
+          <div class="badges">
+            <span class="badge green">Verified Owner</span>
+            <span class="badge blue">Financing Available</span>
+          </div>
+        </div>
+        <div class="content">
+          <p class="price">$79,000</p>
+          <p class="subtitle">2022 Airstream Flying Cloud 23FB</p>
+          <p class="meta">Dallas, TX • Like new</p>
+          <div class="row">
+            <span class="small">RV • Private owner</span>
+            <a class="link" href="listing.html">View Details</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 4 -->
+      <article class="card">
+        <div class="thumb">
+          <div class="badges">
+            <span class="badge green">Verified Owner</span>
+          </div>
+        </div>
+        <div class="content">
+          <p class="price">$12,750</p>
+          <p class="subtitle">2015 Ford F-150 XLT</p>
+          <p class="meta">Houston, TX • 122k miles</p>
+          <div class="row">
+            <span class="small">Work truck • Private owner</span>
+            <a class="link" href="listing.html">View Details</a>
