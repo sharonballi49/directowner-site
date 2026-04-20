@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Trust & Safety — DirectOwner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Trust & Safety on DirectOwner: verified owners, scam prevention, safe meetups, inspections, and transaction tips for cars and RVs." />
+
+  <style>
+    :root{
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --bg:#ffffff;
+      --soft:#f9fafb;
+      --primary:#111827;
+      --primaryText:#ffffff;
+      --shadow: 0 10px 25px rgba(17,24,39,0.06);
+      --radius: 10px;
+      --good:#065f46;
+      --goodBg:#ecfdf5;
+      --warn:#92400e;
+      --warnBg:#fffbeb;
+      --info:#1e3a8a;
+      --infoBg:#eff6ff;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
+
+    header{
+      padding:18px 22px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      position:sticky;
+      top:0;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:saturate(180%) blur(10px);
+      z-index:10;
+    }
+    header .brand{
+      font-weight:800;
+      text-decoration:none;
+      color:var(--text);
+      font-size:1.1rem;
+    }
+    nav{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    nav a{
+      text-decoration:none;
+      color:#374151;
+      font-weight:600;
+      font-size:0.95rem;
+      padding:8px 10px;
+      border-radius:8px;
+    }
+    nav a:hover{ background:var(--soft); }
+    .active{ background:var(--soft); color:var(--text); }
+
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:26px 18px 70px;
+    }
+
+    .hero{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:26px 18px;
+      box-shadow:var(--shadow);
+    }
+    .hero h1{
+      margin:0;
+      font-size:2.1rem;
+      line-height:1.2;
+    }
+    .hero p{
+      margin:10px 0 0;
+      color:var(--muted);
+      max-width:920px;
+      font-size:1.05rem;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:16px;
+      margin-top:18px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size:1.25rem;
+    }
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:0.98rem;
+    }
+
+    .pillRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:14px;
+    }
+    .pill{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:0.86rem;
+      font-weight:800;
+      background:#fff;
+      color:#111827;
+    }
+    .pill.good{ border-color:#bbf7d0; background:var(--goodBg); color:var(--good); }
+    .pill.warn{ border-color:#fde68a; background:var(--warnBg); color:var(--warn); }
+    .pill.info{ border-color:#bfdbfe; background:var(--infoBg); color:var(--info); }
+
+    .section{
+      margin-top:20px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .sectionHeader{
+      padding:14px 16px;
+      background:var(--soft);
+      border-bottom:1px solid var(--line);
+      font-weight:900;
+    }
+    .sectionBody{
+      padding:16px;
+      color:var(--muted);
+    }
+    .sectionBody h3{
+      margin:0 0 8px;
+      color:var(--text);
+      font-size:1.05rem;
+    }
+    ul{
+      margin:10px 0 0;
+      padding-left:18px;
+    }
+    li{ margin:8px 0; }
+
+    .callout{
+      margin-top:16px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:14px;
+      background:var(--soft);
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+    .callout strong{ color:var(--text); }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:16px;
+    }
+    .btn{
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:10px;
+      border:1px solid #d1d5db;
+      background:#fff;
+      color:#111827;
+      text-decoration:none;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .btn.primary{
+      background:var(--primary);
+      border-color:var(--primary);
+      color:var(--primaryText);
+    }
+    .btn:hover{ background:#f3f4f6; }
+    .btn.primary:hover{ background:#0b1220; }
+
+    details{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:12px 14px;
+      background:#fff;
+      margin-top:12px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:900;
+      color:var(--text);
+      list-style:none;
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{ margin:10px 0 0; color:var(--muted); }
+
+    footer{
+      margin-top:26px;
+      border-top:1px solid var(--line);
+      padding-top:16px;
+      color:var(--muted);
+      font-size:0.92rem;
+    }
+
+    @media (max-width: 980px){
+      header{ position:static; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="brand" href="index.html">DirectOwner</a>
+    <nav>
+      <a href="browse.html">Browse</a>
+      <a href="sell.html">Sell</a>
+      <a href="financing.html">Financing</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a class="active" href="trust.html">Trust & Safety</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Trust & Safety</h1>
+      <p>
+        DirectOwner is built for high‑ticket owner‑to‑owner purchases. Our goal is to reduce fraud, increase transparency,
+        and help buyers and sellers complete a private‑party sale with confidence.
+      </p>
+
+      <div class="pillRow" aria-label="Trust signals">
+        <span class="pill good">Verified Owners (Phase 1: manual review)</span>
+        <span class="pill info">Secure, transparent process</span>
+        <span class="pill warn">Scam prevention guidance</span>
+      </div>
+
+      <div class="ctaRow">
+        <a class="btn primary" href="browse.html">Browse Listings</a>
+        <a class="btn" href="sell.html">List Your Vehicle</a>
+      </div>
+
+      <div class="callout">
+        <strong>Phase 1 note:</strong> Verification and moderation are handled manually to build trust while we launch.
+      </div>
+    </section>
+
+    <section class="grid" aria-label="Trust pillars">
+      <div class="card">
+        <h2>Verified Owners</h2>
+        <p>We prioritize listings from real owners. Phase 1 verification helps reduce fake listings and impersonation.</p>
+      </div>
+      <div class="card">
+        <h2>Clear Expectations</h2>
+        <p>DirectOwner is a marketplace — not a dealer, broker, or lender. Buyers and sellers transact directly.</p>
+      </div>
+      <div class="card">
+        <h2>Safety First</h2>
+        <p>Guidelines for meeting safely, inspections, and secure payment practices to reduce risk in private sales.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Verification">
+      <div class="sectionHeader">Owner Verification (Phase 1)</div>
+      <div class="sectionBody">
+        <h3>What we verify</h3>
+        <ul>
+          <li><strong>Identity check:</strong> basic verification to confirm the seller is a real person.</li>
+          <li><strong>Ownership signals:</strong> title/registration indicators, VIN info (where applicable), and listing consistency.</li>
+          <li><strong>Listing quality:</strong> photos, description detail, location clarity, and basic fraud screening.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Seller tip:</strong> Listings with clear photos and complete details get approved faster.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Scam prevention">
+      <div class="sectionHeader">Scam Prevention — Red Flags</div>
+      <div class="sectionBody">
+        <h3>Watch for these warning signs</h3>
+        <ul>
+          <li>Requests to pay or communicate <strong>off‑platform immediately</strong> without viewing details.</li>
+          <li>Seller/buyer pressure: “<strong>send a deposit now</strong>” or “someone else is paying in 1 hour.”</li>
+          <li>Refusal to provide basic verification: title status, VIN (masked is fine), or additional photos.</li>
+          <li>Overpayment or “refund the difference” scams.</li>
+          <li>Unusual payment requests: gift cards, crypto, wire to unrelated party, or “shipping agent” stories.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Rule of thumb:</strong> If it feels rushed, secretive, or inconsistent — pause and verify.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Safe meetups">
+      <div class="sectionHeader">Safe Meetups & Test Drives</div>
+      <div class="sectionBody">
+        <h3>Best practices</h3>
+        <ul>
+          <li>Meet in a <strong>public place</strong> during daylight hours (police station lot or busy public area).</li>
+          <li>Bring a friend and tell someone where you’re going.</li>
+          <li>Verify ID (match name to title where appropriate).</li>
+          <li>Test drive with a clear plan: route, time limit, and valid driver’s license + insurance.</li>
+          <li>For RVs, schedule a walkthrough and verify appliances, slides, generator (if applicable), and maintenance records.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Inspections">
+      <div class="sectionHeader">Inspections (Highly Recommended)</div>
+      <div class="sectionBody">
+        <h3>Before money changes hands</h3>
+        <ul>
+          <li>Get an independent inspection (mechanic for cars; RV specialist for RVs).</li>
+          <li>Confirm title status and lien situation. If there’s a lien, ensure the payoff process is documented.</li>
+          <li>Ask for service records and verify VIN details.</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Phase 1:</strong> We recommend buyers document everything (photos, VIN, condition notes) before purchase.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Payments">
+      <div class="sectionHeader">Secure Payments & Closing</div>
+      <div class="sectionBody">
+        <h3>Safer payment options</h3>
+        <ul>
+          <li><strong>Bank or credit union</strong> transaction (best for larger amounts).</li>
+          <li><strong>Cashier’s check</strong> verified at the issuing bank (don’t accept without verification).</li>
+          <li><strong>Escrow service</strong> (recommended for higher amounts; use reputable providers).</li>
+        </ul>
+
+        <div class="callout">
+          <strong>Avoid:</strong> wire transfers to unknown parties, gift cards, crypto pressure, or “shipping” schemes.
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Reporting">
+      <div class="sectionHeader">Report a Listing or User</div>
+      <div class="sectionBody">
+        <h3>See something suspicious?</h3>
+        <p>
+          Email us and include the listing link, screenshots, and what happened.
+        </p>
+
+        <div class="ctaRow">
+          <a class="btn primary" href="mailto:info@getdirectowner.com?subject=Report%20a%20listing%20or%20user&body=Please%20paste%20the%20listing%20URL%20and%20describe%20the%20issue%20here.%0A%0AListing%20URL%3A%0ADetails%3A%0A">Report an Issue</a>
+          <a class="btn" href="browse.html">Return to Browse</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="FAQ">
+      <div class="sectionHeader">FAQ</div>
+      <div class="sectionBody">
+        <details>
+          <summary>Does DirectOwner handle the transaction?</summary>
+          <p>No. DirectOwner is a marketplace connecting private buyers and sellers. Transactions occur directly between the parties.</p>
+        </details>
+
+        <details>
+          <summary>Do you guarantee a listing is legitimate?</summary>
+          <p>We use verification steps and moderation to reduce fraud, but buyers and sellers should still complete inspections and verify documents before purchase.</p>
+        </details>
+
+        <details>
+          <summary>Why does the seller verification matter?</summary>
+          <p>High‑ticket items attract scammers. Basic verification reduces impersonation and helps buyers feel confident moving forward.</p>
+        </details>
+
+        <details>
+          <summary>Is financing provided by DirectOwner?</summary>
+          <p>No. We are not a lender. Financing options (if available) are provided by independent third‑party partners.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        <strong>Disclaimer:</strong> DirectOwner is a marketplace connecting private buyers and sellers.
+        We are not a dealer, broker, or lender. Financing is offered by third‑party partners where available.
+        Transactions occur directly between buyer and seller.
+      </p>
+    </footer>
+  </main>
+</body>
+</html>
