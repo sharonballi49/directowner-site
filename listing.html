@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Listing Details — DirectOwner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Listing details for owner-listed cars and RVs on DirectOwner." />
+
+  <style>
+    :root{
+      --text:#111827; --muted:#4b5563; --line:#e5e7eb; --bg:#ffffff; --soft:#f9fafb;
+      --primary:#111827; --primaryText:#ffffff; --shadow:0 10px 25px rgba(17,24,39,0.06); --radius:10px;
+    }
+    *{ box-sizing:border-box; }
+    body{ margin:0; font-family:-apple-system, BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color:var(--text); background:var(--bg); line-height:1.6; }
+
+    header{
+      padding:18px 22px; border-bottom:1px solid var(--line);
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      position:sticky; top:0; background:rgba(255,255,255,0.92); backdrop-filter:saturate(180%) blur(10px); z-index:10;
+    }
+    header .brand{ font-weight:800; text-decoration:none; color:var(--text); font-size:1.1rem; }
+    nav{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
+    nav a{ text-decoration:none; color:#374151; font-weight:600; font-size:0.95rem; padding:8px 10px; border-radius:8px; }
+    nav a:hover{ background:var(--soft); }
+
+    .wrap{ max-width:1150px; margin:0 auto; padding:26px 18px 70px; }
+    .breadcrumbs{ color:var(--muted); font-size:0.95rem; margin-bottom:12px; }
+    .breadcrumbs a{ color:var(--muted); text-decoration:underline; }
+
+    .layout{ display:grid; grid-template-columns: 1.2fr 0.8fr; gap:18px; }
+    .panel{
+      border:1px solid var(--line); border-radius:var(--radius); background:#fff; box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .gallery{
+      background:linear-gradient(135deg,#e5e7eb,#f3f4f6);
+      height:360px; position:relative;
+    }
+    .badges{ position:absolute; top:12px; left:12px; display:flex; gap:8px; flex-wrap:wrap; }
+    .badge{
+      font-size:0.78rem; font-weight:900; padding:6px 10px; border-radius:999px;
+      background:rgba(255,255,255,0.92); border:1px solid #e5e7eb; color:#111827;
+    }
+    .badge.green{ border-color:#bbf7d0; background:#ecfdf5; color:#065f46; }
+    .badge.blue{ border-color:#bfdbfe; background:#eff6ff; color:#1e3a8a; }
+
+    .content{ padding:16px; }
+    h1{ margin:0 0 6px; font-size:1.7rem; line-height:1.2; }
+    .sub{ margin:0 0 12px; color:var(--muted); }
+    .priceRow{ display:flex; align-items:flex-end; justify-content:space-between; gap:10px; flex-wrap:wrap; margin:12px 0; }
+    .price{ font-size:2rem; font-weight:900; margin:0; }
+    .estimate{ color:var(--muted); font-weight:700; font-size:0.95rem; }
+
+    .btnRow{ display:flex; gap:10px; flex-wrap:wrap; margin:12px 0 6px; }
+    .btn{
+      display:inline-block; padding:12px 14px; border-radius:10px;
+      border:1px solid #d1d5db; background:#fff; color:#111827; text-decoration:none; font-weight:900; cursor:pointer;
+    }
+    .btn.primary{ background:var(--primary); color:var(--primaryText); border-color:var(--primary); }
+    .btn:hover{ background:var(--soft); }
+    .btn.primary:hover{ background:#0b1220; }
+
+    .specGrid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; margin-top:10px; }
+    .spec{ border:1px solid var(--line); border-radius:12px; padding:10px; background:var(--soft); }
+    .spec .k{ color:var(--muted); font-size:0.82rem; font-weight:800; }
+    .spec .v{ font-weight:900; margin-top:2px; }
+
+    .sectionTitle{ margin:0 0 8px; font-size:1.2rem; }
+    .text{ color:var(--muted); margin:0; }
+    .divider{ height:1px; background:var(--line); margin:14px 0; }
+
+    .sideBox{ padding:16px; }
+    .ownerCard{ border:1px solid var(--line); border-radius:12px; padding:12px; background:var(--soft); }
+    .ownerTop{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+    .ownerName{ font-weight:900; }
+    .ownerMeta{ color:var(--muted); font-size:0.92rem; margin-top:4px; }
+    .small{ font-size:0.9rem; color:var(--muted); }
+
+    .notice{
+      margin-top:12px; border:1px solid var(--line); border-radius:12px; padding:12px; background:var(--soft);
+      color:var(--muted); font-size:0.92rem;
+    }
+
+    footer{
+      margin-top:26px; border-top:1px solid var(--line); padding-top:16px; color:var(--muted); font-size:0.92rem;
+    }
+    @media (max-width: 980px){
+      header{ position:static; }
+      .layout{ grid-template-columns: 1fr; }
+      .gallery{ height:260px; }
+      .specGrid{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a class="brand" href="index.html">DirectOwner</a>
+    <nav>
+      <a href="browse.html">Browse</a>
+      <a href="sell.html">Sell</a>
+      <a href="financing.html">Financing</a>
+      <a href="how-it-works.html">How It Works</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <div class="breadcrumbs">
+      <a href="browse.html">Browse</a> → Listing Details
+    </div>
+
+    <div class="layout">
+      <!-- Left: main listing -->
+      <section class="panel">
+        <div class="gallery">
+          <div class="badges">
+            <span class="badge green">Verified Owner</span>
+            <span class="badge blue">Financing Available</span>
+          </div>
+        </div>
+
+        <div class="content">
+          <h1>2021 Toyota 4Runner SR5 (Sample Listing)</h1>
+          <p class="sub">San Antonio, TX • 42k miles • Clean title</p>
+
+          <div class="priceRow">
+            <p class="price">$38,500</p>
+            <div class="estimate">
+              Est. payment: <strong>$—/mo</strong> (varies by lender) • <a href="financing.html">Check financing</a>
+            </div>
+          </div>
+
+          <div class="btnRow">
+            <a class="btn primary" href="mailto:info@getdirectowner.com?subject=Interested%20in%20Listing%20(4Runner%20Sample)&body=Hi%20DirectOwner%2C%20I%20am%20interested%20in%20this%20listing.%20Please%20connect%20me%20with%20the%20owner.%0A%0AName%3A%0APhone%3A%0ACity%3A%0A" target="_blank" rel="noopener">Contact Owner (Phase 1)</a>
+            <a class="btn" href="financing.html">Check Financing</a>
+            <a class="btn" href="browse.html">Back to Browse</a>
+          </div>
+
+          <div class="specGrid" aria-label="Vehicle specs">
+            <div class="spec"><div class="k">Year</div><div class="v">2021</div></div>
+            <div class="spec"><div class="k">Mileage</div><div class="v">42,000</div></div>
+            <div class="spec"><div class="k">Location</div><div class="v">San Antonio, TX</div></div>
+            <div class="spec"><div class="k">Title</div><div class="v">Clean</div></div>
+            <div class="spec"><div class="k">VIN</div><div class="v">••••••••••••1234</div></div>
+            <div class="spec"><div class="k">Category</div><div class="v">Car</div></div>
+          </div>
+
+          <div class="divider"></div>
+
+          <h2 class="sectionTitle">Description</h2>
+          <p class="text">
+            Phase 1 uses sample content. Replace this description with real owner details: condition, maintenance history,
+            upgrades, known issues, and what’s included in the sale.
+          </p>
+
+          <div class="divider"></div>
+
+          <h2 class="sectionTitle">Safety & Transparency</h2>
+          <p class="text">
+            DirectOwner is a marketplace connecting private buyers and sellers. Transactions occur directly between buyer and owner.
+            We are not a dealer or lender. Financing (if available) is provided by independent third‑party partners.
+          </p>
+        </div>
+      </section>
+
+      <!-- Right: owner + actions -->
+      <aside class="panel">
+        <div class="sideBox">
+          <h2 class="sectionTitle">Owner</h2>
+          <div class="ownerCard">
+            <div class="ownerTop">
+              <div>
+                <div class="ownerName">Verified Owner</div>
+                <div class="ownerMeta">Response time: — • Listings: —</div>
+              </div>
+              <span class="badge green">Verified</span>
+            </div>
+            <p class="small" style="margin:10px 0 0;">
+              Phase 1: owner contact is handled manually for safety. Click “Contact Owner” and we’ll connect you.
+            </p>
+          </div>
+
+          <div class="notice">
+            <strong>Tip:</strong> Ask for service records, title status, and schedule a video walkthrough before meeting in person.
+          </div>
+
+          <div class="notice">
+            <strong>Report an issue:</strong> Email <a href="mailto:info@getdirectowner.com?subject=Report%20Listing%20Issue">info@getdirectowner.com</a>
+          </div>
+
+          <footer>
+            <p><strong>Disclaimer:</strong> We are not a dealership or lender. Financing is provided by third‑party partners.</p>
+          </footer>
+        </div>
+      </aside>
+    </div>
+  </main>
+</body>
+</html>
