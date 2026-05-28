@@ -7,35 +7,244 @@
   <meta name="description" content="Explore financing options for private-party car and RV purchases through third-party partners." />
 
   <style>
-    :root{ --text:#111827; --muted:#4b5563; --line:#e5e7eb; --bg:#ffffff; --soft:#f9fafb; --primary:#111827; --primaryText:#ffffff; --shadow:0 10px 25px rgba(17,24,39,0.06); --radius:10px; }
+    :root{
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --bg:#ffffff;
+      --soft:#f9fafb;
+      --primary:#111827;
+      --primaryText:#ffffff;
+      --shadow:0 10px 25px rgba(17,24,39,0.06);
+      --radius:10px;
+    }
+
     *{ box-sizing:border-box; }
-    body{ margin:0; font-family:-apple-system, BlinkMacSystemFont,"Segoe UI",Arial,sans-serif; color:var(--text); background:var(--bg); line-height:1.6; }
-    header{ padding:18px 22px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:12px; position:sticky; top:0; background:rgba(255,255,255,0.92); backdrop-filter:saturate(180%) blur(10px); z-index:10; }
-    header .brand{ font-weight:800; text-decoration:none; color:var(--text); font-size:1.1rem; }
-    nav{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; justify-content:flex-end; }
-    nav a{ text-decoration:none; color:#374151; font-weight:600; font-size:0.95rem; padding:8px 10px; border-radius:8px; }
-    nav a:hover{ background:var(--soft); }
-    .active{ background:var(--soft); color:var(--text); }
 
-    .wrap{ max-width:1100px; margin:0 auto; padding:26px 18px 70px; }
-    .hero{ background:var(--soft); border:1px solid var(--line); border-radius:var(--radius); padding:26px 18px; box-shadow:var(--shadow); }
-    .hero h1{ margin:0; font-size:2.1rem; line-height:1.2; }
-    .hero p{ margin:10px 0 0; color:var(--muted); max-width:880px; font-size:1.05rem; }
+    body{
+      margin:0;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
+    }
 
-    .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; margin-top:18px; }
-    .card{ border:1px solid var(--line); border-radius:var(--radius); background:#fff; padding:16px; box-shadow:var(--shadow); }
-    .card strong{ display:block; margin-bottom:8px; font-size:1.05rem; }
-    .card p{ margin:0; color:var(--muted); font-size:0.98rem; }
+    header{
+      padding:18px 22px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      position:sticky;
+      top:0;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:saturate(180%) blur(10px);
+      z-index:10;
+    }
 
-    .ctaRow{ display:flex; gap:12px; flex-wrap:wrap; align-items:center; margin-top:18px; }
-    .btn{ display:inline-block; padding:12px 16px; border-radius:10px; border:1px solid #d1d5db; background:#fff; color:#111827; text-decoration:none; font-weight:800; cursor:pointer; }
-    .btn.primary{ background:var(--primary); border-color:var(--primary); color:var(--primaryText); }
-    .btn:hover{ background:#f3f4f6; }
-    .btn.primary:hover{ background:#0b1220; }
+    header .brand{
+      font-weight:800;
+      text-decoration:none;
+      color:var(--text);
+      font-size:1.1rem;
+    }
 
-    .notice{ margin-top:18px; border:1px solid var(--line); border-radius:var(--radius); padding:14px; background:var(--soft); color:var(--muted); font-size:0.95rem; }
-    footer{ margin-top:26px; border-top:1px solid var(--line); padding-top:16px; color:var(--muted); font-size:0.92rem; }
-    @media (max-width: 980px){ header{ position:static; } }
+    nav{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+
+    nav a{
+      text-decoration:none;
+      color:#374151;
+      font-weight:600;
+      font-size:0.95rem;
+      padding:8px 10px;
+      border-radius:8px;
+    }
+
+    nav a:hover{
+      background:var(--soft);
+    }
+
+    .active{
+      background:var(--soft);
+      color:var(--text);
+    }
+
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:26px 18px 70px;
+    }
+
+    .hero{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:26px 18px;
+      box-shadow:var(--shadow);
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:2.1rem;
+      line-height:1.2;
+    }
+
+    .hero p{
+      margin:10px 0 0;
+      color:var(--muted);
+      max-width:880px;
+      font-size:1.05rem;
+    }
+
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:18px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:12px 16px;
+      border-radius:10px;
+      border:1px solid #d1d5db;
+      background:#fff;
+      color:#111827;
+      text-decoration:none;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .btn.primary{
+      background:var(--primary);
+      border-color:var(--primary);
+      color:var(--primaryText);
+    }
+
+    .btn:hover{
+      background:#f3f4f6;
+    }
+
+    .btn.primary:hover{
+      background:#0b1220;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:16px;
+      margin-top:18px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      padding:16px;
+      box-shadow:var(--shadow);
+    }
+
+    .card h2{
+      margin:0 0 8px;
+      font-size:1.15rem;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:0.98rem;
+    }
+
+    .section{
+      margin-top:20px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+
+    .sectionHeader{
+      padding:14px 16px;
+      background:var(--soft);
+      border-bottom:1px solid var(--line);
+      font-weight:900;
+    }
+
+    .sectionBody{
+      padding:16px;
+      color:var(--muted);
+    }
+
+    .sectionBody p{
+      margin:0 0 12px;
+    }
+
+    ul{
+      margin:10px 0 0;
+      padding-left:18px;
+    }
+
+    li{
+      margin:8px 0;
+    }
+
+    .notice{
+      margin-top:18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:14px;
+      background:var(--soft);
+      color:var(--muted);
+      font-size:0.95rem;
+    }
+
+    .notice strong{
+      color:var(--text);
+    }
+
+    footer{
+      margin-top:40px;
+      background:#111827;
+      color:#e5e7eb;
+      text-align:center;
+      padding:20px 18px;
+      font-size:0.92rem;
+    }
+
+    footer p{
+      color:#e5e7eb;
+      margin:8px 0;
+    }
+
+    footer strong{
+      color:#ffffff;
+    }
+
+    footer a{
+      color:#ffffff;
+      text-decoration:none;
+    }
+
+    footer a:visited{
+      color:#ffffff;
+    }
+
+    footer a:hover{
+      text-decoration:underline;
+    }
+
+    @media (max-width: 980px){
+      header{ position:static; }
+    }
   </style>
 </head>
 
@@ -48,46 +257,58 @@
       <a class="active" href="financing.html">Financing</a>
       <a href="how-it-works.html">How It Works</a>
       <a href="trust.html">Trust &amp; Safety</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <h1>Financing Options (Private‑Party Purchases)</h1>
+      <h1>Financing Options</h1>
       <p>
-        Buying directly from an owner doesn’t mean you have to pay all cash. In Phase 1, DirectOwner helps buyers explore
-        third‑party financing options (when available). We are not a lender.
+        Buying directly from an owner does not always mean paying cash. DirectOwner helps buyers understand
+        how third-party financing may work for private-party vehicle purchases.
       </p>
 
       <div class="ctaRow">
-        <a class="btn primary" href="mailto:info@getdirectowner.com?subject=Financing%20Help%20Request&body=Hi%20DirectOwner%2C%20I%20want%20help%20exploring%20financing%20options.%0A%0AName%3A%0APhone%3A%0AEstimated%20credit%20range%3A%0ADown%20payment%3A%0AVehicle%20link%20(if%20any)%3A%0A">Request Financing Help (Phase 1)</a>
+        <a class="btn primary" href="contact.html">Request Financing Help</a>
         <a class="btn" href="browse.html">Browse Listings</a>
       </div>
 
       <div class="notice">
-        <strong>Important:</strong> DirectOwner is a marketplace platform. We do not originate loans, set rates, or make lending decisions.
-        Financing (if available) is offered by independent third‑party partners.
+        <strong>Important:</strong> DirectOwner is not a lender and does not make lending decisions.
+        Financing, when available, is provided by independent third-party partners.
       </div>
     </section>
 
-    <section class="grid" aria-label="How financing works">
+    <section class="grid" aria-label="Financing overview">
       <div class="card">
-        <strong>1) Pre‑Qualify</strong>
-        <p>Explore payments and pre‑qualification with a third‑party provider (soft checks may be available).</p>
+        <h2>Private-Party Financing</h2>
+        <p>
+          Some lenders support financing for vehicles purchased directly from private sellers, not just dealerships.
+        </p>
       </div>
+
       <div class="card">
-        <strong>2) Verify the Vehicle</strong>
-        <p>Confirm title status, VIN details (where applicable), and condition before making any commitment.</p>
+        <h2>More Buyer Access</h2>
+        <p>
+          Financing can help qualified buyers purchase higher-value vehicles without needing to pay the full amount upfront.
+        </p>
       </div>
+
       <div class="card">
-        <strong>3) Close Owner‑to‑Owner</strong>
-        <p>Transactions happen directly between buyer and owner. Consider inspection and safe payment options.</p>
+        <h2>Third-Party Providers</h2>
+        <p>
+          Any loan, approval, or financing decision comes from an outside provider under that provider’s own terms.
+        </p>
       </div>
     </section>
 
-    <footer>
-      <p><strong>Disclaimer:</strong> DirectOwner is not a dealership or lender. Financing is provided by third‑party partners where available. Transactions occur directly between buyer and seller.</p>
-    </footer>
-  </main>
-</body>
-</html>
+    <section class="section">
+      <div class="sectionHeader">How Financing Works on DirectOwner</div>
+      <div class="sectionBody">
+        <p>
+          DirectOwner may help connect buyers with financing-related resources or third-party partners where available.
+          However, DirectOwner does not originate loans, approve applicants, or control loan terms.
+        </p>
+        <ul>
+          <li>Buyers may request financing assistance through DirectOwner support.</li>
