@@ -7,199 +7,316 @@
   <meta name="description" content="Buy and sell cars and RVs directly from verified owners. No dealerships. No middlemen. Financing options available." />
 
   <style>
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      
-      color: #111827;
-      background: #ffffff;
-      line-height: 1.6;
+    :root{
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --bg:#ffffff;
+      --soft:#f9fafb;
+      --primary:#111827;
+      --primaryText:#ffffff;
+      --shadow:0 10px 25px rgba(17,24,39,0.06);
+      --radius:10px;
     }
-    header {
-      padding: 20px 40px;
-      border-bottom: 1px solid #e5e7eb;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.6;
     }
-    header strong {
-      font-size: 1.3rem;
+
+    header{
+      padding:18px 22px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      position:sticky;
+      top:0;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:saturate(180%) blur(10px);
+      z-index:10;
     }
-    <nav>
-  <a href="browse.html">Browse</a>
-  <a href="sell.html">Sell</a>
-  <a href="financing.html">Financing</a>
-  <a href="how-it-works.html">How It Works</a>
-  <a href="trust.html">Trust &amp; Safety</a>
-</nav>
-    
-    .hero {
-      padding: 80px 20px;
-      text-align: center;
-      background: #f9fafb;
+
+    header .brand{
+      font-weight:800;
+      text-decoration:none;
+      color:var(--text);
+      font-size:1.15rem;
     }
-    .hero h1 {
-      font-size: 2.6rem;
-      max-width: 900px;
-      margin: 0 auto 20px;
+
+    nav{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
     }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      color: #4b5563;
+
+    nav a{
+      text-decoration:none;
+      color:#374151;
+      font-weight:600;
+      font-size:0.95rem;
+      padding:8px 10px;
+      border-radius:8px;
     }
-    .button {
-      display: inline-block;
-      padding: 14px 28px;
-      margin: 10px;
-      background: #111827;
-      color: #ffffff;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 600;
+
+    nav a:hover{
+      background:var(--soft);
     }
-    .secondary {
-      background: #ffffff;
-      color: #111827;
-      border: 1px solid #d1d5db;
+
+    .hero{
+      background:var(--soft);
+      padding:80px 20px;
+      text-align:center;
+      border-bottom:1px solid var(--line);
     }
-    section {
-      padding: 70px 20px;
-      max-width: 1100px;
-      margin: auto;
+
+    .hero h1{
+      font-size:2.8rem;
+      line-height:1.2;
+      margin:0 auto 18px;
+      max-width:900px;
     }
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 40px;
+
+    .hero p{
+      font-size:1.1rem;
+      color:var(--muted);
+      max-width:760px;
+      margin:0 auto 30px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 30px;
+
+    .cta-row{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:20px;
     }
-    .card {
-      border: 1px solid #e5e7eb;
-      padding: 25px;
-      border-radius: 8px;
-      background: #ffffff;
+
+    .btn{
+      display:inline-block;
+      padding:14px 22px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid #d1d5db;
+      background:#ffffff;
+      color:#111827;
+    }
+
+    .btn.primary{
+      background:var(--primary);
+      border-color:var(--primary);
+      color:var(--primaryText);
+    }
+
+    .btn:hover{
+      background:#f3f4f6;
+    }
+
+    .btn.primary:hover{
+      background:#0b1220;
+    }
+
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      padding:60px 20px;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:2rem;
+      margin:0 0 40px;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+      gap:20px;
+    }
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:10px;
+      background:#fff;
+      padding:22px;
+      box-shadow:var(--shadow);
+    }
+
+    .card h3{
+      margin:0 0 8px;
+      font-size:1.1rem;
+    }
+
+    .card p{
+      margin:0;
+      color:var(--muted);
+      font-size:0.98rem;
+    }
+
+    .callout{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:24px;
+      text-align:center;
+      margin-top:20px;
+      box-shadow:var(--shadow);
+    }
+
+    .callout p{
+      margin:0 0 16px;
+      color:var(--muted);
+    }
+
     footer{
-  margin-top:40px;
-  background:#111827;
-  color:#e5e7eb;
-  text-align:center;
-  padding:20px 18px;
-  font-size:0.92rem;
-}
+      margin-top:40px;
+      background:#111827;
+      color:#e5e7eb;
+      text-align:center;
+      padding:20px 18px;
+      font-size:0.92rem;
+    }
 
-footer p{
-  color:#e5e7eb;
-  margin:8px 0;
-}
+    footer p{
+      color:#e5e7eb;
+      margin:8px 0;
+    }
 
-footer strong{
-  color:#ffffff;
-}
+    footer strong{
+      color:#ffffff;
+    }
 
-footer a{
-  color:#ffffff;
-  text-decoration:none;
-}
+    footer a{
+      color:#ffffff;
+      text-decoration:none;
+    }
 
-footer a:visited{
-  color:#ffffff;
-}
+    footer a:visited{
+      color:#ffffff;
+    }
 
-footer a:hover{
-  text-decoration:underline;
-}
+    footer a:hover{
+      text-decoration:underline;
+    }
+
+    @media (max-width: 768px){
+      .hero h1{
+        font-size:2.1rem;
+      }
+
+      nav{
+        gap:8px;
+      }
+
+      nav a{
+        font-size:0.9rem;
+        padding:6px 8px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
-<header>
-  <strong>DirectOwner</strong>
-  <nav>
-    <a href="browse.html">Browse</a>
-    <a href="sell.html">Sell</a>
-    <a href="financing.html">Financing</a>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="trust.html">Trust &amp; Safety</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+  <header>
+    <a class="brand" href="index.html">DirectOwner</a>
+    <nav>
+      <a href="browse.html">Browse</a>
+      <a href="sell.html">Sell</a>
+      <a href="financing.html">Financing</a>
+      <a href="how-it-works.html">How It Works</a>
+      <a href="trust.html">Trust &amp; Safety</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
 
-<section class="hero">
-  <h1>Buy Cars & RVs Directly From Owners — No Dealerships</h1>
-  <p>
-    DirectOwner is a verified owner‑to‑owner marketplace for high‑value vehicles.
-    No middlemen. Transparent pricing. Financing options available.
-  </p>
+  <section class="hero">
+    <h1>Buy Cars &amp; RVs Directly From Owners — No Dealerships</h1>
+    <p>
+      DirectOwner is a verified owner-to-owner marketplace for high-value vehicles.
+      No middlemen. Transparent pricing. Financing options available.
+    </p>
 
-  <a href="browse.html" class="button">Browse Listings</a>
-  <a href="sell.html" class="button secondary">Sell Your Vehicle</a>
-</section>
+    <div class="cta-row">
+      <a class="btn primary" href="browse.html">Browse Listings</a>
+      <a class="btn" href="sell.html">Sell Your Vehicle</a>
+    </div>
+  </section>
 
-<section>
-  <h2>Why DirectOwner</h2>
-  <div class="grid">
-    <div class="card">
-      <strong>Verified Owners</strong>
-      <p>Every seller is verified to reduce fraud and improve trust.</p>
-    </div>
-    <div class="card">
-      <strong>No Dealer Markups</strong>
-      <p>Buy and sell without trade‑ins, commissions, or inflated pricing.</p>
-    </div>
-    <div class="card">
-      <strong>Financing Options</strong>
-      <p>Buyers can explore financing through trusted third‑party lenders.</p>
-    </div>
-  </div>
-</section>
+  <section class="container">
+    <h2 class="section-title">Why DirectOwner</h2>
 
-<section>
-  <h2>How It Works</h2>
-  <div class="grid">
-    <div class="card">
-      <strong>1. Owners List</strong>
-      <p>Create a listing, verify ownership, and connect directly with buyers.</p>
-    </div>
-    <div class="card">
-      <strong>2. Buyers Browse</strong>
-      <p>View listings, ask questions, and contact sellers securely.</p>
-    </div>
-    <div class="card">
-      <strong>3. Financing Optional</strong>
-      <p>Explore financing options to complete a private‑party purchase.</p>
-    </div>
-  </div>
-</section>
+    <div class="grid">
+      <div class="card">
+        <h3>Verified Owners</h3>
+        <p>Every seller is reviewed to reduce fraud and improve buyer trust.</p>
+      </div>
 
-<section>
-  <h2>Selling? Keep More of What It’s Worth</h2>
-  <div class="grid">
-    <div class="card">
+      <div class="card">
+        <h3>No Dealer Markups</h3>
+        <p>Buy and sell directly without trade-in pressure, commissions, or inflated pricing.</p>
+      </div>
+
+      <div class="card">
+        <h3>Financing Options</h3>
+        <p>Buyers can explore financing through trusted third-party partners when available.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2 class="section-title">How It Works</h2>
+
+    <div class="grid">
+      <div class="card">
+        <h3>1. Owners List</h3>
+        <p>Create a listing, verify ownership, and connect directly with interested buyers.</p>
+      </div>
+
+      <div class="card">
+        <h3>2. Buyers Browse</h3>
+        <p>Explore listings, review details, and request contact without dealership middlemen.</p>
+      </div>
+
+      <div class="card">
+        <h3>3. Financing Optional</h3>
+        <p>Where available, buyers can explore third-party financing for private-party purchases.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container">
+    <h2 class="section-title">Selling? Keep More of What It’s Worth</h2>
+
+    <div class="callout">
       <p>
-        Skip dealer trade‑ins and reach serious buyers directly.
-        DirectOwner helps sellers maintain control while expanding buyer access through financing.
+        Skip dealer trade-ins and connect directly with serious buyers. DirectOwner helps sellers keep control while expanding access to motivated buyers.
       </p>
-      <a href="#" class="button">List Your Vehicle</a>
+      <a class="btn primary" href="sell.html">List Your Vehicle</a>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <p>
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms of Service</a> |
-    <a href="contact.html">Contact</a>
-  </p>
-  <p>
-    <strong>Disclaimer:</strong> DirectOwner is a marketplace connecting private buyers and sellers.
-    We are not a dealer, broker, or lender. Financing is offered by third-party partners where available.
-    Transactions occur directly between buyer and seller.
-  </p>
-</footer>
+  <footer>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Service</a> |
+      <a href="contact.html">Contact</a>
+    </p>
+    <p>
+      <strong>Disclaimer:</strong> DirectOwner is a marketplace connecting private buyers and sellers.
+      We are not a dealer, broker, or lender. Financing is offered by third-party partners where available.
+      Transactions occur directly between buyer and seller.
+    </p>
+  </footer>
+
+</body>
+</html>
