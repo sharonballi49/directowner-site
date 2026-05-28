@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Browse Listings — DirectOwner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root{
+      --text:#111827;
+      --muted:#4b5563;
+      --line:#e5e7eb;
+      --bg:#ffffff;
+      --soft:#f9fafb;
+      --primary:#111827;
+    }
+
+    body{
+      margin:0;
+      font-family:-apple-system, "Segoe UI", Arial, sans-serif;
+      color:var(--text);
+      background:var(--bg);
+    }
+
+    header{
+      padding:18px 22px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    nav a{
+      margin-left:14px;
+      text-decoration:none;
+      color:#374151;
+      font-weight:600;
+    }
+
+    .wrap{
+      max-width:1000px;
+      margin:0 auto;
+      padding:30px 20px;
+    }
+
+    h1{
+      margin-bottom:10px;
+    }
+
+    .filters{
+      background:var(--soft);
+      border:1px solid var(--line);
+      padding:20px;
+      border-radius:10px;
+      margin-top:20px;
+    }
+
+    .filters input,
+    .filters select{
+      padding:10px;
+      margin:6px;
+      border:1px solid var(--line);
+      border-radius:6px;
+    }
+
+    .btn{
+      padding:10px 16px;
+      background:#111827;
+      color:#fff;
+      border:none;
+      border-radius:8px;
+      cursor:pointer;
+    }
+
+    footer{
+      margin-top:40px;
+      background:#111827;
+      color:#e5e7eb;
+      text-align:center;
+      padding:20px;
+    }
+
+    footer a{
+      color:#e5e7eb;
+      text-decoration:none;
+    }
+
+    footer a:hover{
+      text-decoration:underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div><strong>DirectOwner</strong></div>
+  <nav>
+    <a href="browse.html">Browse</a>
+    <a href="sell.html">Sell</a>
+    <a href="financing.html">Financing</a>
+    <a href="how-it-works.html">How It Works</a>
+    <a href="trust.html">Trust & Safety</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="wrap">
+  <h1>Browse Owner Listings</h1>
+  <p>Explore cars and RVs listed directly by owners.</p>
+
+  <div class="filters">
+    <select>
+      <option>All Types</option>
+      <option>Car</option>
+      <option>RV</option>
+    </select>
+
+    <select>
+      <option>Any Price</option>
+      <option>$10k+</option>
+      <option>$20k+</option>
+    </select>
+
+    <input type="text" placeholder="City or ZIP">
+
+    <button class="btn">Search</button>
+  </div>
+</div>
+
+<footer>
+  <p>
+    <a href="privacy.html">Privacy Policy</a> |
+    <a href="terms.html">Terms of Service</a> |
+    <a href="contact.html">Contact</a>
+  </p>
+  <p>
+    <strong>Disclaimer:</strong> DirectOwner is a marketplace connecting private buyers and sellers.
+    We are not a dealer or lender. Transactions occur directly between users.
+  </p>
+</footer>
+
+</body>
+</html>
+``
