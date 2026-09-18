@@ -1,1 +1,511 @@
+/* Header */
+.site-header {
+  background: var(--navy-950);
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo {
+  color: var(--white);
+  font-weight: 700;
+  font-size: 1.6rem;
+  text-decoration: none;
+  letter-spacing: -0.02em;
+}
+
+.site-nav .nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.site-nav .nav-links a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+
+.site-nav .nav-links a:hover {
+  color: var(--orange);
+}
+
+.site-nav .nav-links .btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  background: transparent;
+  padding: 0 16px;
+  min-height: 40px;
+  border-radius: 8px;
+}
+
+.site-nav .nav-links .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+.menu-toggle {
+  display: none; /* Hidden by default, shown on mobile */
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 22px;
+  position: relative;
+  z-index: 20;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  background: var(--white);
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.menu-toggle span:nth-child(1) { top: 0; }
+.menu-toggle span:nth-child(2) { top: 9px; }
+.menu-toggle span:nth-child(3) { top: 18px; }
+
+/* Hero Section */
+.hero-section {
+  background: var(--navy-900);
+  color: var(--white);
+  padding: 80px 0 100px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before { /* Optional background graphic */
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  right: -100px;
+  bottom: -100px;
+  background-image: url('https://via.placeholder.com/1600x900/102a43/071c2f?text='); /* Placeholder for a subtle background pattern or image */
+  background-size: cover;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.1;
+  margin: 0 0 20px;
+  color: var(--white);
+}
+
+.hero-tagline {
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 36px;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.hero-trust-line {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Search Panel Section */
+.search-panel-section {
+  background: var(--cream);
+  padding: 40px 0;
+  margin-top: -60px; /* Overlaps with hero section */
+  position: relative;
+  z-index: 2;
+  border-bottom: 1px solid var(--border);
+}
+
+.search-panel {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  background: var(--white);
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-panel select,
+.search-panel input {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--white);
+}
+
+.search-panel input::placeholder {
+  color: var(--muted);
+}
+
+.search-button {
+  width: 100%;
+  min-height: 48px;
+}
+
+/* Listing Grid (used for featured listings) */
+.listing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.listing-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.listing-image {
+  width: 100%;
+  height: 200px; /* Fixed height for consistency */
+  object-fit: cover;
+  display: block;
+}
+
+.listing-content {
+  padding: 20px;
+  flex-grow: 1; /* Allows content to take available space */
+  display: flex;
+  flex-direction: column;
+}
+
+.listing-type {
+  display: inline-block;
+  background: var(--cream);
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.listing-card h3 {
+  font-size: 1.3rem;
+  margin: 0 0 8px;
+  color: var(--navy-950);
+}
+
+.listing-price {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--navy-950);
+  margin: 0 0 8px;
+}
+
+.listing-meta {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  flex-grow: 1; /* Pushes button to bottom */
+}
+
+.btn-text {
+  color: var(--navy-900);
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.btn-text:hover {
+  text-decoration: underline;
+}
+
+/* Features Grid (Why DirectOwner section) */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.feature-card h3 {
+  font-size: 1.4rem;
+  color: var(--navy-950);
+  margin: 0 0 12px;
+}
+
+.feature-card p {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Steps Grid (How It Works section) */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.step-card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  text-align: center;
+}
+
+.step-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: var(--orange);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.step-card h3 {
+  font-size: 1.4rem;
+  color: var(--navy-950);
+  margin: 0 0 10px;
+}
+
+.step-card p {
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Call to Action - Sell Section */
+.cta-sell-section {
+  background: var(--navy-900);
+  color: var(--white);
+  text-align: center;
+  padding: 100px 0;
+}
+
+.cta-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-content h2 {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  margin: 0 0 20px;
+  color: var(--white);
+}
+
+.cta-content p {
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 36px;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--navy-950);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 40px 0;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  margin: 0 15px;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--orange);
+}
+
+.footer-disclaimer {
+  max-width: 800px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.footer-copyright {
+  margin: 0;
+}
+
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  .site-nav .nav-links {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    padding: 14px 0;
+  }
+  .header-content {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .site-logo {
+    margin-right: auto;
+  }
+  .site-nav {
+    width: 100%; /* Take full width */
+    order: 3; /* Move below header items */
+    margin-top: 15px;
+  }
+  .site-nav .nav-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--navy-900);
+    padding: 20px;
+    border-radius: var(--radius);
+    width: 100%;
+    transform: translateY(-10px); /* Adjust for overlap */
+  }
+
+  /* Search panel for smaller screens */
+  .search-panel {
+    grid-template-columns: 1fr 1fr; /* 2 columns */
+  }
+  .search-button {
+    grid-column: span 2; /* Button spans both columns */
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding: 60px 0 80px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn {
+    width: 100%; /* Full width buttons in hero */
+  }
+
+  .search-panel-section {
+    padding: 30px 0;
+  }
+  .search-panel {
+    grid-template-columns: 1fr; /* 1 column */
+  }
+  .search-button {
+    grid-column: span 1; /* Button spans single column */
+  }
+
+  .section-heading h2 {
+    font-size: 2.2rem;
+  }
+
+  .featured-listings-section .listing-grid {
+    grid-template-columns: 1fr; /* Single column for listings */
+  }
+  .why-directowner-section .features-grid,
+  .how-it-works-section .steps-grid {
+    grid-template-columns: 1fr; /* Single column for features/steps */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: 2.8rem;
+  }
+  .hero-tagline {
+    font-size: 1rem;
+  }
+  .cta-content h2 {
+    font-size: 2rem;
+  }
+  .site-nav .nav-links .btn-secondary {
+    width: 100%; /* Full width for 'List Your Vehicle' button on mobile */
+  }
+}
 
