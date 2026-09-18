@@ -507,5 +507,109 @@
   .site-nav .nav-links .btn-secondary {
     width: 100%; /* Full width for 'List Your Vehicle' button on mobile */
   }
+}/* Page Intro Section (for browse.html, etc.) */
+.page-intro-section {
+  background: var(--cream);
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
 }
+
+.page-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--navy-950);
+  margin: 0 0 15px;
+  line-height: 1.1;
+}
+
+.page-description {
+  font-size: 1.15rem;
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Listing Filters Section */
+.filters-section {
+  padding-top: 40px; /* Adjust padding as needed */
+  padding-bottom: 40px;
+}
+
+.listing-filters {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  background: var(--white);
+  padding: 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+  align-items: end; /* Aligns buttons and inputs at the bottom */
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy-900);
+}
+
+.listing-filters select,
+.listing-filters input[type="text"],
+.listing-filters input[type="number"] {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--white);
+  min-height: 46px; /* Match button height */
+}
+
+.listing-filters input::placeholder {
+  color: var(--muted);
+}
+
+.filter-button {
+  width: 100%;
+  min-height: 46px;
+  margin-top: auto; /* Pushes button to the bottom of its grid cell */
+}
+
+/* Listings Results Section */
+.listings-results-section {
+  padding-top: 0; /* Adjust padding if needed, assuming filters section is above */
+}
+
+@media (max-width: 768px) {
+  .listing-filters {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* More compact on smaller screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .page-intro-section {
+    padding: 40px 0;
+  }
+  .page-title {
+    font-size: 2.5rem;
+  }
+  .page-description {
+    font-size: 1rem;
+  }
+  .listing-filters {
+    grid-template-columns: 1fr; /* Stack filters on very small screens */
+    padding: 20px;
+  }
+  .filter-button {
+    width: 100%;
+  }
+}
+
 
