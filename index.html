@@ -2,321 +2,209 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>DirectOwner — Buy & Sell Directly From Owners</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Buy and sell cars and RVs directly from verified owners. No dealerships. No middlemen. Financing options available." />
-
-  <style>
-    :root{
-      --text:#111827;
-      --muted:#4b5563;
-      --line:#e5e7eb;
-      --bg:#ffffff;
-      --soft:#f9fafb;
-      --primary:#111827;
-      --primaryText:#ffffff;
-      --shadow:0 10px 25px rgba(17,24,39,0.06);
-      --radius:10px;
-    }
-
-    *{ box-sizing:border-box; }
-
-    body{
-      margin:0;
-      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.6;
-    }
-
-    header{
-      padding:18px 22px;
-      border-bottom:1px solid var(--line);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:12px;
-      position:sticky;
-      top:0;
-      background:rgba(255,255,255,0.92);
-      backdrop-filter:saturate(180%) blur(10px);
-      z-index:10;
-    }
-
-    header .brand{
-      font-weight:800;
-      text-decoration:none;
-      color:var(--text);
-      font-size:1.15rem;
-    }
-
-    nav{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    nav a{
-      text-decoration:none;
-      color:#374151;
-      font-weight:600;
-      font-size:0.95rem;
-      padding:8px 10px;
-      border-radius:8px;
-    }
-
-    nav a:hover{
-      background:var(--soft);
-    }
-
-    .hero{
-      background:var(--soft);
-      padding:80px 20px;
-      text-align:center;
-      border-bottom:1px solid var(--line);
-    }
-
-    .hero h1{
-      font-size:2.8rem;
-      line-height:1.2;
-      margin:0 auto 18px;
-      max-width:900px;
-    }
-
-    .hero p{
-      font-size:1.1rem;
-      color:var(--muted);
-      max-width:760px;
-      margin:0 auto 30px;
-    }
-
-    .cta-row{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:20px;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:14px 22px;
-      border-radius:8px;
-      text-decoration:none;
-      font-weight:800;
-      border:1px solid #d1d5db;
-      background:#ffffff;
-      color:#111827;
-    }
-
-    .btn.primary{
-      background:var(--primary);
-      border-color:var(--primary);
-      color:var(--primaryText);
-    }
-
-    .btn:hover{
-      background:#f3f4f6;
-    }
-
-    .btn.primary:hover{
-      background:#0b1220;
-    }
-
-    .container{
-      max-width:1100px;
-      margin:0 auto;
-      padding:60px 20px;
-    }
-
-    .section-title{
-      text-align:center;
-      font-size:2rem;
-      margin:0 0 40px;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
-      gap:20px;
-    }
-
-    .card{
-      border:1px solid var(--line);
-      border-radius:10px;
-      background:#fff;
-      padding:22px;
-      box-shadow:var(--shadow);
-    }
-
-    .card h3{
-      margin:0 0 8px;
-      font-size:1.1rem;
-    }
-
-    .card p{
-      margin:0;
-      color:var(--muted);
-      font-size:0.98rem;
-    }
-
-    .callout{
-      background:var(--soft);
-      border:1px solid var(--line);
-      border-radius:10px;
-      padding:24px;
-      text-align:center;
-      margin-top:20px;
-      box-shadow:var(--shadow);
-    }
-
-    .callout p{
-      margin:0 0 16px;
-      color:var(--muted);
-    }
-
-    footer{
-      margin-top:40px;
-      background:#111827;
-      color:#e5e7eb;
-      text-align:center;
-      padding:20px 18px;
-      font-size:0.92rem;
-    }
-
-    footer p{
-      color:#e5e7eb;
-      margin:8px 0;
-    }
-
-    footer strong{
-      color:#ffffff;
-    }
-
-    footer a{
-      color:#ffffff;
-      text-decoration:none;
-    }
-
-    footer a:visited{
-      color:#ffffff;
-    }
-
-    footer a:hover{
-      text-decoration:underline;
-    }
-
-    @media (max-width: 768px){
-      .hero h1{
-        font-size:2.1rem;
-      }
-
-      nav{
-        gap:8px;
-      }
-
-      nav a{
-        font-size:0.9rem;
-        padding:6px 8px;
-      }
-    }
-  </style>
+  <title>Buy & Sell Cars & RVs Directly From Owners | DirectOwner</title>
+  <meta name="description" content="DirectOwner: A safer, more transparent marketplace to buy and sell cars and RVs directly from private owners. Browse listings, connect with sellers, and get safety guidance." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
 
-  <header>
-    <a class="brand" href="index.html">DirectOwner</a>
-    <nav>
-      <a href="browse.html">Browse</a>
-      <a href="sell.html">Sell</a>
-      <a href="financing.html">Financing</a>
-      <a href="how-it-works.html">How It Works</a>
-      <a href="trust.html">Trust &amp; Safety</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="site-logo">DirectOwner</a>
+      <nav class="site-nav">
+        <button class="menu-toggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="browse.html">Browse Vehicles</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="trust.html">Trust & Safety</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="hero">
-    <h1>Buy Cars &amp; RVs Directly From Owners — No Dealerships</h1>
-    <p>
-      DirectOwner is a verified owner-to-owner marketplace for high-value vehicles.
-      No middlemen. Transparent pricing. Financing options available.
-    </p>
-
-    <div class="cta-row">
-      <a class="btn primary" href="browse.html">Browse Listings</a>
-      <a class="btn" href="sell.html">Sell Your Vehicle</a>
-    </div>
-  </section>
-
-  <section class="container">
-    <h2 class="section-title">Why DirectOwner</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>Verified Owners</h3>
-        <p>Every seller is reviewed to reduce fraud and improve buyer trust.</p>
+  <main>
+    <section class="hero-section">
+      <div class="container hero-content">
+        <h1>Buy Cars and RVs Directly From Owners</h1>
+        <p class="hero-tagline">
+          Browse listings, compare important details, and connect directly with sellers
+          without the traditional dealership experience.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="browse.html">Browse Listings</a>
+          <a class="btn btn-secondary" href="sell.html">Sell Your Vehicle</a>
+        </div>
+        <p class="hero-trust-line">
+          Vehicle-focused marketplace &bull; Direct owner communication &bull; Practical safety guidance
+        </p>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>No Dealer Markups</h3>
-        <p>Buy and sell directly without trade-in pressure, commissions, or inflated pricing.</p>
+    <section class="search-panel-section">
+      <div class="container">
+        <form class="search-panel">
+          <div class="search-field">
+            <label for="search-type" class="sr-only">Vehicle Type</label>
+            <select id="search-type" name="type">
+              <option value="">All Types</option>
+              <option value="car">Car</option>
+              <option value="rv">RV</option>
+              <option value="truck">Truck</option>
+            </select>
+          </div>
+          <div class="search-field">
+            <label for="search-make-model" class="sr-only">Make or Model</label>
+            <input type="text" id="search-make-model" name="query" placeholder="Make or Model" />
+          </div>
+          <div class="search-field">
+            <label for="search-location" class="sr-only">Location</label>
+            <input type="text" id="search-location" name="location" placeholder="City or ZIP" />
+          </div>
+          <button type="submit" class="btn btn-primary search-button">Search Listings</button>
+        </form>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>Financing Options</h3>
-        <p>Buyers can explore financing through trusted third-party partners when available.</p>
+    <section class="section featured-listings-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Featured Listings</h2>
+          <p>Explore some of the latest vehicles listed by private owners.</p>
+        </div>
+        <div class="listing-grid">
+          <article class="listing-card">
+            <img src="https://via.placeholder.com/400x250/f0f4f8/64748b?text=2018+Ford+F-150" alt="2018 Ford F-150" class="listing-image" />
+            <div class="listing-content">
+              <span class="listing-type">Truck</span>
+              <h3>2018 Ford F-150</h3>
+              <p class="listing-price">$28,500</p>
+              <p class="listing-meta">85,000 miles &bull; San Antonio, TX</p>
+              <a href="listing-f150.html" class="btn-text">View Details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="listing-card">
+            <img src="https://via.placeholder.com/400x250/f0f4f8/64748b?text=2020+Airstream+RV" alt="2020 Airstream RV" class="listing-image" />
+            <div class="listing-content">
+              <span class="listing-type">RV</span>
+              <h3>2020 Airstream RV</h3>
+              <p class="listing-price">$65,000</p>
+              <p class="listing-meta">Excellent condition &bull; Austin, TX</p>
+              <a href="listing-airstream.html" class="btn-text">View Details &rarr;</a>
+            </div>
+          </article>
+
+          <article class="listing-card">
+            <img src="https://via.placeholder.com/400x250/f0f4f8/64748b?text=2016+Toyota+Tacoma" alt="2016 Toyota Tacoma" class="listing-image" />
+            <div class="listing-content">
+              <span class="listing-type">Truck</span>
+              <h3>2016 Toyota Tacoma</h3>
+              <p class="listing-price">$24,900</p>
+              <p class="listing-meta">110,000 miles &bull; Dallas, TX</p>
+              <a href="listing-tacoma.html" class="btn-text">View Details &rarr;</a>
+            </div>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="container">
-    <h2 class="section-title">How It Works</h2>
-
-    <div class="grid">
-      <div class="card">
-        <h3>1. Owners List</h3>
-        <p>Create a listing, verify ownership, and connect directly with interested buyers.</p>
+    <section class="section why-directowner-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Why Choose DirectOwner?</h2>
+          <p>We're building a marketplace designed to give you more control and transparency.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>Vehicle-Focused Marketplace</h3>
+            <p>Unlike general online marketplaces, DirectOwner is built specifically for cars, trucks, and RVs.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Direct Communication</h3>
+            <p>Connect directly with private owners to ask questions and get all the details straight from the source.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Transparent Listing Information</h3>
+            <p>Review pricing, mileage, condition, and other important details before making contact.</p>
+          </div>
+          <div class="feature-card">
+            <h3>Practical Safety Guidance</h3>
+            <p>Access resources and tips to help you with inspections, title verification, payments, and secure transactions.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>2. Buyers Browse</h3>
-        <p>Explore listings, review details, and request contact without dealership middlemen.</p>
+    <section class="section how-it-works-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>How DirectOwner Works</h2>
+          <p>Simple steps to finding or selling your next vehicle.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Browse Listings</h3>
+            <p>Explore a wide selection of cars and RVs listed by private owners.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Review Details</h3>
+            <p>Compare photos, vehicle specifications, pricing, and seller-provided information.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Connect Directly</h3>
+            <p>Contact the owner with your questions and discuss the vehicle one-on-one.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h3>Complete Carefully</h3>
+            <p>Arrange inspections, verify documents, and agree on transaction terms before finalizing the sale.</p>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <h3>3. Financing Optional</h3>
-        <p>Where available, buyers can explore third-party financing for private-party purchases.</p>
+    <section class="section cta-sell-section">
+      <div class="container cta-content">
+        <h2>Ready to Sell Your Vehicle?</h2>
+        <p>List your car or RV to reach serious buyers and stay in control of your sale.</p>
+        <a href="sell.html" class="btn btn-primary">List Your Vehicle Now</a>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="container">
-    <h2 class="section-title">Selling? Keep More of What It’s Worth</h2>
-
-    <div class="callout">
-      <p>
-        Skip dealer trade-ins and connect directly with serious buyers. DirectOwner helps sellers keep control while expanding access to motivated buyers.
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <p class="footer-disclaimer">
+        <strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers.
+        We do not guarantee vehicle condition, title status, mileage, seller claims,
+        financing approval, or transaction results. Buyers and sellers should
+        independently verify all information, inspect vehicles, and complete
+        appropriate documentation before completing a transaction.
       </p>
-      <a class="btn primary" href="sell.html">List Your Vehicle</a>
+      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
     </div>
-  </section>
-
-  <footer>
-    <p>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Service</a> |
-      <a href="contact.html">Contact</a>
-    </p>
-    <p>
-      <strong>Disclaimer:</strong> DirectOwner is a marketplace connecting private buyers and sellers.
-      We are not a dealer, broker, or lender. Financing is offered by third-party partners where available.
-      Transactions occur directly between buyer and seller.
-    </p>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>
