@@ -2,166 +2,144 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Browse Listings — DirectOwner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <style>
-    :root{
-      --text:#111827;
-      --muted:#4b5563;
-      --line:#e5e7eb;
-      --bg:#ffffff;
-      --soft:#f9fafb;
-      --primary:#111827;
-    }
-
-    body{
-      margin:0;
-      font-family:-apple-system, "Segoe UI", Arial, sans-serif;
-      color:var(--text);
-      background:var(--bg);
-    }
-
-    header{
-      padding:18px 22px;
-      border-bottom:1px solid var(--line);
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-
-    nav a{
-      margin-left:14px;
-      text-decoration:none;
-      color:#374151;
-      font-weight:600;
-    }
-
-    .wrap{
-      max-width:1000px;
-      margin:0 auto;
-      padding:30px 20px;
-    }
-
-    h1{
-      margin-bottom:10px;
-    }
-
-    .filters{
-      background:var(--soft);
-      border:1px solid var(--line);
-      padding:20px;
-      border-radius:10px;
-      margin-top:20px;
-    }
-
-    .filters input,
-    .filters select{
-      padding:10px;
-      margin:6px;
-      border:1px solid var(--line);
-      border-radius:6px;
-    }
-
-    .btn{
-      padding:10px 16px;
-      background:#111827;
-      color:#fff;
-      border:none;
-      border-radius:8px;
-      cursor:pointer;
-    }
-
-    footer{
-      margin-top:40px;
-      background:#111827;
-      color:#e5e7eb;
-      text-align:center;
-      padding:20px;
-    }
-
-    footer a{
-      color:#e5e7eb;
-      text-decoration:none;
-    }
-
-    footer a:hover{
-      text-decoration:underline;
-    }
-  </style>
+  <title>Browse Listings | Cars & RVs Directly From Owners | DirectOwner</title>
+  <meta name="description" content="Browse cars and RVs listed directly by private owners on DirectOwner. Find your next vehicle with transparent listings and direct communication." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
 
 <body>
 
-<header>
-  <div><strong>DirectOwner</strong></div>
-  <nav>
-    <a href="browse.html">Browse</a>
-    <a href="sell.html">Sell</a>
-    <a href="financing.html">Financing</a>
-    <a href="how-it-works.html">How It Works</a>
-    <a href="trust.html">Trust & Safety</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="site-logo">DirectOwner</a>
+      <nav class="site-nav">
+        <button class="menu-toggle" aria-label="Open menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="browse.html">Browse Vehicles</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="trust.html">Trust & Safety</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-<div class="wrap">
-  <div style="margin-top:30px; display:grid; gap:16px;">
+  <main>
+    <section class="section page-intro-section">
+      <div class="container">
+        <h1 class="page-title">Browse Owner Listings</h1>
+        <p class="page-description">Explore cars and RVs listed directly by private owners. Filter by type, price, and location to find your perfect vehicle.</p>
+      </div>
+    </section>
 
-  <div style="border:1px solid #e5e7eb; padding:16px; border-radius:10px;">
-    <h3>2018 Ford F-150</h3>
-    <p>$28,500 • 85,000 miles • San Antonio, TX</p>
-    <a href="listing.html">View Details</a>
-  </div>
+    <section class="section filters-section">
+      <div class="container">
+        <form class="listing-filters">
+          <div class="filter-group">
+            <label for="filter-type">Vehicle Type</label>
+            <select id="filter-type" name="type">
+              <option value="">All Types</option>
+              <option value="car">Car</option>
+              <option value="rv">RV</option>
+              <option value="truck">Truck</option>
+            </select>
+          </div>
 
-  <div style="border:1px solid #e5e7eb; padding:16px; border-radius:10px;">
-    <h3>2020 Airstream RV</h3>
-    <p>$65,000 • Excellent condition • Austin, TX</p>
-    <a href="listing.html">View Details</a>
-  </div>
+          <div class="filter-group">
+            <label for="filter-price">Price Range</label>
+            <select id="filter-price" name="price">
+              <option value="">Any Price</option>
+              <option value="10000">$10,000+</option>
+              <option value="20000">$20,000+</option>
+              <option value="30000">$30,000+</option>
+              <option value="50000">$50,000+</option>
+            </select>
+          </div>
 
-  <div style="border:1px solid #e5e7eb; padding:16px; border-radius:10px;">
-    <h3>2016 Toyota Tacoma</h3>
-    <p>$24,900 • 110,000 miles • Dallas, TX</p>
-    <a href="listing.html">View Details</a>
-  </div>
+          <div class="filter-group">
+            <label for="filter-location">Location</label>
+            <input type="text" id="filter-location" name="location" placeholder="City or ZIP" />
+          </div>
 
-</div>
+          <div class="filter-group">
+            <label for="filter-miles">Max Miles</label>
+            <input type="number" id="filter-miles" name="miles" placeholder="e.g., 100000" />
+          </div>
 
-  <h1>Browse Owner Listings</h1>
-  <p>Explore cars and RVs listed directly by owners.</p>
+          <button type="submit" class="btn btn-primary filter-button">Apply Filters</button>
+        </form>
+      </div>
+    </section>
 
-  <div class="filters">
-    <select>
-      <option>All Types</option>
-      <option>Car</option>
-      <option>RV</option>
-    </select>
+    <section class="section listings-results-section">
+      <div class="container">
+        <div class="listing-grid">
+          <article class="listing-card">
+            <img src="https://via.placeholder.com/400x250/f0f4f8/64748b?text=2018+Ford+F-150" alt="2018 Ford F-150" class="listing-image" />
+            <div class="listing-content">
+              <span class="listing-type">Truck</span>
+              <h3>2018 Ford F-150</h3>
+              <p class="listing-price">$28,500</p>
+              <p class="listing-meta">85,000 miles &bull; San Antonio, TX</p>
+              <a href="listing-f150.html" class="btn-text">View Details &rarr;</a>
+            </div>
+          </article>
 
-    <select>
-      <option>Any Price</option>
-      <option>$10k+</option>
-      <option>$20k+</option>
-    </select>
+          <article class="listing-card">
+            <img src="https://via.placeholder.com/400x250/f0f4f8/64748b?text=2020+Airstream+RV" alt="2020 Airstream RV" class="listing-image" />
+            <div class="listing-content">
+              <span class="listing-type">RV</span>
+              <h3>2020 Airstream RV</h3>
+              <p class="listing-price">$65,000</p>
+              <p class="listing-meta">Excellent condition &bull; Austin, TX</p>
+              <a href="listing-airstream.html" class="btn-text">View Details &rarr;</a>
+            </div>
+          </article>
 
-    <input type="text" placeholder="City or ZIP">
+          <article class="listing-card">
+            <img src="https://via.placeholder.com/400x250/f0f4f8/64748b?text=2016+Toyota+Tacoma" alt="2016 Toyota Tacoma" class="listing-image" />
+            <div class="listing-content">
+              <span class="listing-type">Truck</span>
+              <h3>2016 Toyota Tacoma</h3>
+              <p class="listing-price">$24,900</p>
+              <p class="listing-meta">110,000 miles &bull; Dallas, TX</p>
+              <a href="listing-tacoma.html" class="btn-text">View Details &rarr;</a>
+            </div>
+          </article>
+        </div>
+        <!-- More listings will be loaded here dynamically or added as static files -->
+      </div>
+    </section>
+  </main>
 
-    <button class="btn">Search</button>
-  </div>
-</div>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <p class="footer-disclaimer">
+        <strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers.
+        We do not guarantee vehicle condition, title status, mileage, seller claims,
+        financing approval, or transaction results. Buyers and sellers should
+        independently verify all information, inspect vehicles, and complete
+        appropriate documentation before completing a transaction.
+      </p>
+      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
+    </div>
+  </footer>
 
-<footer>
-  <p>
-    <a href="privacy.html">Privacy Policy</a> |
-    <a href="terms.html">Terms of Service</a> |
-    <a href="contact.html">Contact</a>
-  </p>
-  <p>
-    <strong>Disclaimer:</strong> DirectOwner is a marketplace connecting private buyers and sellers.
-    We are not a dealer or lender. Transactions occur directly between users.
-  </p>
-</footer>
-
+  <script src="script.js"></script>
 </body>
 </html>
-``
