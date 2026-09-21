@@ -35,6 +35,7 @@
           <li><a href="trust.html">Trust &amp; Safety</a></li>
           <li><a href="financing.html">Financing</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="dashboard.html">My Listings</a></li>
           <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
         </ul>
       </nav>
@@ -47,12 +48,10 @@
         <div class="auth-card">
           <h1 id="auth-title">Create your DirectOwner account</h1>
           <p id="auth-subtitle">Create an account to manage your vehicle listings.</p>
-
           <div class="auth-tabs" role="tablist" aria-label="Account access">
             <button class="auth-tab active" id="signup-tab" type="button">Sign Up</button>
             <button class="auth-tab" id="login-tab" type="button">Log In</button>
           </div>
-
           <form class="auth-form" id="auth-form">
             <label for="email">Email address
               <input id="email" name="email" type="email" autocomplete="email" required />
@@ -62,7 +61,6 @@
             </label>
             <button class="btn btn-primary" id="submit-button" type="submit">Create Account</button>
           </form>
-
           <div class="auth-message" id="auth-message" role="status" aria-live="polite"></div>
           <p class="auth-note">Use an email address you control. Email confirmation may be required before you can sign in.</p>
         </div>
@@ -72,11 +70,7 @@
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
+      <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="contact.html">Contact Us</a></div>
       <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
     </div>
   </footer>
@@ -84,11 +78,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script>
-    const supabaseClient = window.supabase.createClient(
-      window.DIRECTOWNER_SUPABASE_URL,
-      window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY
-    );
-
+    const supabaseClient = window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL, window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY);
     const form = document.getElementById('auth-form');
     const signupTab = document.getElementById('signup-tab');
     const loginTab = document.getElementById('login-tab');
@@ -124,29 +114,21 @@
       event.preventDefault();
       submitButton.disabled = true;
       message.style.display = 'none';
-
       const email = document.getElementById('email').value.trim();
       const passwordValue = password.value;
       let result;
-
       try {
         if (mode === 'signup') {
-          result = await supabaseClient.auth.signUp({
-            email,
-            password: passwordValue,
-            options: { emailRedirectTo: 'https://www.getdirectowner.com/auth.html' }
-          });
+          result = await supabaseClient.auth.signUp({ email, password: passwordValue, options: { emailRedirectTo: 'https://www.getdirectowner.com/auth.html' } });
         } else {
           result = await supabaseClient.auth.signInWithPassword({ email, password: passwordValue });
         }
-
         if (result.error) throw result.error;
-
         if (mode === 'signup') {
           showMessage('Account created. Check your email for a confirmation link before logging in.');
         } else {
-          showMessage('You are signed in. Redirecting to the vehicle listing page...');
-          window.location.href = 'sell.html';
+          showMessage('You are signed in. Redirecting to your listings...');
+          window.location.href = 'dashboard.html';
         }
       } catch (error) {
         showMessage(error.message || 'Something went wrong. Please try again.', true);
