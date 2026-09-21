@@ -6,13 +6,16 @@
   <title>Financing — DirectOwner</title>
   <meta name="description" content="Understand third-party financing options for private-party vehicle purchases through DirectOwner." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     .site-header{position:relative;z-index:10;background:#0b1f33;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14)}
     .site-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:42px}
-    .site-nav .brand{color:#fff;font-size:1.55rem;font-weight:800;letter-spacing:-.03em;text-decoration:none;white-space:nowrap}
+    .site-nav .brand{color:#fff;font-size:1.6rem;font-weight:700;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
     .site-nav .brand:hover{color:#ffad52}
-    .site-nav .nav-links{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:18px;margin:0;padding:0}
-    .site-nav .nav-links a{color:#fff;text-decoration:none;font-size:.94rem;font-weight:650;white-space:nowrap}
+    .site-nav .nav-links{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:24px;margin:0;padding:0}
+    .site-nav .nav-links a{color:#fff;text-decoration:none;font-weight:600;padding:6px 0;white-space:nowrap}
     .site-nav .nav-links a:hover,.site-nav .nav-links a[aria-current="page"]{color:#ffad52}
     .financing-hero{background:linear-gradient(135deg,#0b1f33,#173f5f);color:#fff;padding:clamp(54px,8vw,88px) 0}
     .financing-hero h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.08;margin:0 0 18px;max-width:720px}
@@ -32,17 +35,18 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
+    <div class="container header-content">
+      <a href="index.html" class="site-logo">DirectOwner</a>
       <nav class="site-nav" aria-label="Main navigation">
-        <a class="brand" href="index.html">DirectOwner</a>
-        <div class="nav-links">
-          <a href="browse.html">Browse</a>
-          <a href="sell.html">Sell</a>
-          <a href="financing.html" aria-current="page">Financing</a>
-          <a href="how-it-works.html">How It Works</a>
-          <a href="trust.html">Trust &amp; Safety</a>
-          <a href="contact.html">Contact</a>
-        </div>
+        <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <ul class="nav-links">
+          <li><a href="browse.html">Browse Vehicles</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="trust.html">Trust &amp; Safety</a></li>
+          <li><a href="financing.html" aria-current="page">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -69,37 +73,24 @@
           <article class="financing-card"><h3>Third-party decisions</h3><p>Loan approval, rates, fees, and repayment terms are determined by the independent provider.</p></article>
           <article class="financing-card"><h3>Review before signing</h3><p>Compare the total cost, interest rate, fees, and conditions before accepting any financing offer.</p></article>
         </div>
-
-        <div class="financing-panel">
-          <h2>How financing fits into DirectOwner</h2>
-          <ul>
-            <li>DirectOwner may provide information or connect buyers with financing resources when available.</li>
-            <li>DirectOwner does not originate loans, approve applications, or set lender terms.</li>
-            <li>Not every vehicle, buyer, or transaction will qualify for financing.</li>
-            <li>Buyers should confirm the lender’s requirements before making commitments to a seller.</li>
-          </ul>
-        </div>
-
-        <div class="financing-panel">
-          <h2>Before completing a purchase</h2>
-          <ul>
-            <li>Inspect the vehicle and consider an independent mechanic inspection.</li>
-            <li>Verify the seller’s identity, ownership, title, VIN, and any lien information.</li>
-            <li>Confirm how the lender will handle payment and title documentation.</li>
-            <li>Do not send money based only on urgency, screenshots, or unverified promises.</li>
-          </ul>
-        </div>
-
+        <div class="financing-panel"><h2>How financing fits into DirectOwner</h2><ul><li>DirectOwner may provide information or connect buyers with financing resources when available.</li><li>DirectOwner does not originate loans, approve applications, or set lender terms.</li><li>Not every vehicle, buyer, or transaction will qualify for financing.</li><li>Buyers should confirm the lender’s requirements before making commitments to a seller.</li></ul></div>
+        <div class="financing-panel"><h2>Before completing a purchase</h2><ul><li>Inspect the vehicle and consider an independent mechanic inspection.</li><li>Verify the seller’s identity, ownership, title, VIN, and any lien information.</li><li>Confirm how the lender will handle payment and title documentation.</li><li>Do not send money based only on urgency, screenshots, or unverified promises.</li></ul></div>
         <div class="financing-disclaimer"><strong>Important:</strong> DirectOwner is a marketplace, not a bank, credit union, lender, or loan broker. Financing may be offered by independent third parties where available. DirectOwner does not guarantee approval or financing availability.</div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p><a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a> · <a href="contact.html">Contact</a></p>
-      <p>DirectOwner connects private buyers and sellers. Transactions occur directly between the parties.</p>
+    <div class="container footer-content">
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. We do not guarantee vehicle condition, title status, mileage, seller claims, financing approval, or transaction results. Buyers and sellers should independently verify all information, inspect vehicles, and complete appropriate documentation before completing a transaction.</p>
+      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
     </div>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
