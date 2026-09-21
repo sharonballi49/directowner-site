@@ -22,6 +22,10 @@ button,input,select,textarea { font:inherit; }
 .featured-listings-section,.how-it-works-section { background:var(--white); }
 .why-directowner-section { background:#f8fafc; }
 
+/* Brand tagline */
+.site-logo { display:inline-flex; flex-direction:column; align-items:flex-start; line-height:1.05; }
+.site-logo::after { content:"Direct Connections. Better Choices."; margin-top:6px; font-size:.58rem; font-weight:700; letter-spacing:.02em; line-height:1.2; color:currentColor; opacity:.82; white-space:nowrap; }
+
 /* Trust & Safety page */
 .trust-hero { background:linear-gradient(135deg,var(--navy-950),var(--navy-800)); color:var(--white); border-radius:18px; padding:clamp(32px,6vw,64px); }
 .trust-hero h1 { margin:0 0 16px; font-size:clamp(2.2rem,5vw,4rem); line-height:1.08; }
@@ -46,4 +50,4 @@ button,input,select,textarea { font:inherit; }
 .trust-faq summary { cursor:pointer; font-weight:700; color:var(--navy-950); }
 .trust-faq p { color:var(--muted); }
 
-@media (max-width:900px) { .container{width:min(100% - 32px,680px);} .section{padding:64px 0;} .trust-card-grid,.trust-content-grid{grid-template-columns:1fr;} .site-nav .nav-links{display:none;} .menu-toggle{display:block;} .site-nav.is-open .nav-links{display:flex;} }
+@media (max-width:900px) { .container{width:min(100% - 32px,680px);} .section{padding:64px 0;} .trust-card-grid,.trust-content-grid{grid-template-columns:1fr;} .site-nav .nav-links{display:none;} .menu-toggle{display:block;} .site-nav.is-open .nav-links{display:flex;} .site-logo::after{font-size:.52rem;} }
