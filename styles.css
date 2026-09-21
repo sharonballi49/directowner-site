@@ -1,2 +1,140 @@
 /* Compatibility entry point: preserve the existing branded stylesheet while fixing case-sensitive hosting paths. */
 @import url("Styles.css");
+
+/* Global foundation styles */
+:root {
+  --navy-950: #0b1f33;
+  --navy-900: #102a43;
+  --navy-800: #173f5f;
+  --orange: #f28c28;
+  --cream: #f7f4ee;
+  --white: #ffffff;
+  --text: #17202a;
+  --muted: #5f6b76;
+  --border: #dfe5ea;
+  --radius: 14px;
+  --shadow: 0 12px 32px rgba(11, 31, 51, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  color: var(--text);
+  background: var(--white);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.container {
+  width: min(1120px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+.section {
+  padding: 88px 0;
+}
+
+.section-heading {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-heading h2 {
+  margin: 0 0 14px;
+  color: var(--navy-950);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+}
+
+.section-heading p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 22px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn-primary {
+  background: var(--orange);
+  color: var(--navy-950);
+}
+
+.btn-primary:hover {
+  background: #ffad52;
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--navy-950);
+  border-color: var(--border);
+}
+
+.btn-secondary:hover {
+  background: var(--cream);
+}
+
+.featured-listings-section,
+.how-it-works-section {
+  background: var(--white);
+}
+
+.why-directowner-section {
+  background: #f8fafc;
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: min(100% - 32px, 680px);
+  }
+
+  .section {
+    padding: 64px 0;
+  }
+
+  .site-nav .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .site-nav.is-open .nav-links {
+    display: flex;
+  }
+}
