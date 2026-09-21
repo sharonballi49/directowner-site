@@ -5,15 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact — DirectOwner</title>
   <meta name="description" content="Contact DirectOwner for buyer questions, seller listing help, support, and trust & safety concerns." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .contact-hero {
-      background: linear-gradient(135deg, #0b1f33, #173f5f);
-      color: #fff;
-      border-radius: 18px;
-      padding: clamp(32px, 6vw, 72px);
-      margin-top: 32px;
-    }
+    body { font-family: "Inter", sans-serif; }
+    .site-header { background: #fff; border-bottom: 1px solid #e5e7eb; }
+    .header-content { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .site-logo { color: #0b1f33; font-size: 1.65rem; font-weight: 800; letter-spacing: -0.04em; text-decoration: none; }
+    .site-nav { display: flex; align-items: center; justify-content: flex-end; gap: 24px; }
+    .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { color: #0b1f33; font-size: .92rem; font-weight: 600; text-decoration: none; }
+    .nav-links a:hover { color: #f28c28; }
+    .nav-btn-sell { white-space: nowrap; }
+    .menu-toggle { display: none; }
+    .site-footer { margin-top: 0; padding: 42px 0 28px; background: #0b1f33; color: #dbe5ee; }
+    .footer-content { display: grid; gap: 18px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 18px; }
+    .footer-links a { color: #fff; font-weight: 600; text-decoration: none; }
+    .footer-disclaimer, .footer-copyright { margin: 0; color: #b9c8d6; font-size: .9rem; line-height: 1.7; }
+    .contact-hero { background: linear-gradient(135deg, #0b1f33, #173f5f); color: #fff; border-radius: 18px; padding: clamp(32px, 6vw, 72px); margin-top: 32px; }
     .contact-hero h1 { color: #fff; margin: 0 0 16px; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.08; }
     .contact-hero p { max-width: 720px; color: #e8eef4; font-size: 1.1rem; }
     .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
@@ -28,22 +40,32 @@
     .contact-faq details { margin-top: 12px; padding: 18px 20px; border: 1px solid #dfe5ea; border-radius: 10px; background: #fff; }
     .contact-faq summary { cursor: pointer; font-weight: 700; color: #0b1f33; }
     .contact-faq details p { color: #5f6b76; margin-bottom: 0; }
-    @media (max-width: 800px) { .contact-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) {
+      .site-nav { gap: 12px; }
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: .82rem; }
+    }
+    @media (max-width: 760px) {
+      .header-content { min-height: 68px; }
+      .site-nav { width: 100%; }
+      .nav-links { flex-wrap: wrap; justify-content: flex-end; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
+    <div class="container header-content">
+      <a href="index.html" class="site-logo">DirectOwner</a>
       <nav class="site-nav" aria-label="Main navigation">
-        <a class="brand" href="index.html">DirectOwner</a>
-        <div class="nav-links">
-          <a href="browse.html">Browse Vehicles</a>
-          <a href="how-it-works.html">How It Works</a>
-          <a href="trust.html">Trust &amp; Safety</a>
-          <a href="financing.html">Financing</a>
-          <a href="contact.html" aria-current="page">Contact</a>
-          <a class="btn btn-secondary" href="sell.html">List Your Vehicle</a>
-        </div>
+        <ul class="nav-links">
+          <li><a href="browse.html">Browse Vehicles</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="trust.html">Trust &amp; Safety</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html" aria-current="page">Contact</a></li>
+          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -64,36 +86,18 @@
 
     <section class="contact-section">
       <div class="container">
-        <div class="section-heading">
-          <h2>How can we help?</h2>
-          <p>Choose the topic that best matches your question.</p>
-        </div>
+        <div class="section-heading"><h2>How can we help?</h2><p>Choose the topic that best matches your question.</p></div>
         <div class="contact-grid" style="margin-top:32px;">
-          <article class="contact-card">
-            <h2>General Support</h2>
-            <p>Questions about the website, listings, contacting owners, or using DirectOwner.</p>
-            <a href="mailto:support@getdirectowner.com">support@getdirectowner.com</a>
-          </article>
-          <article class="contact-card">
-            <h2>Trust &amp; Safety</h2>
-            <p>Report suspicious activity, fraudulent listings, or unsafe messages.</p>
-            <a href="mailto:support@getdirectowner.com?subject=Report%20a%20listing%20or%20user">Report a concern</a>
-          </article>
-          <article class="contact-card">
-            <h2>Seller Assistance</h2>
-            <p>Get help with submitting a vehicle, listing details, photos, or updates.</p>
-            <a href="mailto:support@getdirectowner.com?subject=Seller%20Listing%20Help">Get listing help</a>
-          </article>
+          <article class="contact-card"><h2>General Support</h2><p>Questions about the website, listings, contacting owners, or using DirectOwner.</p><a href="mailto:support@getdirectowner.com">support@getdirectowner.com</a></article>
+          <article class="contact-card"><h2>Trust &amp; Safety</h2><p>Report suspicious activity, fraudulent listings, or unsafe messages.</p><a href="mailto:support@getdirectowner.com?subject=Report%20a%20listing%20or%20user">Report a concern</a></article>
+          <article class="contact-card"><h2>Seller Assistance</h2><p>Get help with submitting a vehicle, listing details, photos, or updates.</p><a href="mailto:support@getdirectowner.com?subject=Seller%20Listing%20Help">Get listing help</a></article>
         </div>
       </div>
     </section>
 
     <section class="contact-section" style="background:#f8fafc;">
       <div class="container">
-        <div class="section-heading">
-          <h2>What we can help with</h2>
-          <p>Support for both sides of the DirectOwner marketplace.</p>
-        </div>
+        <div class="section-heading"><h2>What we can help with</h2><p>Support for both sides of the DirectOwner marketplace.</p></div>
         <div class="contact-grid" style="margin-top:32px;">
           <article class="contact-card"><h2>Buyers</h2><p>Questions about listings, owner contact requests, inspections, and the purchase process.</p></article>
           <article class="contact-card"><h2>Sellers</h2><p>Help with the sell form, listing approval, photo guidance, and updating vehicle details.</p></article>
@@ -114,9 +118,16 @@
   </main>
 
   <footer class="site-footer">
-    <div class="container">
-      <p><strong>Disclaimer:</strong> DirectOwner is a marketplace connecting private buyers and sellers. We are not a dealer, broker, or lender. Financing is offered by third-party partners where available. Transactions occur directly between buyer and seller.</p>
+    <div class="container footer-content">
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. We do not guarantee vehicle condition, title status, mileage, seller claims, financing approval, or transaction results. Buyers and sellers should independently verify all information, inspect vehicles, and complete appropriate documentation before completing a transaction.</p>
+      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
     </div>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
