@@ -2,358 +2,193 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>How It Works — DirectOwner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Learn how DirectOwner works for buyers and sellers. Buy and sell cars and RVs directly from owners with trust, transparency, and optional financing guidance." />
-
-  <style>
-    :root{
-      --text:#111827;
-      --muted:#4b5563;
-      --line:#e5e7eb;
-      --bg:#ffffff;
-      --soft:#f9fafb;
-      --primary:#111827;
-      --primaryText:#ffffff;
-      --shadow:0 10px 25px rgba(17,24,39,0.06);
-      --radius:10px;
-    }
-
-    *{ box-sizing:border-box; }
-
-    body{
-      margin:0;
-      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.6;
-    }
-
-    header{
-      padding:18px 22px;
-      border-bottom:1px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      position:sticky;
-      top:0;
-      background:rgba(255,255,255,0.92);
-      backdrop-filter:saturate(180%) blur(10px);
-      z-index:10;
-    }
-
-    header .brand{
-      font-weight:800;
-      text-decoration:none;
-      color:var(--text);
-      font-size:1.1rem;
-    }
-
-    nav{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-
-    nav a{
-      text-decoration:none;
-      color:#374151;
-      font-weight:600;
-      font-size:0.95rem;
-      padding:8px 10px;
-      border-radius:8px;
-    }
-
-    nav a:hover{
-      background:var(--soft);
-    }
-
-    .active{
-      background:var(--soft);
-      color:var(--text);
-    }
-
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:26px 18px 70px;
-    }
-
-    .hero{
-      background:var(--soft);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:26px 18px;
-      box-shadow:var(--shadow);
-    }
-
-    .hero h1{
-      margin:0;
-      font-size:2.1rem;
-      line-height:1.2;
-    }
-
-    .hero p{
-      margin:10px 0 0;
-      color:var(--muted);
-      max-width:880px;
-      font-size:1.05rem;
-    }
-
-    .btnRow{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-      margin-top:18px;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:12px 16px;
-      border-radius:10px;
-      border:1px solid #d1d5db;
-      background:#fff;
-      color:#111827;
-      text-decoration:none;
-      font-weight:800;
-      cursor:pointer;
-    }
-
-    .btn.primary{
-      background:var(--primary);
-      border-color:var(--primary);
-      color:var(--primaryText);
-    }
-
-    .btn:hover{
-      background:#f3f4f6;
-    }
-
-    .btn.primary:hover{
-      background:#0b1220;
-    }
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-      gap:16px;
-      margin-top:18px;
-    }
-
-    .card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
-      padding:16px;
-      box-shadow:var(--shadow);
-    }
-
-    .card h2{
-      margin:0 0 10px;
-      font-size:1.25rem;
-    }
-
-    .card ol{
-      margin:0;
-      padding-left:20px;
-      color:var(--muted);
-    }
-
-    .card li{
-      margin:10px 0;
-    }
-
-    .section{
-      margin-top:20px;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-
-    .sectionHeader{
-      padding:14px 16px;
-      background:var(--soft);
-      border-bottom:1px solid var(--line);
-      font-weight:900;
-    }
-
-    .sectionBody{
-      padding:16px;
-      color:var(--muted);
-    }
-
-    .sectionBody p{
-      margin:0 0 12px;
-    }
-
-    .callout{
-      margin-top:18px;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:14px;
-      background:var(--soft);
-      color:var(--muted);
-      font-size:0.95rem;
-    }
-
-    .callout strong{
-      color:var(--text);
-    }
-
-    footer{
-      margin-top:40px;
-      background:#111827;
-      color:#e5e7eb;
-      text-align:center;
-      padding:20px 18px;
-      font-size:0.92rem;
-    }
-
-    footer p{
-      color:#e5e7eb;
-      margin:8px 0;
-    }
-
-    footer strong{
-      color:#ffffff;
-    }
-
-    footer a{
-      color:#ffffff;
-      text-decoration:none;
-    }
-
-    footer a:visited{
-      color:#ffffff;
-    }
-
-    footer a:hover{
-      text-decoration:underline;
-    }
-
-    @media (max-width: 980px){
-      header{ position:static; }
-    }
-  </style>
+  <title>How It Works | DirectOwner</title>
+  <meta name="description" content="Learn how DirectOwner helps buyers and sellers connect directly for cars and RVs with practical trust and safety guidance." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 </head>
-
 <body>
-  <header>
-    <a class="brand" href="index.html">DirectOwner</a>
-    <nav>
-      <a href="browse.html">Browse</a>
-      <a href="sell.html">Sell</a>
-      <a href="financing.html">Financing</a>
-      <a class="active" href="how-it-works.html">How It Works</a>
-      <a href="trust.html">Trust &amp; Safety</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="site-logo">DirectOwner</a>
+      <nav class="site-nav">
+        <button class="menu-toggle" aria-label="Open menu" type="button">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+          <li><a href="browse.html">Browse Vehicles</a></li>
+          <li><a href="how-it-works.html" aria-current="page">How It Works</a></li>
+          <li><a href="trust.html">Trust &amp; Safety</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <h1>How DirectOwner Works</h1>
-      <p>
-        DirectOwner is an owner-to-owner marketplace for cars and RVs. No dealership markups. No middlemen.
-        Phase 1 is intentionally simple, with manual review and a strong focus on trust, safety, and transparency.
-      </p>
-
-      <div class="btnRow">
-        <a class="btn primary" href="browse.html">Browse Listings</a>
-        <a class="btn" href="sell.html">Sell Your Vehicle</a>
-      </div>
-
-      <div class="callout">
-        <strong>Phase 1:</strong> Listings are reviewed manually before posting. Buyer-seller contact may be coordinated with safety in mind while the marketplace grows.
+  <main>
+    <section class="hero-section page-hero-section">
+      <div class="container hero-content">
+        <p class="eyebrow">A simpler way to buy and sell</p>
+        <h1>How DirectOwner Works</h1>
+        <p class="hero-tagline">
+          Explore cars and RVs directly from private owners, review important details,
+          and approach every transaction with clarity and practical safety steps.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="browse.html">Browse Listings</a>
+          <a class="btn btn-secondary" href="sell.html">Sell Your Vehicle</a>
+        </div>
       </div>
     </section>
 
-    <section class="grid" aria-label="How it works for buyers and sellers">
-      <div class="card">
-        <h2>For Buyers</h2>
-        <ol>
-          <li><strong>Browse listings</strong> from verified owners.</li>
-          <li><strong>Review details</strong> including vehicle info, pricing, and available listing content.</li>
-          <li><strong>Request contact</strong> or reach out through the marketplace support flow.</li>
-          <li><strong>Inspect and verify</strong> title, condition, VIN, and seller details before purchasing.</li>
-          <li><strong>Complete the purchase</strong> directly with the owner using safe payment and meeting practices.</li>
-        </ol>
-      </div>
-
-      <div class="card">
-        <h2>For Sellers</h2>
-        <ol>
-          <li><strong>Submit a listing</strong> with your vehicle information and supporting details.</li>
-          <li><strong>Verification and review</strong> helps improve trust and reduce fraud.</li>
-          <li><strong>Publish the listing</strong> so interested buyers can find it.</li>
-          <li><strong>Communicate with buyers</strong> and answer questions directly.</li>
-          <li><strong>Sell directly</strong> without dealer trade-in pressure or middleman markups.</li>
-        </ol>
-      </div>
-
-      <div class="card">
-        <h2>Trust &amp; Safety</h2>
-        <ol>
-          <li><strong>Owner review</strong> helps reduce fake listings and suspicious activity.</li>
-          <li><strong>Transparency matters</strong> — accurate titles, conditions, and photos improve trust.</li>
-          <li><strong>Meet safely</strong> in public places and verify documentation before purchase.</li>
-          <li><strong>Report suspicious activity</strong> through DirectOwner support.</li>
-        </ol>
+    <section class="section phase-section">
+      <div class="container">
+        <div class="notice-card">
+          <span class="notice-label">Phase 1</span>
+          <h2>Built around trust and transparency</h2>
+          <p>
+            Listings are reviewed manually before posting. Buyer-seller contact may be coordinated
+            with safety in mind while the marketplace grows.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="sectionHeader">What Makes DirectOwner Different</div>
-      <div class="sectionBody">
-        <p>
-          Traditional vehicle buying often forces people into dealership inventory, trade-in pressure, hidden markups,
-          and middleman friction. DirectOwner focuses on owner-to-owner transparency instead.
-        </p>
-        <p>
-          Buyers can explore vehicles directly from owners, while sellers keep more control over pricing and the sale process.
-          The result is a simpler marketplace built around trust, clarity, and direct communication.
-        </p>
+    <section class="section process-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Choose Your Path</h2>
+          <p>Whether you are shopping or listing a vehicle, the process is designed to stay clear and straightforward.</p>
+        </div>
+
+        <div class="features-grid process-grid">
+          <article class="feature-card process-card">
+            <div class="process-icon">01</div>
+            <h3>For Buyers</h3>
+            <ol class="process-list">
+              <li>Browse listings from private owners.</li>
+              <li>Review vehicle details, pricing, and listing information.</li>
+              <li>Request contact or use the marketplace support flow.</li>
+              <li>Inspect the vehicle and verify the title, VIN, condition, and seller details.</li>
+              <li>Complete the purchase directly with the owner using safe payment and meeting practices.</li>
+            </ol>
+            <a class="btn btn-primary process-link" href="browse.html">Browse Vehicles</a>
+          </article>
+
+          <article class="feature-card process-card">
+            <div class="process-icon">02</div>
+            <h3>For Sellers</h3>
+            <ol class="process-list">
+              <li>Submit your vehicle information and supporting details.</li>
+              <li>Complete the review and verification process.</li>
+              <li>Publish your listing for interested buyers to discover.</li>
+              <li>Communicate directly with buyers and answer questions.</li>
+              <li>Stay in control of your pricing and sale process.</li>
+            </ol>
+            <a class="btn btn-primary process-link" href="sell.html">List Your Vehicle</a>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="sectionHeader">Financing Guidance</div>
-      <div class="sectionBody">
-        <p>
-          Some buyers may need financing to complete a private-party purchase. DirectOwner may provide guidance or connections
-          to third-party financing partners where available, but DirectOwner is not a lender and does not make loan decisions.
-        </p>
+    <section class="section safety-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Trust &amp; Safety Comes First</h2>
+          <p>Use these practical steps to make informed decisions before completing a transaction.</p>
+        </div>
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <h3>Review Carefully</h3>
+            <p>Look for accurate photos, vehicle details, title information, and clear seller communication.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <h3>Verify Documents</h3>
+            <p>Confirm the VIN, title, condition, ownership details, and any relevant vehicle history.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <h3>Meet Safely</h3>
+            <p>Choose a public meeting location and consider an independent inspection before purchase.</p>
+          </article>
+          <article class="step-card">
+            <div class="step-number">4</div>
+            <h3>Report Concerns</h3>
+            <p>Contact DirectOwner support if you notice suspicious activity or questionable listing information.</p>
+          </article>
+        </div>
+        <div class="center-action">
+          <a class="btn btn-secondary" href="trust.html">Read Trust &amp; Safety Guidance</a>
+        </div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="sectionHeader">Important Reminder</div>
-      <div class="sectionBody">
-        <p>
-          DirectOwner is a marketplace platform only. The final transaction takes place directly between buyer and seller.
-          Buyers and sellers should complete their own due diligence, verify documents, and use safe meeting and payment practices.
-        </p>
+    <section class="section information-section">
+      <div class="container information-grid">
+        <article class="information-card">
+          <h2>What Makes DirectOwner Different?</h2>
+          <p>
+            Traditional vehicle buying can involve dealership pressure, hidden markups, and middleman friction.
+            DirectOwner focuses on owner-to-owner transparency so buyers can ask questions directly and sellers can retain more control.
+          </p>
+        </article>
+        <article class="information-card">
+          <h2>Financing Guidance</h2>
+          <p>
+            Some buyers may need financing for a private-party purchase. DirectOwner may provide guidance or connections
+            to third-party partners where available, but DirectOwner is not a lender and does not make loan decisions.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reminder-section">
+      <div class="container">
+        <div class="reminder-card">
+          <h2>Important Reminder</h2>
+          <p>
+            DirectOwner is a marketplace platform. The final transaction takes place directly between buyer and seller.
+            Both parties should complete their own due diligence, verify documents, and use safe meeting and payment practices.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-sell-section">
+      <div class="container cta-content">
+        <h2>Ready to Take the Next Step?</h2>
+        <p>Explore available vehicles or start creating your own listing.</p>
+        <div class="hero-actions">
+          <a href="browse.html" class="btn btn-primary">Browse Vehicles</a>
+          <a href="sell.html" class="btn btn-secondary">List Your Vehicle</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p>
-      <a href="privacy.html">Privacy Policy</a> |
-      <a href="terms.html">Terms of Service</a> |
-      <a href="contact.html">Contact</a>
-    </p>
-    <p>
-      <strong>Disclaimer:</strong> DirectOwner is a marketplace connecting private buyers and sellers.
-      We are not a dealer, broker, or lender. Financing is offered by third-party partners where available.
-      Transactions occur directly between buyer and seller.
-    </p>
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <p class="footer-disclaimer">
+        <strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers.
+        We do not guarantee vehicle condition, title status, mileage, seller claims,
+        financing approval, or transaction results. Buyers and sellers should independently verify all information.
+      </p>
+      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
+    </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
