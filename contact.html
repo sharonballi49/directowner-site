@@ -11,14 +11,6 @@
   <link rel="stylesheet" href="styles.css" />
   <style>
     body { font-family: "Inter", sans-serif; }
-    .site-header { background: #0b1f33; border-bottom: 1px solid #173f5f; }
-    .header-content { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .site-logo { color: #fff; font-size: 1.65rem; font-weight: 800; letter-spacing: -0.04em; text-decoration: none; }
-    .site-nav { display: flex; align-items: center; justify-content: flex-end; gap: 24px; }
-    .nav-links { display: flex; align-items: center; gap: 20px; list-style: none; margin: 0; padding: 0; }
-    .nav-links a { color: #fff; font-size: .92rem; font-weight: 600; text-decoration: none; }
-    .nav-links a:hover { color: #f28c28; }
-    .nav-btn-sell { white-space: nowrap; }
     .contact-hero { background: linear-gradient(135deg, #0b1f33, #173f5f); color: #fff; border-radius: 18px; padding: clamp(32px, 6vw, 72px); margin-top: 32px; }
     .contact-hero h1 { color: #fff; margin: 0 0 16px; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 1.08; }
     .contact-hero p { max-width: 720px; color: #e8eef4; font-size: 1.1rem; }
@@ -34,8 +26,8 @@
     .contact-faq details { margin-top: 12px; padding: 18px 20px; border: 1px solid #dfe5ea; border-radius: 10px; background: #fff; }
     .contact-faq summary { cursor: pointer; font-weight: 700; color: #0b1f33; }
     .contact-faq details p { color: #5f6b76; margin-bottom: 0; }
-    @media (max-width: 900px) { .site-nav { gap: 12px; } .nav-links { gap: 12px; } .nav-links a { font-size: .82rem; } }
-    @media (max-width: 760px) { .header-content { min-height: 68px; } .contact-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 900px) { .site-nav .nav-links { gap: 12px; } .site-nav .nav-links a { font-size: .82rem; } }
+    @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
