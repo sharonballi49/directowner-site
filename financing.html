@@ -7,11 +7,18 @@
   <meta name="description" content="Understand third-party financing options for private-party vehicle purchases through DirectOwner." />
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .financing-hero{background:linear-gradient(135deg,#0b1f33,#173f5f);color:#fff;padding:76px 0}
+    .site-header{position:relative;z-index:10;background:#0b1f33;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14)}
+    .site-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:42px}
+    .site-nav .brand{color:#fff;font-size:1.55rem;font-weight:800;letter-spacing:-.03em;text-decoration:none;white-space:nowrap}
+    .site-nav .brand:hover{color:#ffad52}
+    .site-nav .nav-links{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:18px;margin:0;padding:0}
+    .site-nav .nav-links a{color:#fff;text-decoration:none;font-size:.94rem;font-weight:650;white-space:nowrap}
+    .site-nav .nav-links a:hover,.site-nav .nav-links a[aria-current="page"]{color:#ffad52}
+    .financing-hero{background:linear-gradient(135deg,#0b1f33,#173f5f);color:#fff;padding:clamp(54px,8vw,88px) 0}
     .financing-hero h1{font-size:clamp(2.3rem,5vw,4rem);line-height:1.08;margin:0 0 18px;max-width:720px}
     .financing-hero p{max-width:720px;color:#e5edf5;font-size:1.1rem;margin:0 0 28px}
     .eyebrow{color:#ffad52;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.8rem;margin-bottom:14px}
-    .financing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:34px}
+    .financing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:34px}
     .financing-card{background:#fff;border:1px solid #dfe5ea;border-radius:14px;padding:26px;box-shadow:0 12px 32px rgba(11,31,51,.08)}
     .financing-card h3{margin:0 0 10px;color:#0b1f33}
     .financing-card p{margin:0;color:#5f6b76}
@@ -19,7 +26,8 @@
     .financing-panel h2{color:#0b1f33;margin-top:0}
     .financing-panel li{margin:10px 0}
     .financing-disclaimer{border-left:4px solid #f28c28;background:#fff7ed;padding:18px 20px;border-radius:8px;color:#5f4630;margin-top:24px}
-    @media(max-width:800px){.financing-grid{grid-template-columns:1fr}.financing-hero{padding:56px 0}}
+    @media(max-width:900px){.site-nav{align-items:flex-start;flex-direction:column;gap:14px}.site-nav .nav-links{justify-content:flex-start;gap:12px 18px}.financing-grid{grid-template-columns:1fr}}
+    @media(max-width:600px){.site-header{padding:14px 0}.site-nav .nav-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:10px 16px}.site-nav .nav-links a{font-size:.9rem}.financing-hero{padding:52px 0}.financing-hero .btn{width:100%;margin:0 0 10px!important}}
   </style>
 </head>
 <body>
