@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In or Create an Account | DirectOwner</title>
+  <meta name="description" content="Sign in or create a DirectOwner account to manage vehicle listings." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    .auth-section { padding: 64px 0; min-height: 65vh; background: #f8fafc; }
+    .auth-card { max-width: 520px; margin: 0 auto; background: #fff; border: 1px solid #e2e8f0; border-radius: 16px; padding: 32px; box-shadow: 0 10px 30px rgba(15, 23, 42, .08); }
+    .auth-tabs { display: flex; gap: 8px; margin-bottom: 24px; }
+    .auth-tab { flex: 1; border: 1px solid #cbd5e1; background: #fff; color: #0f172a; border-radius: 8px; padding: 12px; font: inherit; font-weight: 600; cursor: pointer; }
+    .auth-tab.active { background: #0f2a43; border-color: #0f2a43; color: #fff; }
+    .auth-form { display: grid; gap: 16px; }
+    .auth-form label { display: grid; gap: 7px; font-weight: 600; color: #0f172a; }
+    .auth-form input { width: 100%; box-sizing: border-box; padding: 12px 13px; border: 1px solid #cbd5e1; border-radius: 8px; font: inherit; }
+    .auth-form input:focus { outline: 2px solid #f97316; outline-offset: 1px; }
+    .auth-message { margin-top: 18px; padding: 12px 14px; border-radius: 8px; background: #eff6ff; color: #1e3a8a; display: none; }
+    .auth-message.error { background: #fef2f2; color: #991b1b; }
+    .auth-note { color: #64748b; font-size: .92rem; margin-top: 18px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="site-logo">DirectOwner</a>
+      <nav class="site-nav">
+        <ul class="nav-links">
+          <li><a href="browse.html">Browse Vehicles</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="trust.html">Trust &amp; Safety</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="auth-section">
+      <div class="container">
+        <div class="auth-card">
+          <h1 id="auth-title">Create your DirectOwner account</h1>
+          <p id="auth-subtitle">Create an account to manage your vehicle listings.</p>
+
+          <div class="auth-tabs" role="tablist" aria-label="Account access">
+            <button class="auth-tab active" id="signup-tab" type="button">Sign Up</button>
+            <button class="auth-tab" id="login-tab" type="button">Log In</button>
+          </div>
+
+          <form class="auth-form" id="auth-form">
+            <label for="email">Email address
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </label>
+            <label for="password">Password
+              <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required />
+            </label>
+            <button class="btn btn-primary" id="submit-button" type="submit">Create Account</button>
+          </form>
+
+          <div class="auth-message" id="auth-message" role="status" aria-live="polite"></div>
+          <p class="auth-note">Use an email address you control. Email confirmation may be required before you can sign in.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="contact.html">Contact Us</a>
+      </div>
+      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script>
+    const supabaseClient = window.supabase.createClient(
+      window.DIRECTOWNER_SUPABASE_URL,
+      window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const form = document.getElementById('auth-form');
+    const signupTab = document.getElementById('signup-tab');
+    const loginTab = document.getElementById('login-tab');
+    const title = document.getElementById('auth-title');
+    const subtitle = document.getElementById('auth-subtitle');
+    const submitButton = document.getElementById('submit-button');
+    const password = document.getElementById('password');
+    const message = document.getElementById('auth-message');
+    let mode = 'signup';
+
+    function showMessage(text, isError = false) {
+      message.textContent = text;
+      message.className = 'auth-message' + (isError ? ' error' : '');
+      message.style.display = 'block';
+    }
+
+    function setMode(nextMode) {
+      mode = nextMode;
+      const signup = mode === 'signup';
+      signupTab.classList.toggle('active', signup);
+      loginTab.classList.toggle('active', !signup);
+      title.textContent = signup ? 'Create your DirectOwner account' : 'Log in to DirectOwner';
+      subtitle.textContent = signup ? 'Create an account to manage your vehicle listings.' : 'Sign in to manage your vehicle listings.';
+      submitButton.textContent = signup ? 'Create Account' : 'Log In';
+      password.autocomplete = signup ? 'new-password' : 'current-password';
+      message.style.display = 'none';
+    }
+
+    signupTab.addEventListener('click', () => setMode('signup'));
+    loginTab.addEventListener('click', () => setMode('login'));
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      submitButton.disabled = true;
+      message.style.display = 'none';
+
+      const email = document.getElementById('email').value.trim();
+      const passwordValue = password.value;
+      let result;
+
+      try {
+        if (mode === 'signup') {
+          result = await supabaseClient.auth.signUp({
+            email,
+            password: passwordValue,
+            options: { emailRedirectTo: 'https://www.getdirectowner.com/auth.html' }
+          });
+        } else {
+          result = await supabaseClient.auth.signInWithPassword({ email, password: passwordValue });
+        }
+
+        if (result.error) throw result.error;
+
+        if (mode === 'signup') {
+          showMessage('Account created. Check your email for a confirmation link before logging in.');
+        } else {
+          showMessage('You are signed in. Redirecting to the vehicle listing page...');
+          window.location.href = 'sell.html';
+        }
+      } catch (error) {
+        showMessage(error.message || 'Something went wrong. Please try again.', true);
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
