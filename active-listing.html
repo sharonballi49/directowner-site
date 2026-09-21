@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vehicle Details | DirectOwner</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .detail-wrap{padding:56px 0;background:#f8fafc;min-height:68vh}.detail-card{max-width:850px;margin:auto;background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:var(--shadow)}.detail-card h1{color:var(--navy-950)}.detail-price{font-size:2rem;font-weight:700;color:var(--navy-950)}.detail-meta{color:var(--muted);line-height:1.8}.detail-description{white-space:pre-wrap;line-height:1.7}.detail-message{padding:16px;border-radius:10px;background:#eff6ff;color:#1e3a8a}.detail-message.error{background:#fef2f2;color:#991b1b}
+  </style>
+</head>
+<body>
+  <header class="site-header"><div class="container header-content"><a href="index.html" class="site-logo">DirectOwner</a><nav class="site-nav"><ul class="nav-links"><li><a href="browse.html">Browse Vehicles</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="trust.html">Trust &amp; Safety</a></li><li><a href="financing.html">Financing</a></li><li><a href="contact.html">Contact</a></li><li><a href="dashboard.html">My Listings</a></li><li><a href="sell.html" class="btn btn-secondary">List Your Vehicle</a></li></ul></nav></div></header>
+  <main><section class="detail-wrap"><div class="container"><div id="message" class="detail-message">Loading active listing...</div><article id="card" class="detail-card" hidden></article></div></section></main>
+  <footer class="site-footer"><div class="container footer-content"><div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="contact.html">Contact Us</a></div><p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p></div></footer>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script>
+  <script>
+    const client=window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL,window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY);const message=document.getElementById('message');const card=document.getElementById('card');const id=new URLSearchParams(location.search).get('id');
+    const money=c=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format((c||0)/100);
+    async function load(){if(!id){message.textContent='This listing link is missing an ID.';message.classList.add('error');return}const {data,error}=await client.from('listings').select('title,description,vehicle_type,year,make,model,price_cents,created_at,status').eq('id',id).eq('status','active').maybeSingle();if(error||!data){message.textContent='This listing is unavailable or no longer active.';message.classList.add('error');return}card.innerHTML=`<h1></h1><p class="detail-price"></p><p class="detail-meta"></p><h2>Description</h2><p class="detail-description"></p><a class="btn btn-primary" href="browse.html">Back to Browse Vehicles</a>`;card.querySelector('h1').textContent=data.title;card.querySelector('.detail-price').textContent=money(data.price_cents);card.querySelector('.detail-meta').textContent=`${data.year} ${data.make} ${data.model} • ${data.vehicle_type} • Listed ${new Date(data.created_at).toLocaleDateString('en-US')}`;card.querySelector('.detail-description').textContent=data.description||'No description provided.';card.hidden=false;message.hidden=true}
+    load().catch(()=>{message.textContent='We could not load this listing right now.';message.classList.add('error')});
+  </script>
+</body>
+</html>
