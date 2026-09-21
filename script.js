@@ -47,6 +47,11 @@
         window.DIRECTOWNER_SUPABASE_URL,
         window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY
       );
+      const photoInput = document.getElementById('photos');
+      let selectedFilesForUpload = [];
+      photoInput?.addEventListener('change', () => {
+        selectedFilesForUpload = [...selectedFilesForUpload, ...Array.from(photoInput.files || [])];
+      });
 
       form.dataset.supabaseHandlerAttached = 'true';
       form.addEventListener('submit', async (event) => {
@@ -86,7 +91,7 @@
             `Seller name: ${sellerName}`
           ].filter(Boolean).join('\n\n');
 
-          const files = Array.from(document.getElementById('photos')?.files || []);
+          const files = selectedFilesForUpload;
           const photoPaths = [];
           for (const file of files) {
             if (!file.type.startsWith('image/')) throw new Error('Only image files can be uploaded.');
@@ -125,6 +130,7 @@
 
           setStatus(`Listing saved as a draft. Your listing ID is ${listing.id}. Payment and publishing will be added next.`);
           form.reset();
+          selectedFilesForUpload = [];
           const previews = document.getElementById('previews');
           if (previews) previews.innerHTML = '';
         } catch (error) {
