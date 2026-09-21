@@ -1,0 +1,7 @@
+project_id = "replace-with-your-supabase-project-id"
+
+[functions.create-checkout-session]
+verify_jwt = true
+
+[functions.stripe-webhook]
+verify_jwt = false
