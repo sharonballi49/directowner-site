@@ -10,155 +10,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    .sell-hero { background:linear-gradient(135deg,var(--navy-950),var(--navy-800)); color:#fff; border-radius:18px; padding:clamp(30px,6vw,64px); }
-    .sell-hero h1 { margin:0 0 16px; font-size:clamp(2.1rem,5vw,3.8rem); line-height:1.08; }
-    .sell-hero p { max-width:720px; margin:0; color:#e6edf4; font-size:1.08rem; }
-    .sell-hero .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:26px; }
-    .sell-hero .btn-secondary { background:transparent; color:#fff; border-color:rgba(255,255,255,.45); }
-    .sell-hero .btn-secondary:hover { background:rgba(255,255,255,.12); }
-    .sell-card { max-width:920px; margin:34px auto 0; padding:clamp(22px,4vw,36px); border:1px solid var(--border); border-radius:var(--radius); background:#fff; box-shadow:var(--shadow); }
-    .sell-card h2 { margin:0 0 8px; color:var(--navy-950); font-size:1.35rem; }
-    .sell-help { margin:0 0 22px; color:var(--muted); }
-    .sell-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
-    .sell-field { display:flex; flex-direction:column; gap:7px; }
-    .sell-field.full { grid-column:1/-1; }
-    .sell-field label { font-weight:700; color:var(--navy-950); }
-    .sell-field input,.sell-field textarea { width:100%; padding:13px 14px; border:1px solid var(--border); border-radius:9px; background:#fff; color:var(--text); }
-    .sell-field input:focus,.sell-field textarea:focus { outline:3px solid rgba(242,140,40,.2); border-color:var(--orange); }
-    .sell-field textarea { min-height:130px; resize:vertical; }
-    .photo-box { margin-top:14px; padding:22px; border:2px dashed #b8c7d9; border-radius:12px; background:#f8fafc; text-align:center; }
-    .photo-box input { max-width:100%; margin-top:12px; }
-    .photo-box p { margin:8px 0 0; color:var(--muted); font-size:.9rem; }
-    .previews { display:grid; grid-template-columns:repeat(auto-fill,minmax(112px,1fr)); gap:12px; margin-top:16px; }
-    .preview { position:relative; aspect-ratio:1; overflow:hidden; border:1px solid var(--border); border-radius:10px; background:#f8fafc; }
-    .preview img { width:100%; height:100%; object-fit:cover; }
-    .preview button { position:absolute; top:6px; right:6px; width:28px; height:28px; padding:0; border:0; border-radius:50%; background:rgba(11,31,51,.9); color:#fff; cursor:pointer; }
-    .sell-actions { display:flex; flex-wrap:wrap; gap:12px; align-items:center; margin-top:28px; }
-    .sell-note { margin-top:16px; padding:14px 16px; border-left:4px solid var(--orange); border-radius:8px; background:var(--cream); color:var(--text); font-size:.92rem; }
-    .sell-status { margin-top:18px; color:var(--navy-950); font-weight:700; }
-    @media (max-width:700px) { .sell-grid { grid-template-columns:1fr; } .sell-field.full { grid-column:auto; } }
+    .sell-hero{background:linear-gradient(135deg,var(--navy-950),var(--navy-800));color:#fff;border-radius:18px;padding:clamp(30px,6vw,64px)}
+    .sell-hero h1{margin:0 0 16px;font-size:clamp(2.1rem,5vw,3.8rem);line-height:1.08}.sell-hero p{max-width:720px;margin:0;color:#e6edf4;font-size:1.08rem}.hero-actions,.sell-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}.sell-hero .btn-secondary{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+    .pricing{margin:34px auto 0}.pricing h2{text-align:center;color:var(--navy-950);margin-bottom:8px}.pricing-intro{text-align:center;color:var(--muted);margin:0 auto 22px;max-width:650px}.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.price-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:24px;box-shadow:var(--shadow);position:relative}.price-card.featured{border:2px solid var(--orange);transform:translateY(-4px)}.price-card h3{margin:0;color:var(--navy-950)}.price{font-size:2rem;font-weight:700;color:var(--navy-950);margin:12px 0}.price-card p{color:var(--muted);min-height:48px}.price-card ul{padding-left:20px;color:var(--text);line-height:1.8}.price-badge{display:inline-block;background:var(--orange);color:#fff;border-radius:999px;padding:4px 10px;font-size:.78rem;font-weight:700;margin-bottom:10px}
+    .sell-card{max-width:920px;margin:34px auto 0;padding:clamp(22px,4vw,36px);border:1px solid var(--border);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow)}.sell-card h2{margin:0 0 8px;color:var(--navy-950);font-size:1.35rem}.sell-help{margin:0 0 22px;color:var(--muted)}.sell-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.sell-field{display:flex;flex-direction:column;gap:7px}.sell-field.full{grid-column:1/-1}.sell-field label{font-weight:700;color:var(--navy-950)}.sell-field input,.sell-field textarea{width:100%;padding:13px 14px;border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text)}.sell-field textarea{min-height:130px;resize:vertical}.photo-box{margin-top:14px;padding:22px;border:2px dashed #b8c7d9;border-radius:12px;background:#f8fafc;text-align:center}.photo-box input{max-width:100%;margin-top:12px}.photo-box p{margin:8px 0 0;color:var(--muted);font-size:.9rem}.previews{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:12px;margin-top:16px}.preview{position:relative;aspect-ratio:1;overflow:hidden;border:1px solid var(--border);border-radius:10px;background:#f8fafc}.preview img{width:100%;height:100%;object-fit:cover}.preview button{position:absolute;top:6px;right:6px;width:28px;height:28px;padding:0;border:0;border-radius:50%;background:rgba(11,31,51,.9);color:#fff;cursor:pointer}.sell-note{margin-top:16px;padding:14px 16px;border-left:4px solid var(--orange);border-radius:8px;background:var(--cream);color:var(--text);font-size:.92rem}.sell-status{margin-top:18px;color:var(--navy-950);font-weight:700}
+    @media(max-width:700px){.pricing-grid,.sell-grid{grid-template-columns:1fr}.price-card.featured{transform:none}.sell-field.full{grid-column:auto}}
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container header-content">
-      <a href="index.html" class="site-logo">DirectOwner</a>
-      <nav class="site-nav">
-        <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
-        <ul class="nav-links">
-          <li><a href="browse.html">Browse Vehicles</a></li>
-          <li><a href="how-it-works.html">How It Works</a></li>
-          <li><a href="trust.html">Trust &amp; Safety</a></li>
-          <li><a href="financing.html">Financing</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell" aria-current="page">List Your Vehicle</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="section">
-      <div class="container">
-        <div class="sell-hero">
-          <h1>Sell Your Vehicle Directly</h1>
-          <p>List your car, truck, or RV with DirectOwner. Share the details buyers need, add photos, and stay in control of your sale—without needing a Gmail account.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#listing-form">Start Your Listing</a>
-            <a class="btn btn-secondary" href="browse.html">Browse Vehicles</a>
-          </div>
-        </div>
-
-        <form class="sell-card" id="listing-form">
-          <h2>Vehicle information</h2>
-          <p class="sell-help">Complete the details below so buyers can understand your vehicle.</p>
-          <div class="sell-grid">
-            <div class="sell-field"><label for="year">Year *</label><input id="year" name="year" type="number" min="1886" max="2100" placeholder="e.g. 2018" required /></div>
-            <div class="sell-field"><label for="make">Make *</label><input id="make" name="make" type="text" placeholder="e.g. Ford" required /></div>
-            <div class="sell-field"><label for="model">Model *</label><input id="model" name="model" type="text" placeholder="e.g. F-150" required /></div>
-            <div class="sell-field"><label for="mileage">Mileage</label><input id="mileage" name="mileage" type="number" min="0" placeholder="e.g. 85000" /></div>
-            <div class="sell-field"><label for="price">Asking price ($) *</label><input id="price" name="price" type="number" min="0" step="1" placeholder="e.g. 18500" required /></div>
-            <div class="sell-field"><label for="location">Location *</label><input id="location" name="location" type="text" placeholder="City, State" required /></div>
-            <div class="sell-field full"><label for="description">Description</label><textarea id="description" name="description" placeholder="Describe condition, features, maintenance, and anything buyers should know."></textarea></div>
-          </div>
-
-          <h2 style="margin-top:32px;">Vehicle photos</h2>
-          <p class="sell-help">Add multiple photos from your phone or computer. You can remove photos before continuing.</p>
-          <div class="photo-box">
-            <label for="photos"><strong>Choose your photos</strong></label><br />
-            <input id="photos" name="photos" type="file" accept="image/*" multiple />
-            <p>Helpful photos include the exterior, interior, odometer, tires, and any damage.</p>
-          </div>
-          <div class="previews" id="previews" aria-live="polite"></div>
-
-          <h2 style="margin-top:32px;">Your contact information</h2>
-          <p class="sell-help">Any email provider is welcome. Gmail is not required.</p>
-          <div class="sell-grid">
-            <div class="sell-field"><label for="sellerName">Your name *</label><input id="sellerName" name="sellerName" type="text" placeholder="Your name" required /></div>
-            <div class="sell-field"><label for="email">Email address *</label><input id="email" name="email" type="email" placeholder="you@example.com" required /></div>
-            <div class="sell-field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="Optional" /></div>
-          </div>
-
-          <div class="sell-actions">
-            <button class="btn btn-primary" type="submit">Review Listing</button>
-            <a class="btn btn-secondary" href="https://forms.gle/CX6aqwMmRe64LM2P9" target="_blank" rel="noopener">Continue to Submission Form</a>
-          </div>
-          <div class="sell-note"><strong>Current process:</strong> This page lets you enter information and preview photos in your browser. Secure account creation and permanent photo storage will require a connected backend service.</div>
-          <p class="sell-status" id="status" role="status"></p>
-        </form>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
-      <p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. We do not guarantee vehicle condition, title status, mileage, seller claims, financing approval, or transaction results. Buyers and sellers should independently verify information, inspect vehicles, and complete appropriate documentation.</p>
-      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script>
-    const photoInput = document.getElementById('photos');
-    const previews = document.getElementById('previews');
-    const status = document.getElementById('status');
-    let selectedFiles = [];
-
-    photoInput.addEventListener('change', () => {
-      selectedFiles = [...selectedFiles, ...Array.from(photoInput.files)];
-      renderPreviews();
-      photoInput.value = '';
-    });
-
-    function renderPreviews() {
-      previews.innerHTML = '';
-      selectedFiles.forEach((file, index) => {
-        const wrapper = document.createElement('div');
-        wrapper.className = 'preview';
-        const image = document.createElement('img');
-        image.alt = `Vehicle photo ${index + 1}`;
-        const remove = document.createElement('button');
-        remove.type = 'button';
-        remove.setAttribute('aria-label', `Remove photo ${index + 1}`);
-        remove.textContent = '×';
-        remove.addEventListener('click', () => { selectedFiles.splice(index, 1); renderPreviews(); });
-        const reader = new FileReader();
-        reader.onload = event => { image.src = event.target.result; };
-        reader.readAsDataURL(file);
-        wrapper.append(image, remove);
-        previews.appendChild(wrapper);
-      });
-    }
-
-    document.getElementById('listing-form').addEventListener('submit', event => {
-      event.preventDefault();
-      status.textContent = `Your details are ready for review${selectedFiles.length ? ` with ${selectedFiles.length} photo${selectedFiles.length === 1 ? '' : 's'}` : ''}. Use the submission form button to continue.`;
-    });
-  </script>
-  <script src="script.js"></script>
-</body>
-</html>
+  <header class="site-header"><div class="container header-content"><a href="index.html" class="site-logo">DirectOwner</a><nav class="site-nav"><button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="browse.html">Browse Vehicles</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="trust.html">Trust &amp; Safety</a></li><li><a href="financing.html">Financing</a></li><li><a href="contact.html">Contact</a></li><li><a href="sell.html" class="btn btn-secondary nav-btn-sell" aria-current="page">List Your Vehicle</a></li></ul></nav></div></header>
+  <main><section class="section"><div class="container">
+    <div class="sell-hero"><h1>Sell Your Vehicle Directly</h1><p>List your car, truck, or RV with DirectOwner. Share the details buyers need, add photos, and stay in control of your sale.</p><div class="hero-actions"><a class="btn btn-primary" href="#listing-form">Start Your Listing</a><a class="btn btn-secondary" href="browse.html">Browse Vehicles</a></div></div>
+    <section class="pricing" aria-labelledby="pricing-title"><h2 id="pricing-title">Choose Your Listing Package</h2><p class="pricing-intro">Start for free, or choose a paid option to give your vehicle more visibility. Pricing is displayed for planning purposes; online payment activation will be added separately.</p><div class="pricing-grid">
+      <article class="price-card"><h3>Free Listing</h3><div class="price">$0</div><p>For owners who want to list without an upfront fee.</p><ul><li>Basic vehicle details</li><li>Vehicle description</li><li>Photo previews</li></ul><a class="btn btn-secondary" href="#listing-form">Choose Free</a></article>
+      <article class="price-card featured"><span class="price-badge">Popular</span><h3>Featured Listing</h3><div class="price">$9.99–$19.99</div><p>For owners who want additional visibility.</p><ul><li>Everything in Free</li><li>Featured placement</li><li>More attention for your listing</li></ul><a class="btn btn-primary" href="#listing-form">Choose Featured</a></article>
+      <article class="price-card"><h3>Premium Listing</h3><div class="price">$29.99–$49.99</div><p>For owners who want an enhanced listing package.</p><ul><li>Everything in Featured</li><li>Premium highlighting</li><li>Enhanced promotional placement</li></ul><a class="btn btn-secondary" href="#listing-form">Choose Premium</a></article>
+    </div></section>
+    <form class="sell-card" id="listing-form"><h2>Vehicle information</h2><p class="sell-help">Complete the details below so buyers can understand your vehicle.</p><div class="sell-grid"><div class="sell-field"><label for="year">Year *</label><input id="year" name="year" type="number" min="1886" max="2100" placeholder="e.g. 2018" required /></div><div class="sell-field"><label for="make">Make *</label><input id="make" name="make" type="text" placeholder="e.g. Ford" required /></div><div class="sell-field"><label for="model">Model *</label><input id="model" name="model" type="text" placeholder="e.g. F-150" required /></div><div class="sell-field"><label for="mileage">Mileage</label><input id="mileage" name="mileage" type="number" min="0" placeholder="e.g. 85000" /></div><div class="sell-field"><label for="price">Asking price ($) *</label><input id="price" name="price" type="number" min="0" step="1" placeholder="e.g. 18500" required /></div><div class="sell-field"><label for="location">Location *</label><input id="location" name="location" type="text" placeholder="City, State" required /></div><div class="sell-field full"><label for="description">Description</label><textarea id="description" name="description" placeholder="Describe condition, features, maintenance, and anything buyers should know."></textarea></div></div>
+      <h2 style="margin-top:32px">Vehicle photos</h2><p class="sell-help">Add multiple photos from your phone or computer.</p><div class="photo-box"><label for="photos"><strong>Choose your photos</strong></label><br /><input id="photos" name="photos" type="file" accept="image/*" multiple /><p>Helpful photos include the exterior, interior, odometer, tires, and any damage.</p></div><div class="previews" id="previews" aria-live="polite"></div>
+      <h2 style="margin-top:32px">Your contact information</h2><p class="sell-help">Any email provider is welcome. Gmail is not required.</p><div class="sell-grid"><div class="sell-field"><label for="sellerName">Your name *</label><input id="sellerName" name="sellerName" type="text" placeholder="Your name" required /></div><div class="sell-field"><label for="email">Email address *</label><input id="email" name="email" type="email" placeholder="you@example.com" required /></div><div class="sell-field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" placeholder="Optional" /></div></div>
+      <div class="sell-actions"><button class="btn btn-primary" type="submit">Review Listing</button><a class="btn btn-secondary" href="https://forms.gle/CX6aqwMmRe64LM2P9" target="_blank" rel="noopener">Continue to Submission Form</a></div><div class="sell-note"><strong>Current process:</strong> Pricing is currently informational. Online payment processing, account creation, and permanent photo storage require a connected backend service.</div><p class="sell-status" id="status" role="status"></p>
+    </form></div></section></main>
+  <footer class="site-footer"><div class="container footer-content"><div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="contact.html">Contact Us</a></div><p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. We do not guarantee vehicle condition, title status, mileage, seller claims, financing approval, or transaction results. Buyers and sellers should independently verify information, inspect vehicles, and complete appropriate documentation.</p><p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p></div></footer>
+  <script>const photoInput=document.getElementById('photos'),previews=document.getElementById('previews'),status=document.getElementById('status');let selectedFiles=[];photoInput.addEventListener('change',()=>{selectedFiles=[...selectedFiles,...Array.from(photoInput.files)];renderPreviews();photoInput.value=''});function renderPreviews(){previews.innerHTML='';selectedFiles.forEach((file,index)=>{const wrapper=document.createElement('div');wrapper.className='preview';const image=document.createElement('img');image.alt=`Vehicle photo ${index+1}`;const remove=document.createElement('button');remove.type='button';remove.setAttribute('aria-label',`Remove photo ${index+1}`);remove.textContent='×';remove.addEventListener('click',()=>{selectedFiles.splice(index,1);renderPreviews()});const reader=new FileReader();reader.onload=event=>{image.src=event.target.result};reader.readAsDataURL(file);wrapper.append(image,remove);previews.appendChild(wrapper)})}document.getElementById('listing-form').addEventListener('submit',event=>{event.preventDefault();status.textContent=`Your details are ready for review${selectedFiles.length?` with ${selectedFiles.length} photo${selectedFiles.length===1?'':'s'}`:''}. Use the submission form button to continue.`});</script><script src="script.js"></script>
+</body></html>
