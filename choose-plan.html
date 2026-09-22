@@ -1,33 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Choose a DirectOwner listing plan.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Choose a DirectOwner listing plan." />
   <title>Choose Listing Plan | DirectOwner</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
-    .plans-section{padding:56px 0 72px;background:#f8fafc;min-height:68vh}.plans-card{max-width:980px;margin:0 auto;background:#fff;border:1px solid var(--border);border-radius:18px;padding:clamp(24px,4vw,40px);box-shadow:var(--shadow)}.plans-card h1{margin-top:0;color:var(--navy-950)}.plans-help{color:var(--muted);max-width:700px}.plans-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:28px}.plan-option{border:1px solid var(--border);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:12px}.plan-option.featured{border:2px solid var(--orange)}.plan-option h2{font-size:1.25rem;color:var(--navy-950);margin:0}.plan-price{font-size:1.8rem;font-weight:700;color:var(--navy-950)}.plan-option p{color:var(--muted);min-height:66px}.plan-option ul{padding-left:20px;line-height:1.7;margin:0 0 8px}.plan-option button{margin-top:auto}.plan-badge{display:inline-block;align-self:flex-start;background:var(--orange);color:#fff;border-radius:999px;padding:4px 10px;font-size:.78rem;font-weight:700}.plan-message{margin-top:22px;padding:14px 16px;border-radius:9px;background:#eff6ff;color:#1e3a8a}.plan-message.error{background:#fef2f2;color:#991b1b}@media(max-width:760px){.plans-grid{grid-template-columns:1fr}}
+    .policy-hero { background: var(--navy-950); color: #fff; padding: 64px 0; }
+    .policy-hero h1 { color: #fff; margin: 0 0 14px; }
+    .policy-hero p { color: #e8eef4; max-width: 760px; margin: 0; }
+    .policy-meta { margin-top: 18px; font-size: .9rem; font-weight: 700; color: #dbeafe; }
+    .plans-content { padding: 52px 0 72px; background: #f8fafc; min-height: 68vh; }
+    .plans-card { max-width: 1040px; margin: 0 auto; background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: clamp(24px, 4vw, 40px); box-shadow: var(--shadow); }
+    .plans-card h2 { color: var(--navy-950); margin: 0 0 8px; }
+    .plans-help { color: var(--muted); line-height: 1.75; max-width: 760px; margin: 0; }
+    .plans-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 28px; }
+    .plan-option { border: 1px solid var(--border); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 12px; background: #fff; }
+    .plan-option.featured { border: 2px solid var(--orange-500); box-shadow: 0 10px 24px rgba(242, 140, 40, .12); }
+    .plan-option h3 { font-size: 1.25rem; color: var(--navy-950); margin: 0; }
+    .plan-price { font-size: 2rem; font-weight: 800; color: var(--navy-950); }
+    .plan-price small { font-size: .9rem; font-weight: 600; color: var(--muted); }
+    .plan-option p { color: var(--muted); line-height: 1.7; min-height: 76px; margin: 0; }
+    .plan-option ul { padding-left: 20px; margin: 0 0 10px; color: var(--muted); line-height: 1.8; }
+    .plan-option li { margin: 4px 0; }
+    .plan-option button { width: 100%; margin-top: auto; }
+    .plan-badge { display: inline-block; align-self: flex-start; background: var(--orange-500); color: #fff; border-radius: 999px; padding: 5px 11px; font-size: .78rem; font-weight: 800; }
+    .plan-message { margin-top: 24px; padding: 14px 16px; border-radius: 9px; background: #eff6ff; color: #1e3a8a; line-height: 1.6; }
+    .plan-message.error { background: #fef2f2; color: #991b1b; }
+    .back-link { display: inline-block; margin-top: 22px; font-weight: 700; color: var(--navy-700, #173f5f); }
+    @media (max-width: 760px) { .policy-hero { padding: 44px 0; } .plans-grid { grid-template-columns: 1fr; } .plan-option p { min-height: 0; } }
   </style>
 </head>
 <body>
-  <header class="site-header"><div class="container header-content"><a href="index.html" class="site-logo">DirectOwner</a><nav class="site-nav"><button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="browse.html">Browse Vehicles</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="trust.html">Trust &amp; Safety</a></li><li><a href="financing.html">Financing</a></li><li><a href="contact.html">Contact</a></li><li><a href="dashboard.html">My Listings</a></li><li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li></ul></nav></div></header>
-  <main><section class="plans-section"><div class="container"><div class="plans-card"><h1>Choose Your Listing Plan</h1><p class="plans-help">Select a plan for your saved listing. Free listings can be activated immediately. Paid plans open Stripe Checkout when the payment service is configured.</p><div class="plans-grid"><article class="plan-option"><h2>Free</h2><div class="plan-price">$0</div><p>Activate your listing without an upfront fee.</p><ul><li>Basic listing</li><li>Vehicle details and photos</li><li>Owner-managed listing</li></ul><button class="btn btn-secondary plan-button" data-plan="free">Activate Free</button></article><article class="plan-option featured"><span class="plan-badge">Popular</span><h2>Featured</h2><div class="plan-price">$9.99</div><p>Give your listing additional visibility.</p><ul><li>Everything in Free</li><li>Featured placement capability</li><li>Stripe payment checkout</li></ul><button class="btn btn-primary plan-button" data-plan="featured">Choose Featured</button></article><article class="plan-option"><h2>Premium</h2><div class="plan-price">$29.99</div><p>Choose an enhanced promotional listing package.</p><ul><li>Everything in Featured</li><li>Premium placement capability</li><li>Stripe payment checkout</li></ul><button class="btn btn-secondary plan-button" data-plan="premium">Choose Premium</button></article></div><div class="plan-message" id="message" role="status" aria-live="polite">Loading your listing...</div><p style="margin-top:22px"><a href="dashboard.html">Back to My Listings</a></p></div></div></section></main>
-  <footer class="site-footer"><div class="container footer-content"><div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="contact.html">Contact Us</a></div><p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p></div></footer>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="site-logo">DirectOwner</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <ul class="nav-links">
+          <li><a href="browse.html">Browse Vehicles</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="trust.html">Trust &amp; Safety</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="auth.html">Sign In</a></li>
+          <li><a href="dashboard.html">My Listings</a></li>
+          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="policy-hero">
+      <div class="container">
+        <h1>Choose Your Listing Plan</h1>
+        <p>Select the plan that fits your vehicle listing. Start with a free listing or choose a paid option for additional promotional capabilities.</p>
+        <div class="policy-meta">Simple plans · Owner-managed listings · Secure checkout for paid options</div>
+      </div>
+    </section>
+
+    <section class="plans-content">
+      <div class="container">
+        <div class="plans-card">
+          <h2>Plans for your vehicle</h2>
+          <p class="plans-help">Free listings can be activated immediately. Paid plans open Stripe Checkout when the payment service is configured. DirectOwner does not guarantee inquiries, sales, or transaction outcomes.</p>
+
+          <div class="plans-grid">
+            <article class="plan-option">
+              <h3>Free</h3>
+              <div class="plan-price">$0 <small>forever</small></div>
+              <p>Activate your listing without an upfront fee.</p>
+              <ul><li>Basic vehicle listing</li><li>Vehicle details and photos</li><li>Owner-managed listing</li></ul>
+              <button class="btn btn-secondary plan-button" data-plan="free">Activate Free</button>
+            </article>
+
+            <article class="plan-option featured">
+              <span class="plan-badge">Popular</span>
+              <h3>Featured</h3>
+              <div class="plan-price">$9.99</div>
+              <p>Give your listing additional visibility through a paid promotional option.</p>
+              <ul><li>Everything in Free</li><li>Featured placement capability</li><li>Stripe payment checkout</li></ul>
+              <button class="btn btn-primary plan-button" data-plan="featured">Choose Featured</button>
+            </article>
+
+            <article class="plan-option">
+              <h3>Premium</h3>
+              <div class="plan-price">$29.99</div>
+              <p>Choose an enhanced promotional listing package.</p>
+              <ul><li>Everything in Featured</li><li>Premium placement capability</li><li>Stripe payment checkout</li></ul>
+              <button class="btn btn-secondary plan-button" data-plan="premium">Choose Premium</button>
+            </article>
+          </div>
+
+          <div class="plan-message" id="message" role="status" aria-live="polite">Loading your listing...</div>
+          <a class="back-link" href="dashboard.html">← Back to My Listings</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="contact.html">Contact Us</a></div>
+      <p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. Buyers and sellers should independently verify information, inspect vehicles, and complete appropriate documentation.</p>
+      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
   <script>
-    const client=window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL,window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY);
-    const listingId=new URLSearchParams(location.search).get('id');
-    const message=document.getElementById('message');
-    const buttons=[...document.querySelectorAll('.plan-button')];
-    function showMessage(text,error=false){message.textContent=text;message.className='plan-message'+(error?' error':'');}
-    async function getCurrentUser(){const {data:{user},error}=await client.auth.getUser();if(error||!user)throw new Error('Please sign in again before continuing.');return user;}
-    async function checkListing(){const user=await getCurrentUser();if(!listingId){throw new Error('No listing was selected. Open this page from My Listings.');}const {data,error}=await client.from('listings').select('id,title,plan,status').eq('id',listingId).eq('owner_id',user.id).maybeSingle();if(error||!data)throw new Error('This listing could not be found for your account.');if(!['draft','pending_payment'].includes(data.status))throw new Error('This listing is not eligible for a plan change.');showMessage(`Choose a plan for ${data.title}. Current status: ${data.status.replace('_',' ')}.`);}
-    buttons.forEach(button=>button.addEventListener('click',async()=>{const plan=button.dataset.plan;buttons.forEach(item=>item.disabled=true);showMessage('Preparing your selected plan...');try{const user=await getCurrentUser();if(plan==='free'){const {error}=await client.from('listings').update({plan:'free',status:'active'}).eq('id',listingId).eq('owner_id',user.id);if(error)throw new Error(error.message||'Unable to activate the free listing.');showMessage('Your free listing is active. Redirecting to My Listings...');location.href='dashboard.html';return;}const {data,error}=await client.functions.invoke('create-checkout-session',{body:{listingId,plan}});if(error)throw new Error(error.message||'The payment service could not be reached.');if(data?.checkoutUrl){location.href=data.checkoutUrl;return;}throw new Error(data?.error||'The payment service did not return a checkout link.');}catch(error){showMessage(error.message||'We could not prepare this plan. Please try again.',true);buttons.forEach(item=>item.disabled=false);}}));
-    checkListing().catch(error=>{showMessage(error.message||'Unable to load your listing.',true);buttons.forEach(button=>button.disabled=true);});
+    const client = window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL, window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY);
+    const listingId = new URLSearchParams(location.search).get('id');
+    const message = document.getElementById('message');
+    const buttons = [...document.querySelectorAll('.plan-button')];
+
+    function showMessage(text, error = false) {
+      message.textContent = text;
+      message.className = 'plan-message' + (error ? ' error' : '');
+    }
+
+    async function getCurrentUser() {
+      const { data: { user }, error } = await client.auth.getUser();
+      if (error || !user) throw new Error('Please sign in again before continuing.');
+      return user;
+    }
+
+    async function checkListing() {
+      const user = await getCurrentUser();
+      if (!listingId) throw new Error('No listing was selected. Open this page from My Listings.');
+      const { data, error } = await client.from('listings').select('id,title,plan,status').eq('id', listingId).eq('owner_id', user.id).maybeSingle();
+      if (error || !data) throw new Error('This listing could not be found for your account.');
+      if (!['draft', 'pending_payment'].includes(data.status)) throw new Error('This listing is not eligible for a plan change.');
+      showMessage(`Choose a plan for ${data.title}. Current status: ${data.status.replace('_', ' ')}.`);
+    }
+
+    buttons.forEach(button => button.addEventListener('click', async () => {
+      const plan = button.dataset.plan;
+      buttons.forEach(item => item.disabled = true);
+      showMessage('Preparing your selected plan...');
+      try {
+        const user = await getCurrentUser();
+        if (plan === 'free') {
+          const { error } = await client.from('listings').update({ plan: 'free', status: 'active' }).eq('id', listingId).eq('owner_id', user.id);
+          if (error) throw new Error(error.message || 'Unable to activate the free listing.');
+          showMessage('Your free listing is active. Redirecting to My Listings...');
+          location.href = 'dashboard.html';
+          return;
+        }
+        const { data, error } = await client.functions.invoke('create-checkout-session', { body: { listingId, plan } });
+        if (error) throw new Error(error.message || 'The payment service could not be reached.');
+        if (data?.checkoutUrl) { location.href = data.checkoutUrl; return; }
+        throw new Error(data?.error || 'The payment service did not return a checkout link.');
+      } catch (error) {
+        showMessage(error.message || 'We could not prepare this plan. Please try again.', true);
+        buttons.forEach(item => item.disabled = false);
+      }
+    }));
+
+    checkListing().catch(error => {
+      showMessage(error.message || 'Unable to load your listing.', true);
+      buttons.forEach(button => button.disabled = true);
+    });
   </script>
 </body>
 </html>
