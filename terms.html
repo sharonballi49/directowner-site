@@ -9,6 +9,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Match the Terms page header area to the Privacy page and other policy pages. */
+    .page-hero { background: var(--navy-950); color: #fff; padding: 64px 0; }
+    .page-hero h1 { color: #fff; margin: 0 0 14px; }
+    .page-hero p { color: #e8eef4; max-width: 760px; margin: 0; }
+    .page-hero .hero-meta { margin-top: 18px; font-size: .9rem; font-weight: 700; color: #dbeafe; }
+    .section-light { padding: 52px 0 72px; background: #f8fafc; }
+    .content-narrow { max-width: 900px; }
+    .policy-note { border-left: 4px solid var(--orange-500); background: #fff7ed; padding: 16px 18px; border-radius: 8px; margin: 0 0 24px; color: #7c2d12; }
+    .policy-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin-bottom: 18px; box-shadow: var(--shadow); }
+    .policy-card h2 { color: var(--navy-950); font-size: 1.25rem; margin: 0 0 12px; }
+    .policy-card p, .policy-card li { color: var(--muted); line-height: 1.75; }
+    .policy-card p { margin: 0 0 12px; }
+    .policy-card ul { margin: 8px 0 0; padding-left: 22px; }
+    .policy-card li { margin: 8px 0; }
+    @media (max-width: 700px) { .page-hero { padding: 44px 0; } .policy-card { padding: 22px; } }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -24,7 +41,7 @@
           <a href="contact.html">Contact</a>
           <a href="auth.html">Sign In</a>
           <a href="dashboard.html">My Listings</a>
-          <a class="btn btn-primary" href="sell.html">List Your Vehicle</a>
+          <a class="btn btn-secondary nav-btn-sell" href="sell.html">List Your Vehicle</a>
         </div>
       </nav>
     </div>
@@ -33,7 +50,6 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <span class="eyebrow">DirectOwner Policies</span>
         <h1>Terms of Service</h1>
         <p>These terms explain the rules, responsibilities, limitations, and conditions that apply when using the DirectOwner website and marketplace.</p>
         <p class="hero-meta">Last updated: September 22, 2026</p>
@@ -42,109 +58,31 @@
 
     <section class="section section-light">
       <div class="container content-narrow">
-        <div class="policy-note">
-          <strong>Phase 1 note:</strong> DirectOwner is an early-stage owner-to-owner marketplace for cars and RVs. Listings, support, and trust processes may be handled manually while the platform continues to grow.
-        </div>
+        <div class="policy-note"><strong>Phase 1 note:</strong> DirectOwner is an early-stage owner-to-owner marketplace for cars and RVs. Listings, support, and trust processes may be handled manually while the platform continues to grow.</div>
 
-        <article class="policy-card">
-          <h2>1. Acceptance of Terms</h2>
-          <p>By accessing or using the DirectOwner website, users agree to these Terms of Service. Anyone who does not agree to these terms should not use the website or submit information through the platform.</p>
-        </article>
-
-        <article class="policy-card">
-          <h2>2. Marketplace Role</h2>
-          <p>DirectOwner is a marketplace platform that connects private buyers and private sellers. DirectOwner does not own listed vehicles and does not act as a dealership, broker, escrow agent, or lender.</p>
-          <p>Transactions occur directly between buyers and sellers. DirectOwner may provide tools, listing review, communication guidance, trust and safety resources, and connections to third-party services, but DirectOwner is not a party to the transaction.</p>
-        </article>
-
-        <article class="policy-card">
-          <h2>3. Eligibility</h2>
-          <p>The DirectOwner platform is intended for adults who are legally able to enter into binding agreements. The marketplace is not intended for minors.</p>
-        </article>
-
-        <article class="policy-card">
-          <h2>4. Listings and Seller Responsibilities</h2>
-          <p>Sellers are responsible for ensuring that information submitted to DirectOwner is accurate and lawful.</p>
-          <ul>
-            <li>Only the owner of a vehicle, or a person authorized to act for the owner, should submit a listing.</li>
-            <li>Sellers should provide accurate information about the vehicle, including condition, title status, location, and pricing.</li>
-            <li>Sellers should not submit misleading, fraudulent, or stolen vehicle information.</li>
-            <li>DirectOwner may review, reject, edit, or remove listings to improve quality, trust, or compliance.</li>
-          </ul>
-        </article>
-
-        <article class="policy-card">
-          <h2>5. Buyer Responsibilities</h2>
-          <p>Buyers are responsible for conducting their own due diligence before making a purchase decision.</p>
-          <ul>
-            <li>Buyers should inspect the vehicle and independently verify title, lien, VIN, service records, and condition before purchase.</li>
-            <li>Buyers should use safe meeting practices and secure payment methods.</li>
-            <li>Buyers should not rely solely on listing descriptions or marketplace content when evaluating a vehicle.</li>
-          </ul>
-        </article>
-
-        <article class="policy-card">
-          <h2>6. Trust &amp; Safety</h2>
-          <p>DirectOwner may use manual review, verification checks, moderation, and fraud screening to help improve marketplace safety. However, DirectOwner cannot guarantee that all users, listings, or communications are legitimate.</p>
-          <p>Users should remain cautious, verify documents independently, and report suspicious activity to <a href="mailto:support@getdirectowner.com">support@getdirectowner.com</a>.</p>
-        </article>
-
-        <article class="policy-card">
-          <h2>7. Financing and Third-Party Services</h2>
-          <p>DirectOwner may display or refer users to financing options or other third-party services. DirectOwner is not a lender and does not make lending decisions, set financing terms, or guarantee approval.</p>
-          <p>Any financing, insurance, inspection, or related service is provided by independent third parties under their own terms and policies.</p>
-        </article>
-
-        <article class="policy-card">
-          <h2>8. Prohibited Conduct</h2>
-          <p>Users may not:</p>
-          <ul>
-            <li>Use the marketplace for fraud, impersonation, theft, or unlawful activity.</li>
-            <li>Submit false, misleading, or deceptive listings or inquiries.</li>
-            <li>Attempt to interfere with website operation or security.</li>
-            <li>Use the platform to send spam, harassment, or abusive communications.</li>
-            <li>Copy, scrape, or reproduce marketplace content without permission.</li>
-          </ul>
-        </article>
-
-        <article class="policy-card">
-          <h2>9. No Warranty</h2>
-          <p>DirectOwner provides the website and marketplace on an “as is” and “as available” basis. DirectOwner makes no guarantees regarding listing accuracy, user conduct, transaction outcomes, financing availability, or uninterrupted website operation.</p>
-        </article>
-
-        <article class="policy-card">
-          <h2>10. Limitation of Liability</h2>
-          <p>To the fullest extent permitted by law, DirectOwner will not be liable for any direct, indirect, incidental, consequential, or special damages arising from use of the website, interactions between users, marketplace transactions, or third-party services.</p>
-        </article>
-
-        <article class="policy-card">
-          <h2>11. Changes to the Platform or Terms</h2>
-          <p>DirectOwner may update, suspend, or change parts of the website or these Terms of Service at any time. Continued use of the platform after changes are posted means the user accepts the updated terms.</p>
-        </article>
-
-        <article class="policy-card">
-          <h2>12. Contact</h2>
-          <p>Questions about these Terms of Service may be sent to <a href="mailto:support@getdirectowner.com">support@getdirectowner.com</a>.</p>
-        </article>
+        <article class="policy-card"><h2>1. Acceptance of Terms</h2><p>By accessing or using the DirectOwner website, users agree to these Terms of Service. Anyone who does not agree to these terms should not use the website or submit information through the platform.</p></article>
+        <article class="policy-card"><h2>2. Marketplace Role</h2><p>DirectOwner is a marketplace platform that connects private buyers and private sellers. DirectOwner does not own listed vehicles and does not act as a dealership, broker, escrow agent, or lender.</p><p>Transactions occur directly between buyers and sellers. DirectOwner may provide tools, listing review, communication guidance, trust and safety resources, and connections to third-party services, but DirectOwner is not a party to the transaction.</p></article>
+        <article class="policy-card"><h2>3. Eligibility</h2><p>The DirectOwner platform is intended for adults who are legally able to enter into binding agreements. The marketplace is not intended for minors.</p></article>
+        <article class="policy-card"><h2>4. Listings and Seller Responsibilities</h2><p>Sellers are responsible for ensuring that information submitted to DirectOwner is accurate and lawful.</p><ul><li>Only the owner of a vehicle, or a person authorized to act for the owner, should submit a listing.</li><li>Sellers should provide accurate information about the vehicle, including condition, title status, location, and pricing.</li><li>Sellers should not submit misleading, fraudulent, or stolen vehicle information.</li><li>DirectOwner may review, reject, edit, or remove listings to improve quality, trust, or compliance.</li></ul></article>
+        <article class="policy-card"><h2>5. Buyer Responsibilities</h2><p>Buyers are responsible for conducting their own due diligence before making a purchase decision.</p><ul><li>Buyers should inspect the vehicle and independently verify title, lien, VIN, service records, and condition before purchase.</li><li>Buyers should use safe meeting practices and secure payment methods.</li><li>Buyers should not rely solely on listing descriptions or marketplace content when evaluating a vehicle.</li></ul></article>
+        <article class="policy-card"><h2>6. Trust &amp; Safety</h2><p>DirectOwner may use manual review, verification checks, moderation, and fraud screening to help improve marketplace safety. However, DirectOwner cannot guarantee that all users, listings, or communications are legitimate.</p><p>Users should remain cautious, verify documents independently, and report suspicious activity to <a href="mailto:support@getdirectowner.com">support@getdirectowner.com</a>.</p></article>
+        <article class="policy-card"><h2>7. Financing and Third-Party Services</h2><p>DirectOwner may display or refer users to financing options or other third-party services. DirectOwner is not a lender and does not make lending decisions, set financing terms, or guarantee approval.</p><p>Any financing, insurance, inspection, or related service is provided by independent third parties under their own terms and policies.</p></article>
+        <article class="policy-card"><h2>8. Prohibited Conduct</h2><p>Users may not:</p><ul><li>Use the marketplace for fraud, impersonation, theft, or unlawful activity.</li><li>Submit false, misleading, or deceptive listings or inquiries.</li><li>Attempt to interfere with website operation or security.</li><li>Use the platform to send spam, harassment, or abusive communications.</li><li>Copy, scrape, or reproduce marketplace content without permission.</li></ul></article>
+        <article class="policy-card"><h2>9. No Warranty</h2><p>DirectOwner provides the website and marketplace on an “as is” and “as available” basis. DirectOwner makes no guarantees regarding listing accuracy, user conduct, transaction outcomes, financing availability, or uninterrupted website operation.</p></article>
+        <article class="policy-card"><h2>10. Limitation of Liability</h2><p>To the fullest extent permitted by law, DirectOwner will not be liable for any direct, indirect, incidental, consequential, or special damages arising from use of the website, interactions between users, marketplace transactions, or third-party services.</p></article>
+        <article class="policy-card"><h2>11. Changes to the Platform or Terms</h2><p>DirectOwner may update, suspend, or change parts of the website or these Terms of Service at any time. Continued use of the platform after changes are posted means the user accepts the updated terms.</p></article>
+        <article class="policy-card"><h2>12. Contact</h2><p>Questions about these Terms of Service may be sent to <a href="mailto:support@getdirectowner.com">support@getdirectowner.com</a>.</p></article>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-content">
-      <div>
-        <a class="site-logo" href="index.html">DirectOwner</a>
-        <p class="footer-disclaimer">DirectOwner is a marketplace connecting private buyers and sellers. We are not a dealer, broker, or lender. Financing is offered by third-party partners where available. Transactions occur directly between buyer and seller.</p>
-      </div>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="contact.html">Contact Us</a>
-      </div>
-      <p class="footer-copyright">© 2026 DirectOwner. All rights reserved.</p>
+      <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="contact.html">Contact Us</a></div>
+      <p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. Buyers and sellers should independently verify information, inspect vehicles, and complete appropriate documentation.</p>
+      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
     </div>
   </footer>
-
   <script src="script.js"></script>
 </body>
 </html>
