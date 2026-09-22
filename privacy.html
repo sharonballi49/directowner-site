@@ -2,318 +2,97 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Privacy Policy — DirectOwner</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Read the DirectOwner Privacy Policy to understand what information we collect, how we use it, and how we protect it." />
-
+  <title>Privacy Policy | DirectOwner</title>
+  <meta name="description" content="Read the DirectOwner Privacy Policy." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root{
-      --text:#111827;
-      --muted:#4b5563;
-      --line:#e5e7eb;
-      --bg:#ffffff;
-      --soft:#f9fafb;
-      --primary:#111827;
-      --primaryText:#ffffff;
-      --shadow: 0 10px 25px rgba(17,24,39,0.06);
-      --radius: 10px;
-    }
-    *{ box-sizing:border-box; }
-    body{
-      margin:0;
-      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.6;
-    }
-
-    header{
-      padding:18px 22px;
-      border-bottom:1px solid var(--line);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      position:sticky;
-      top:0;
-      background:rgba(255,255,255,0.92);
-      backdrop-filter:saturate(180%) blur(10px);
-      z-index:10;
-    }
-    header .brand{
-      font-weight:800;
-      text-decoration:none;
-      color:var(--text);
-      font-size:1.1rem;
-    }
-    nav{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
-    nav a{
-      text-decoration:none;
-      color:#374151;
-      font-weight:600;
-      font-size:0.95rem;
-      padding:8px 10px;
-      border-radius:8px;
-    }
-    nav a:hover{ background:var(--soft); }
-    .active{ background:var(--soft); color:var(--text); }
-
-    .wrap{
-      max-width:1100px;
-      margin:0 auto;
-      padding:26px 18px 70px;
-    }
-    .hero{
-      background:var(--soft);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:26px 18px;
-      box-shadow:var(--shadow);
-    }
-    .hero h1{
-      margin:0;
-      font-size:2.1rem;
-      line-height:1.2;
-    }
-    .hero p{
-      margin:10px 0 0;
-      color:var(--muted);
-      max-width:920px;
-      font-size:1.05rem;
-    }
-    .meta{
-      margin-top:12px;
-      color:var(--muted);
-      font-size:0.95rem;
-      font-weight:700;
-    }
-
-    .section{
-      margin-top:20px;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
-      box-shadow:var(--shadow);
-      overflow:hidden;
-    }
-    .sectionHeader{
-      padding:14px 16px;
-      background:var(--soft);
-      border-bottom:1px solid var(--line);
-      font-weight:900;
-    }
-    .sectionBody{
-      padding:16px;
-      color:var(--muted);
-    }
-    .sectionBody h3{
-      margin:0 0 8px;
-      color:var(--text);
-      font-size:1.05rem;
-    }
-    .sectionBody p{
-      margin:0 0 12px;
-    }
-    ul{
-      margin:10px 0 0;
-      padding-left:18px;
-    }
-    li{ margin:8px 0; }
-
-    .note{
-      margin-top:16px;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:14px;
-      background:var(--soft);
-      color:var(--muted);
-      font-size:0.95rem;
-    }
-    .note strong{ color:var(--text); }
-
-    footer{
-      margin-top:26px;
-      border-top:1px solid var(--line);
-      padding-top:16px;
-      color:var(--muted);
-      font-size:0.92rem;
-    }
-
-    @media (max-width: 980px){
-      header{ position:static; }
-    }
+    .policy-hero { background: var(--navy-950); color: #fff; padding: 64px 0; }
+    .policy-hero h1 { color: #fff; margin-bottom: 14px; }
+    .policy-hero p { color: #e8eef4; max-width: 760px; margin: 0; }
+    .policy-content { padding: 52px 0 72px; background: #f8fafc; }
+    .policy-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 28px; margin-bottom: 18px; box-shadow: var(--shadow); }
+    .policy-card h2 { color: var(--navy-950); font-size: 1.25rem; margin: 0 0 12px; }
+    .policy-card h3 { color: var(--navy-950); font-size: 1rem; margin: 22px 0 8px; }
+    .policy-card p, .policy-card li { color: var(--muted); line-height: 1.75; }
+    .policy-card p { margin: 0 0 12px; }
+    .policy-card ul { margin: 8px 0 0; padding-left: 22px; }
+    .policy-card li { margin: 8px 0; }
+    .policy-meta { margin-top: 18px; font-size: .9rem; font-weight: 700; color: #dbeafe; }
+    .policy-note { border-left: 4px solid var(--orange-500); background: #fff7ed; padding: 16px 18px; border-radius: 8px; margin-top: 24px; color: #7c2d12; }
+    @media (max-width: 700px) { .policy-card { padding: 22px; } .policy-hero { padding: 44px 0; } }
   </style>
 </head>
-
 <body>
-  <header>
-    <a class="brand" href="index.html">DirectOwner</a>
-    <nav>
-      browse.htmlBrowse</a>
-      <a href="sell.html">Sell</a>
-      <a href="financing.html">Financing</a>
-      how-it-works.htmlHow It Works</a>
-      <a href="trust.html">Trust &amp; Safety</a>
-      <a href="contact.html">Contact</a>
-      <a class="active" href="privacy.html">Privacy</a>
-    </nav>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="site-logo">DirectOwner</a>
+      <nav class="site-nav">
+        <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <ul class="nav-links">
+          <li><a href="browse.html">Browse Vehicles</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="trust.html">Trust &amp; Safety</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="auth.html">Sign In</a></li>
+          <li><a href="dashboard.html">My Listings</a></li>
+          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main class="wrap">
-    <section class="hero">
-      <h1>Privacy Policy</h1>
-      <p>
-        This Privacy Policy explains how DirectOwner collects, uses, stores, and protects information when people visit the website,
-        submit listings, contact support, or otherwise use the marketplace.
-      </p>
-      <div class="meta">Last updated: May 26, 2026</div>
-      <div class="note">
-        <strong>Phase 1 note:</strong> DirectOwner is an early-stage marketplace. We collect only the information needed to operate the site,
-        review listings, respond to support requests, and improve trust and safety.
+  <main>
+    <section class="policy-hero">
+      <div class="container">
+        <h1 class="page-title">Privacy Policy</h1>
+        <p>Learn how DirectOwner collects, uses, stores, and protects information when you use our marketplace.</p>
+        <div class="policy-meta">Last updated: September 22, 2026</div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="sectionHeader">1. Information We Collect</div>
-      <div class="sectionBody">
-        <h3>Information people provide directly</h3>
-        <ul>
-          <li>Name, email address, phone number, and contact details provided through forms or support requests</li>
-          <li>Vehicle or RV listing information, such as make, model, year, mileage, location, price, and photos</li>
-          <li>Information submitted for verification or fraud prevention, where applicable</li>
-          <li>Messages or inquiries sent to DirectOwner support</li>
-        </ul>
+    <section class="policy-content">
+      <div class="container" style="max-width: 900px;">
+        <div class="policy-note"><strong>Early-stage marketplace:</strong> DirectOwner is continuing to develop its marketplace features. We aim to collect and use information needed to operate the site, manage listings, respond to support requests, and improve trust and safety.</div>
 
-        <h3>Information collected automatically</h3>
-        <ul>
-          <li>Basic technical data such as browser type, device type, IP address, and pages visited</li>
-          <li>Usage information that helps improve the website experience and understand site traffic</li>
-        </ul>
+        <section class="policy-card"><h2>1. Information We Collect</h2><h3>Information you provide</h3><ul><li>Name, email address, phone number, and other contact details submitted through forms or support requests.</li><li>Vehicle or RV listing details, including make, model, year, mileage, location, price, descriptions, and photos.</li><li>Account information used to sign in and manage listings.</li><li>Messages, inquiries, or other communications sent to DirectOwner.</li></ul><h3>Information collected automatically</h3><ul><li>Basic technical information such as browser type, device type, IP address, and pages visited.</li><li>Usage information used to maintain and improve the website.</li></ul></section>
+
+        <section class="policy-card"><h2>2. How We Use Information</h2><p>DirectOwner may use information to:</p><ul><li>Create and manage user accounts and vehicle listings.</li><li>Review, publish, and maintain marketplace listings.</li><li>Respond to support requests and inquiries.</li><li>Improve trust and safety, including investigating suspected fraud or abuse.</li><li>Operate, maintain, secure, and improve the website.</li><li>Send important service-related communications.</li></ul></section>
+
+        <section class="policy-card"><h2>3. How We Share Information</h2><p>DirectOwner does not sell personal information. Information may be shared in limited circumstances:</p><ul><li>When needed to provide a marketplace service requested by you.</li><li>With service providers that support hosting, authentication, storage, email, payments, or other website operations.</li><li>To investigate fraud, abuse, security incidents, or safety concerns.</li><li>When required by law, regulation, legal process, or a valid governmental request.</li></ul></section>
+
+        <section class="policy-card"><h2>4. Listings and Public Information</h2><p>Information included in an active marketplace listing may become publicly visible, including vehicle details, pricing, general location, descriptions, and images.</p><p>Do not include sensitive personal information, financial information, passwords, or documents containing personal identifiers in public listing descriptions or uploaded photos.</p></section>
+
+        <section class="policy-card"><h2>5. Cookies and Analytics</h2><p>DirectOwner may use cookies, analytics tools, or similar technologies to understand website performance, remember preferences, improve usability, and understand site traffic. Third-party services may collect information under their own privacy practices.</p></section>
+
+        <section class="policy-card"><h2>6. Data Security</h2><p>DirectOwner takes reasonable steps to protect information against unauthorized access, misuse, or disclosure. No website, email system, database, or online service can guarantee absolute security.</p></section>
+
+        <section class="policy-card"><h2>7. Data Retention</h2><p>Information may be retained as long as reasonably necessary to operate the marketplace, manage accounts and listings, provide support, prevent fraud, comply with legal obligations, or resolve disputes.</p></section>
+
+        <section class="policy-card"><h2>8. Third-Party Services</h2><p>The website may use third-party services for hosting, authentication, database and file storage, email, analytics, payment processing, financing-related referrals, or other operational needs. Those providers may have separate privacy policies and terms.</p></section>
+
+        <section class="policy-card"><h2>9. Children's Privacy</h2><p>DirectOwner is intended for a general adult audience and is not directed to children. The marketplace is not intended for use by minors.</p></section>
+
+        <section class="policy-card"><h2>10. Your Choices and Requests</h2><p>You may contact DirectOwner with questions about your information, account, or listings. We may need to verify your identity before completing certain requests, and some information may need to be retained for legal, security, or operational reasons.</p></section>
+
+        <section class="policy-card"><h2>11. Updates to This Policy</h2><p>We may update this Privacy Policy as the marketplace develops or our practices change. Updates will be posted on this page with a revised “Last updated” date.</p></section>
+
+        <section class="policy-card"><h2>12. Contact</h2><p>Questions about this Privacy Policy can be sent through our <a href="contact.html">Contact page</a>.</p><p>You may also email <a href="mailto:info@periwisehealth.com">info@periwisehealth.com</a>.</p></section>
       </div>
     </section>
-
-    <section class="section">
-      <div class="sectionHeader">2. How We Use Information</div>
-      <div class="sectionBody">
-        <p>DirectOwner may use collected information to:</p>
-        <ul>
-          <li>Review, publish, and manage owner listings</li>
-          <li>Respond to support requests and general inquiries</li>
-          <li>Improve trust and safety measures, including fraud screening and issue investigation</li>
-          <li>Operate, maintain, and improve the website and marketplace experience</li>
-          <li>Communicate important updates about listings, services, and marketplace activity</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="sectionHeader">3. How We Share Information</div>
-      <div class="sectionBody">
-        <p>DirectOwner does not sell personal information. Information may be shared only in limited situations, such as:</p>
-        <ul>
-          <li>When necessary to provide the marketplace service requested by a user</li>
-          <li>With service providers that help operate the website, forms, hosting, or email tools</li>
-          <li>To investigate fraud, abuse, or safety concerns</li>
-          <li>When required by law, regulation, or legal process</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="sectionHeader">4. Listings, Verification, and Public Information</div>
-      <div class="sectionBody">
-        <p>
-          Information submitted for listings may become publicly visible on the marketplace, including listing descriptions, vehicle details,
-          pricing, general location, and images. DirectOwner may also collect verification-related information to reduce fraud and improve trust.
-        </p>
-        <p>
-          People should not submit sensitive personal information in public listing descriptions or uploaded media unless specifically requested
-          for verification purposes.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="sectionHeader">5. Cookies and Analytics</div>
-      <div class="sectionBody">
-        <p>
-          DirectOwner may use cookies, analytics tools, or similar technologies to understand website performance, remember preferences,
-          and improve the user experience. These tools may collect technical or usage-related data.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="sectionHeader">6. Data Security</div>
-      <div class="sectionBody">
-        <p>
-          DirectOwner takes reasonable steps to protect information against unauthorized access, misuse, or disclosure. However, no website,
-          form, email system, or online service can guarantee absolute security.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="sectionHeader">7. Data Retention</div>
-      <div class="sectionBody">
-        <p>
-          DirectOwner may retain information for as long as necessary to operate the marketplace, review listings, respond to support requests,
-          prevent fraud, comply with legal obligations, or resolve disputes.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="sectionHeader">8. Third-Party Services</div>
-      <div class="sectionBody">
-        <p>
-          The website may use third-party services for hosting, forms, email, analytics, financing-related referrals, or other operational tools.
-          Those services may have their own privacy practices and terms.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="sectionHeader">9. Children’s Privacy</div>
-      <div class="sectionBody">
-        <p>
-          DirectOwner is intended for a general adult audience and is not directed to children. The marketplace is not intended for use by minors.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="sectionHeader">10. Updates to This Policy</div>
-      <div class="sectionBody">
-        <p>
-          DirectOwner may update this Privacy Policy from time to time. Updates will be posted on this page with a revised “Last updated” date.
-        </p>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="sectionHeader">11. Contact</div>
-      <div class="sectionBody">
-        <p>
-          Questions about this Privacy Policy may be sent to:
-          support@getdirectowner.comsupport@getdirectowner.com</a>
-        </p>
-      </div>
-    </section>
-
-    <footer>
-      <p>
-        <strong>Disclaimer:</strong> DirectOwner is a marketplace connecting private buyers and sellers.
-        We are not a dealer, broker, or lender. Financing is offered by third-party partners where available.
-        Transactions occur directly between buyer and seller.
-      </p>
-    </footer>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="contact.html">Contact Us</a></div>
+      <p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. Buyers and sellers should independently verify information, inspect vehicles, and complete appropriate documentation.</p>
+      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
