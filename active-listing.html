@@ -4,20 +4,159 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vehicle Details | DirectOwner</title>
+  <meta name="description" content="View vehicle details, photos, pricing, and buyer information for an active DirectOwner listing." />
   <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
-    .detail-wrap{padding:56px 0;background:#f8fafc;min-height:68vh}.detail-card{max-width:850px;margin:auto;background:#fff;border:1px solid var(--border);border-radius:16px;padding:32px;box-shadow:var(--shadow)}.detail-card h1{color:var(--navy-950)}.detail-price{font-size:2rem;font-weight:700;color:var(--navy-950)}.detail-meta{color:var(--muted);line-height:1.8}.detail-description{white-space:pre-wrap;line-height:1.7}.detail-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}.detail-photo{width:100%;height:220px;object-fit:cover;border-radius:10px;background:#e8eef4;border:1px solid var(--border)}.detail-message{padding:16px;border-radius:10px;background:#eff6ff;color:#1e3a8a}.detail-message.error{background:#fef2f2;color:#991b1b}
-  @media(max-width:700px){.detail-photos{grid-template-columns:1fr 1fr}.detail-photo{height:170px}}@media(max-width:480px){.detail-photos{grid-template-columns:1fr}}\n  </style>
+    .detail-wrap{padding:48px 0 72px;background:#f8fafc;min-height:68vh}
+    .detail-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(280px,.75fr);gap:24px;align-items:start}
+    .detail-card,.buyer-card{background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
+    .detail-card{padding:28px}
+    .buyer-card{padding:24px;position:sticky;top:20px}
+    .detail-card h1{color:var(--navy-950);margin:0 0 8px;font-size:clamp(2rem,4vw,3rem)}
+    .detail-kicker{color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:.8rem;margin:0 0 8px}
+    .detail-price{font-size:2rem;font-weight:700;color:var(--navy-950);margin:0}
+    .detail-subtitle{color:var(--muted);margin:8px 0 0;line-height:1.6}
+    .detail-photos{margin:24px 0}
+    .detail-main-photo{width:100%;height:min(52vw,460px);min-height:280px;object-fit:cover;border-radius:12px;background:#e8eef4;border:1px solid var(--border);display:block}
+    .detail-thumbs{display:flex;gap:10px;overflow-x:auto;padding:10px 2px 2px}
+    .detail-thumb{flex:0 0 82px;width:82px;height:64px;object-fit:cover;border-radius:8px;border:2px solid transparent;background:#e8eef4;cursor:pointer}
+    .detail-thumb.active{border-color:var(--orange)}
+    .detail-details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:24px 0}
+    .detail-detail{padding:14px;background:#f8fafc;border:1px solid var(--border);border-radius:10px}
+    .detail-detail span{display:block;color:var(--muted);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+    .detail-detail strong{color:var(--navy-950)}
+    .detail-description{white-space:pre-wrap;line-height:1.75;color:var(--text)}
+    .buyer-card h2{color:var(--navy-950);font-size:1.3rem;margin:0 0 10px}
+    .buyer-card p{color:var(--muted);line-height:1.65}
+    .buyer-actions{display:grid;gap:10px;margin:18px 0}
+    .buyer-actions .btn{width:100%;text-align:center}
+    .buyer-note{background:#eff6ff;color:#1e3a8a;border-radius:10px;padding:14px;font-size:.9rem;line-height:1.6}
+    .safety-panel{margin-top:22px;border-left:4px solid var(--orange);background:#fff7ed;border-radius:10px;padding:16px 18px;color:#7c2d12}
+    .safety-panel strong{display:block;margin-bottom:5px}
+    .detail-message{padding:16px;border-radius:10px;background:#eff6ff;color:#1e3a8a;margin-bottom:20px}
+    .detail-message.error{background:#fef2f2;color:#991b1b}
+    .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--navy-900);font-weight:700;text-decoration:none;margin-bottom:18px}
+    .back-link:hover{text-decoration:underline}
+    @media(max-width:850px){.detail-layout{grid-template-columns:1fr}.buyer-card{position:static}.detail-main-photo{height:55vw}.detail-details{grid-template-columns:1fr 1fr}}
+    @media(max-width:520px){.detail-card,.buyer-card{padding:20px}.detail-main-photo{height:65vw;min-height:220px}.detail-details{grid-template-columns:1fr}.detail-thumb{flex-basis:72px;width:72px;height:56px}}
+  </style>
 </head>
 <body>
-  <header class="site-header"><div class="container header-content"><a href="index.html" class="site-logo">DirectOwner</a><nav class="site-nav"><ul class="nav-links"><li><a href="browse.html">Browse Vehicles</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="trust.html">Trust &amp; Safety</a></li><li><a href="financing.html">Financing</a></li><li><a href="contact.html">Contact</a></li><li><a href="dashboard.html">My Listings</a></li><li><a href="sell.html" class="btn btn-secondary">List Your Vehicle</a></li></ul></nav></div></header>
-  <main><section class="detail-wrap"><div class="container"><div id="message" class="detail-message">Loading active listing...</div><article id="card" class="detail-card" hidden></article></div></section></main>
-  <footer class="site-footer"><div class="container footer-content"><div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="contact.html">Contact Us</a></div><p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p></div></footer>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script>
+  <header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="site-logo">DirectOwner</a>
+      <nav class="site-nav">
+        <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <ul class="nav-links">
+          <li><a href="browse.html">Browse Vehicles</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="trust.html">Trust &amp; Safety</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="auth.html">Sign In</a></li>
+          <li><a href="dashboard.html">My Listings</a></li>
+          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="detail-wrap">
+      <div class="container">
+        <div id="message" class="detail-message">Loading active listing...</div>
+        <div id="layout" class="detail-layout" hidden>
+          <article id="card" class="detail-card"></article>
+          <aside class="buyer-card">
+            <h2>Interested in this vehicle?</h2>
+            <p>Review the listing carefully, then reach out with questions before making any purchase decision.</p>
+            <div class="buyer-actions">
+              <a id="ask-link" class="btn btn-primary" href="#">Ask About This Vehicle</a>
+              <a class="btn btn-secondary" href="browse.html">Browse More Vehicles</a>
+            </div>
+            <div class="buyer-note"><strong>DirectOwner connects you directly.</strong> Verify the vehicle, title, ownership, condition, and transaction details independently before paying or signing anything.</div>
+            <div class="safety-panel"><strong>Meet safely.</strong> Use a public, busy location or designated safe exchange zone, preferably during daylight. See our <a href="trust.html">Trust &amp; Safety guidance</a>.</div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a><a href="contact.html">Contact Us</a></div>
+      <p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. Buyers and sellers should independently verify information, inspect vehicles, and complete appropriate documentation.</p>
+      <p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
   <script>
-    const client=window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL,window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY);const message=document.getElementById('message');const card=document.getElementById('card');const id=new URLSearchParams(location.search).get('id');
+    const client=window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL,window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY);
+    const message=document.getElementById('message'),layout=document.getElementById('layout'),card=document.getElementById('card'),askLink=document.getElementById('ask-link');
+    const id=new URLSearchParams(location.search).get('id');
     const money=c=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format((c||0)/100);
-    async function load(){if(!id){message.textContent='This listing link is missing an ID.';message.classList.add('error');return}const {data,error}=await client.from('listings').select('title,description,vehicle_type,year,make,model,price_cents,created_at,status,photo_paths').eq('id',id).eq('status','active').maybeSingle();if(error||!data){message.textContent='This listing is unavailable or no longer active.';message.classList.add('error');return}card.innerHTML=`<h1></h1><div class="detail-photos" id="detail-photos"></div><p class="detail-price"></p><p class="detail-meta"></p><h2>Description</h2><p class="detail-description"></p><a class="btn btn-primary" href="browse.html">Back to Browse Vehicles</a>`;card.querySelector('h1').textContent=data.title;const photoWrap=card.querySelector('#detail-photos');(Array.isArray(data.photo_paths)?data.photo_paths:[]).forEach((path,index)=>{const img=document.createElement('img');img.className='detail-photo';img.src=client.storage.from('vehicle-photos').getPublicUrl(path).data.publicUrl;img.alt=`${data.title} vehicle photo ${index+1}`;photoWrap.appendChild(img)});if(!photoWrap.children.length)photoWrap.hidden=true;card.querySelector('.detail-price').textContent=money(data.price_cents);card.querySelector('.detail-meta').textContent=`${data.year} ${data.make} ${data.model} • ${data.vehicle_type} • Listed ${new Date(data.created_at).toLocaleDateString('en-US')}`;card.querySelector('.detail-description').textContent=data.description||'No description provided.';card.hidden=false;message.hidden=true}
+    function escapeText(value){return String(value??'');}
+    async function load(){
+      if(!id){message.textContent='This listing link is missing an ID.';message.classList.add('error');return}
+      const {data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,created_at,status,photo_paths').eq('id',id).eq('status','active').maybeSingle();
+      if(error||!data){message.textContent='This listing is unavailable or no longer active.';message.classList.add('error');return}
+
+      card.innerHTML=`
+        <a class="back-link" href="browse.html">← Back to Browse Vehicles</a>
+        <p class="detail-kicker">${escapeText(data.vehicle_type)} • Active owner listing</p>
+        <h1>${escapeText(data.title)}</h1>
+        <p class="detail-price">${money(data.price_cents)}</p>
+        <p class="detail-subtitle">Listed ${new Date(data.created_at).toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}</p>
+        <div class="detail-photos">
+          <img id="main-photo" class="detail-main-photo" alt="" hidden>
+          <div id="detail-thumbs" class="detail-thumbs"></div>
+        </div>
+        <div class="detail-details">
+          <div class="detail-detail"><span>Year</span><strong>${escapeText(data.year)}</strong></div>
+          <div class="detail-detail"><span>Make</span><strong>${escapeText(data.make)}</strong></div>
+          <div class="detail-detail"><span>Model</span><strong>${escapeText(data.model)}</strong></div>
+          <div class="detail-detail"><span>Vehicle Type</span><strong>${escapeText(data.vehicle_type)}</strong></div>
+          <div class="detail-detail"><span>Price</span><strong>${money(data.price_cents)}</strong></div>
+          <div class="detail-detail"><span>Status</span><strong>Active</strong></div>
+        </div>
+        <h2>Description</h2>
+        <p class="detail-description"></p>
+      `;
+
+      card.querySelector('.detail-description').textContent=data.description||'No description provided.';
+      const photoWrap=card.querySelector('#detail-thumbs'),mainPhoto=card.querySelector('#main-photo');
+      const paths=Array.isArray(data.photo_paths)?data.photo_paths:[];
+      const urls=paths.map(path=>client.storage.from('vehicle-photos').getPublicUrl(path).data.publicUrl).filter(Boolean);
+
+      function setMain(index){
+        if(!urls.length){mainPhoto.hidden=true;return}
+        mainPhoto.src=urls[index];mainPhoto.alt=`${data.title} vehicle photo ${index+1}`;mainPhoto.hidden=false;
+        [...photoWrap.children].forEach((thumb,i)=>thumb.classList.toggle('active',i===index));
+      }
+      urls.forEach((url,index)=>{
+        const thumb=document.createElement('img');thumb.className='detail-thumb';thumb.src=url;thumb.alt=`${data.title} thumbnail ${index+1}`;thumb.addEventListener('click',()=>setMain(index));photoWrap.appendChild(thumb);
+      });
+      if(urls.length){setMain(0)}else{photoWrap.innerHTML='<div class="buyer-note" style="width:100%">No photos have been added to this listing yet.</div>'}
+
+      const subject=encodeURIComponent(`Question about DirectOwner listing: ${data.title}`);
+      const body=encodeURIComponent(`Hello DirectOwner Support,
+
+I am interested in this vehicle listing:
+${data.title}
+Listing ID: ${data.id}
+
+I would like more information about this vehicle.
+
+Thank you.`);
+      askLink.href=`mailto:support@getdirectowner.com?subject=${subject}&body=${body}`;
+
+      layout.hidden=false;message.hidden=true;
+    }
     load().catch(()=>{message.textContent='We could not load this listing right now.';message.classList.add('error')});
   </script>
 </body>
