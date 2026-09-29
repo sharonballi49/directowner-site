@@ -69,7 +69,7 @@ function render(){
     const type=document.createElement('span');type.className='public-listing-type';type.textContent=item.vehicle_type;
     const title=document.createElement('h2');title.textContent=item.title;
     const price=document.createElement('p');price.className='public-listing-price';price.textContent=money(item.price_cents);
-    const meta=document.createElement('p');meta.className='public-listing-meta';meta.textContent=`${item.year} ${item.make} ${item.model}`;
+    const meta=document.createElement('p');meta.className='public-listing-meta';meta.textContent=`${item.year} ${item.make} ${item.model} • ${item.mileage == null ? 'Mileage not provided' : Number(item.mileage).toLocaleString('en-US') + ' miles'}${item.seller_location ? ' • ' + item.seller_location : ''}`;
     const photos=document.createElement('span');photos.className='photo-count';photos.textContent=`${Array.isArray(item.photo_paths)?item.photo_paths.length:0} photo${Array.isArray(item.photo_paths)&&item.photo_paths.length===1?'':'s'}`;
     const description=document.createElement('p');description.className='public-listing-meta';const desc=item.description||'';description.textContent=desc.length>150?`${desc.slice(0,150)}…`:desc;
     const link=document.createElement('a');link.className='btn btn-primary';link.href=`active-listing.html?id=${encodeURIComponent(item.id)}`;link.textContent='View Details';
@@ -79,6 +79,6 @@ function render(){
 [typeFilter,priceFilter,searchFilter,sortFilter].forEach(input=>input.addEventListener('input',render));
 clearButton.addEventListener('click',()=>{typeFilter.value='';priceFilter.value='';searchFilter.value='';sortFilter.value='newest';render()});
 document.getElementById('browse-filters').addEventListener('submit',e=>e.preventDefault());
-async function load(){const{data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,created_at,photo_paths').eq('status','active').order('created_at',{ascending:false});if(error){show(error.message||'We could not load active listings.',true);return}listings=data||[];render()}
+async function load(){const{data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,mileage,seller_location,created_at,photo_paths').eq('status','active').order('created_at',{ascending:false});if(error){show(error.message||'We could not load active listings.',true);return}listings=data||[];render()}
 load().catch(e=>show(e.message||'We could not load active listings.',true));
 </script></body></html>
