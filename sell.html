@@ -33,7 +33,7 @@
     .sell-field{display:flex;flex-direction:column;gap:7px}
     .sell-field.full{grid-column:1/-1}
     .sell-field label{font-weight:700;color:var(--navy-950)}
-    .sell-field input,.sell-field textarea{width:100%;padding:13px 14px;border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text);box-sizing:border-box}
+    .sell-field input,.sell-field select,.sell-field textarea{width:100%;padding:13px 14px;border:1px solid var(--border);border-radius:9px;background:#fff;color:var(--text);box-sizing:border-box}
     .sell-field textarea{min-height:130px;resize:vertical}
     .photo-box{margin-top:14px;padding:22px;border:2px dashed #b8c7d9;border-radius:12px;background:#f8fafc;text-align:center}
     .photo-box input{max-width:100%;margin-top:12px}
@@ -107,6 +107,7 @@
           <h2>Vehicle information</h2>
           <p class="sell-help">Complete the details below so buyers can understand your vehicle.</p>
           <div class="sell-grid">
+            <div class="sell-field"><label for="vehicle_type">Vehicle type *</label><select id="vehicle_type" name="vehicle_type" required><option value="car">Car</option><option value="rv">RV</option><option value="truck">Truck</option><option value="van">Van</option><option value="other">Other</option></select></div>
             <div class="sell-field"><label for="year">Year *</label><input id="year" name="year" type="number" min="1886" max="2100" placeholder="e.g. 2018" required /></div>
             <div class="sell-field"><label for="make">Make *</label><input id="make" name="make" type="text" placeholder="e.g. Ford" required /></div>
             <div class="sell-field"><label for="model">Model *</label><input id="model" name="model" type="text" placeholder="e.g. F-150" required /></div>
