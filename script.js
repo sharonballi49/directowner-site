@@ -75,6 +75,7 @@
           const sellerName = value('sellerName');
           const location = value('location');
           const mileage = value('mileage');
+          const vehicleType = value('vehicle_type') || 'car';
 
           if (!year || !make || !model || !price || !sellerName || !location) {
             throw new Error('Please complete all required vehicle and contact fields.');
@@ -84,12 +85,7 @@
           }
 
           const title = `${year} ${make} ${model}`.slice(0, 160);
-          const detailDescription = [
-            description,
-            mileage ? `Mileage: ${mileage}` : '',
-            `Seller location: ${location}`,
-            `Seller name: ${sellerName}`
-          ].filter(Boolean).join('\n\n');
+          const detailDescription = [description, `Seller name: ${sellerName}`].filter(Boolean).join('\n\n');
 
           const files = selectedFilesForUpload;
           const photoPaths = [];
@@ -111,7 +107,9 @@
             owner_id: user.id,
             title,
             description: detailDescription,
-            vehicle_type: 'other',
+            vehicle_type: vehicleType,
+            mileage: mileage ? Number(mileage) : null,
+            seller_location: location,
             year,
             make,
             model,
@@ -128,7 +126,7 @@
             throw listingError;
           }
 
-          setStatus(`Listing saved as a draft. Your listing ID is ${listing.id}. Payment and publishing will be added next.`);
+          setStatus(`Listing saved as a draft. Your listing ID is ${listing.id}.`);
           form.reset();
           selectedFilesForUpload = [];
           const previews = document.getElementById('previews');
