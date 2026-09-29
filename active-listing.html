@@ -103,7 +103,7 @@
     function escapeText(value){return String(value??'');}
     async function load(){
       if(!id){message.textContent='This listing link is missing an ID.';message.classList.add('error');return}
-      const {data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,created_at,status,photo_paths').eq('id',id).eq('status','active').maybeSingle();
+      const {data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,mileage,seller_location,created_at,status,photo_paths').eq('id',id).eq('status','active').maybeSingle();
       if(error||!data){message.textContent='This listing is unavailable or no longer active.';message.classList.add('error');return}
 
       card.innerHTML=`
@@ -121,6 +121,8 @@
           <div class="detail-detail"><span>Make</span><strong>${escapeText(data.make)}</strong></div>
           <div class="detail-detail"><span>Model</span><strong>${escapeText(data.model)}</strong></div>
           <div class="detail-detail"><span>Vehicle Type</span><strong>${escapeText(data.vehicle_type)}</strong></div>
+          <div class="detail-detail"><span>Mileage</span><strong>${data.mileage == null ? 'Not provided' : `${Number(data.mileage).toLocaleString('en-US')} miles`}</strong></div>
+          <div class="detail-detail"><span>Location</span><strong>${escapeText(data.seller_location || 'Not provided')}</strong></div>
           <div class="detail-detail"><span>Price</span><strong>${money(data.price_cents)}</strong></div>
           <div class="detail-detail"><span>Status</span><strong>Active</strong></div>
         </div>
