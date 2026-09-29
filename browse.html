@@ -49,7 +49,7 @@
 const client=window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL,window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY),message=document.getElementById('browse-message'),results=document.getElementById('public-listings'),count=document.getElementById('result-count'),typeFilter=document.getElementById('filter-type'),priceFilter=document.getElementById('filter-price'),searchFilter=document.getElementById('filter-search'),sortFilter=document.getElementById('filter-sort'),clearButton=document.getElementById('clear-filters');let listings=[];
 const money=c=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format((c||0)/100);
 function show(text,error=false){message.textContent=text;message.className='browse-message'+(error?' error':'')}
-function matches(item){const search=searchFilter.value.trim().toLowerCase(),hay=`${item.title} ${item.make} ${item.model} ${item.description}`.toLowerCase();return(!typeFilter.value||item.vehicle_type===typeFilter.value)&&item.price_cents>=Number(priceFilter.value||0)&&(!search||hay.includes(search))}
+function matches(item){const search=searchFilter.value.trim().toLowerCase(),hay=`${item.title} ${item.make} ${item.model} ${item.description} ${item.seller_location||''}`.toLowerCase();return(!typeFilter.value||item.vehicle_type===typeFilter.value)&&item.price_cents>=Number(priceFilter.value||0)&&(!search||hay.includes(search))}
 function render(){
   let visible=listings.filter(matches);
   if(sortFilter.value==='price-low')visible.sort((a,b)=>a.price_cents-b.price_cents);
