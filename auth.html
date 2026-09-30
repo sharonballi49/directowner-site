@@ -93,6 +93,10 @@
     const password = document.getElementById('password');
     const message = document.getElementById('auth-message');
     let mode = 'signup';
+    const authParams = new URLSearchParams(location.search);
+    const next = authParams.get('next') || 'dashboard.html';
+    const nextUrl = new URL(next, location.href);
+    const safeNext = nextUrl.origin === location.origin && ['/dashboard.html','/review.html','/report-listing.html'].includes(nextUrl.pathname) ? nextUrl.pathname + nextUrl.search : 'dashboard.html';
 
     function showMessage(text, isError = false) {
       message.textContent = text;
@@ -112,6 +116,7 @@
       message.style.display = 'none';
     }
 
+    if (authParams.get('mode') === 'login') setMode('login');
     signupTab.addEventListener('click', () => setMode('signup'));
     loginTab.addEventListener('click', () => setMode('login'));
 
@@ -133,7 +138,7 @@
           showMessage('Account created. Check your email for a confirmation link before logging in.');
         } else {
           showMessage('You are signed in. Redirecting to your listings...');
-          window.location.href = 'dashboard.html';
+          window.location.href = safeNext;
         }
       } catch (error) {
         showMessage(error.message || 'Something went wrong. Please try again.', true);

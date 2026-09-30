@@ -78,7 +78,7 @@
               <a class="btn btn-secondary" href="browse.html">Browse More Vehicles</a>
               <a id="report-link" class="btn btn-secondary" href="contact.html">Report This Listing</a>
             </div>
-            <p class="buyer-note"><strong>Seller-provided information.</strong> This listing does not carry an identity, ownership, or inspection verification badge.</p>
+            <p class="buyer-note"><strong>Content review completed. Seller-provided information.</strong> This listing does not carry an identity, ownership, or inspection verification badge.</p>
             <div class="buyer-note"><strong>Our support team coordinates introductions.</strong> Verify the vehicle, title, ownership, condition, and transaction details independently before paying or signing anything.</div>
             <div class="safety-panel"><strong>Meet safely.</strong> Use a public, busy location or designated safe exchange zone, preferably during daylight. See our <a href="trust.html">Trust &amp; Safety guidance</a>.</div>
           </aside>
@@ -110,8 +110,8 @@
     function escapeText(value){return String(value??'').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));}
     async function load(){
       if(!id || window.DirectOwnerInventory.isTestId(id)){message.textContent='This listing is not available for sale. Browse current listings using the navigation above.';return}
-      const {data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,mileage,seller_location,created_at,status,photo_paths').eq('id',id).eq('status','active').maybeSingle();
-      if(error||!data){message.textContent='This listing is unavailable or no longer active.';message.classList.add('error');return}
+      const {data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,mileage,seller_location,created_at,status,moderation_status,is_test,photo_paths').eq('id',id).eq('status','active').eq('moderation_status','approved').maybeSingle();
+      if(error||!data||!window.DirectOwnerInventory.isPublic(data)){message.textContent='This listing is unavailable or no longer active.';message.classList.add('error');return}
 
       card.innerHTML=`
         <a class="back-link" href="browse.html">← Back to Browse Vehicles</a>
@@ -163,9 +163,7 @@ Please help me connect with the owner of this vehicle.
 
 Thank you.`);
       askLink.href=`mailto:support@getdirectowner.com?subject=${subject}&body=${body}`;
-      const reportSubject=encodeURIComponent(`Report listing: ${data.title}`);
-      const reportBody=encodeURIComponent(`Hello DirectOwner Support,\n\nI would like to report listing ${data.id}: ${data.title}.\n\nReason for this report:\n\nPlease do not include identity documents, payment details, or other sensitive information.`);
-      document.getElementById('report-link').href=`mailto:support@getdirectowner.com?subject=${reportSubject}&body=${reportBody}`;
+      document.getElementById('report-link').href=`report-listing.html?id=${encodeURIComponent(data.id)}`;
 
       layout.hidden=false;message.hidden=true;
     }

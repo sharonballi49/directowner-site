@@ -68,15 +68,15 @@
       <div class="container">
         <div class="plans-card">
           <h2>Plans for your vehicle</h2>
-          <p class="plans-help">Free listings can be activated immediately. Paid plans open Stripe Checkout when the payment service is configured. DirectOwner does not guarantee inquiries, sales, or transaction outcomes.</p>
+          <p class="plans-help">All listings need content review before buyers can see them. Free submissions enter review; paid submissions enter review after payment. Payment does not guarantee approval. If a paid listing is rejected, contact support about your payment. DirectOwner does not guarantee inquiries, sales, or transaction outcomes.</p>
 
           <div class="plans-grid">
             <article class="plan-option">
               <h3>Free</h3>
               <div class="plan-price">$0 <small>forever</small></div>
-              <p>Activate your listing without an upfront fee.</p>
+              <p>Submit your listing for review without an upfront fee.</p>
               <ul><li>Basic vehicle listing</li><li>Vehicle details and photos</li><li>Owner-managed listing</li></ul>
-              <button class="btn btn-secondary plan-button" data-plan="free">Activate Free</button>
+              <button class="btn btn-secondary plan-button" data-plan="free">Submit Free for Review</button>
             </article>
 
             <article class="plan-option featured">
@@ -153,7 +153,7 @@
         const { data, error } = await client.functions.invoke('create-checkout-session', { body: { listingId, plan } });
         if (error) throw new Error(error.message || 'The listing service could not be reached.');
         if (plan === 'free' && data?.free === true) {
-          showMessage('Your free listing is active. Redirecting to My Listings...');
+          showMessage('Your free listing has been submitted for review. Redirecting to My Listings...');
           location.href = 'dashboard.html';
           return;
         }
