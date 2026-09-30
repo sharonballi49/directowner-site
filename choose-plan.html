@@ -149,16 +149,14 @@
       buttons.forEach(item => item.disabled = true);
       showMessage('Preparing your selected plan...');
       try {
-        const user = await getCurrentUser();
-        if (plan === 'free') {
-          const { error } = await client.from('listings').update({ plan: 'free', status: 'active' }).eq('id', listingId).eq('owner_id', user.id);
-          if (error) throw new Error(error.message || 'Unable to activate the free listing.');
+        await getCurrentUser();
+        const { data, error } = await client.functions.invoke('create-checkout-session', { body: { listingId, plan } });
+        if (error) throw new Error(error.message || 'The listing service could not be reached.');
+        if (plan === 'free' && data?.free === true) {
           showMessage('Your free listing is active. Redirecting to My Listings...');
           location.href = 'dashboard.html';
           return;
         }
-        const { data, error } = await client.functions.invoke('create-checkout-session', { body: { listingId, plan } });
-        if (error) throw new Error(error.message || 'The payment service could not be reached.');
         if (data?.checkoutUrl) { location.href = data.checkoutUrl; return; }
         throw new Error(data?.error || 'The payment service did not return a checkout link.');
       } catch (error) {

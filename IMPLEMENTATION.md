@@ -10,11 +10,12 @@ Prepared September 30, 2026 on `fix/public-inventory-and-buyer-flow`.
 - Listing fields interpolated into HTML are escaped. Hidden loading/error content stays hidden.
 - Mobile navigation works across the site, including sign-in, with accessible expanded state and Escape support.
 - Selling instructions explain draft/plan/publish behavior. Trust language does not imply that published listings have verified identity or ownership.
+- Free-plan activation now uses the existing trusted create-checkout-session function, which handles free publication without Stripe.
 - A separate SQL migration restricts access to the test listing to its owner and blocks client-side publication/paid-plan spoofing. Trusted server functions retain control of status and plan.
 
 ## Validation
 
-Run `npm ci` and `npm test`. Eleven tests cover inventory visibility, search and budgets, real detail links, empty/error states, HTML injection, reporting, menus, local links, and database authorization using an isolated PGlite database. No live listings, payments, messages, or account data were changed during testing.
+Run `npm ci` and `npm test`. Twelve tests cover inventory visibility, search and budgets, real detail links, empty/error states, HTML injection, reporting, menus, local links, and database authorization using an isolated PGlite database. No live listings, payments, messages, or account data were changed during testing.
 
 JavaScript syntax and `git diff --check` also passed. Desktop/mobile rendering still needs preview verification after upload; DOM tests are not a visual or end-to-end production audit.
 
