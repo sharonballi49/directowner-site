@@ -4,13 +4,13 @@ const fs=require('node:fs');
 const {JSDOM}=require('jsdom');
 const tick=()=>new Promise(r=>setImmediate(r));
 const item={id:'44444444-4444-4444-4444-444444444444',title:'Honda Civic <img src=x onerror=alert(1)>',description:'Owner supplied description with enough detail.',year:2020,make:'Honda',model:'Civic',vehicle_type:'car',price_cents:1200000,plan:'free',status:'active',moderation_status:'pending',review_revision:4,photo_paths:[],created_at:'2026-09-30'};
-function page(name,{allowed=true,user={id:'reviewer',email:'test@example.com'},rows=[item],fail=false}={}){
+function page(name,{allowed=true,user={id:'reviewer',email:'test@example.com'},rows=[item],fail=false,authError=null}={}){
  const dom=new JSDOM(fs.readFileSync(name,'utf8'),{url:'https://example.com/'+name+'?id='+item.id,runScripts:'outside-only'}),w=dom.window;
  const calls=[];let authChange;const query={};
  for(const key of ['select','eq','order'])query[key]=()=>query;
  query.then=resolve=>Promise.resolve({data:rows,error:null}).then(resolve);
  query.maybeSingle=async()=>({data:{...item,owner_id:'seller'},error:null});
- const client={auth:{getUser:async()=>({data:{user},error:null}),onAuthStateChange:fn=>{authChange=fn;}},from:()=>query,storage:{from:()=>({getPublicUrl:p=>({data:{publicUrl:'https://example.com/'+p}})})},rpc:async(name,args)=>{
+ const client={auth:{getUser:async()=>({data:{user},error:authError}),onAuthStateChange:fn=>{authChange=fn;}},from:()=>query,storage:{from:()=>({getPublicUrl:p=>({data:{publicUrl:'https://example.com/'+p}})})},rpc:async(name,args)=>{
    calls.push({name,args});
    if(name==='is_listing_reviewer')return {data:allowed,error:fail?{message:'offline'}:null};
    if(name==='review_queue')return {data:rows,error:null};
@@ -61,7 +61,7 @@ test('Report form preserves content on failure, confirms success, and requires s
   assert.equal(form.hidden,!fail);assert.match(w.document.getElementById('report-message').textContent,fail?/offline/:/Report received/);
   if(fail)assert.equal(w.document.getElementById('report-details').value,'Seller requested payment using gift cards.');w.close();
  }
- const {w}=page('report-listing.html',{user:null});await tick();assert.equal(w.document.getElementById('report-form').hidden,true);assert.match(decodeURIComponent(w.document.getElementById('report-sign-in').href),/next=report-listing.html\?id=/);w.close();
+ const {w}=page('report-listing.html',{user:null,authError:{name:'AuthSessionMissingError'}});await tick();assert.equal(w.document.getElementById('report-form').hidden,true);assert.match(decodeURIComponent(w.document.getElementById('report-sign-in').href),/next=report-listing.html\?id=/);w.close();
 });
 test('Seller dashboard labels pending and rejected listings, keeps public links hidden, and gates reviewer link',async()=>{
  for(const allowed of [false,true]){
