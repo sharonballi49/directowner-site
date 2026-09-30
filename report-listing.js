@@ -18,7 +18,7 @@
     const back=document.getElementById('report-back');back.href=`active-listing.html?id=${encodeURIComponent(id)}`;back.textContent='Back to vehicle';
     const {data:{user},error:authError}=await client.auth.getUser();
     if(version!==sessionVersion)return;
-    if(authError)throw new Error('We could not check your sign-in. Please try again.');
+    if(authError && authError.name !== 'AuthSessionMissingError')throw new Error('We could not check your sign-in. Please try again.');
     if(!user){const link=document.getElementById('report-sign-in');link.href=`auth.html?mode=login&next=${encodeURIComponent('report-listing.html?id='+id)}`;link.hidden=false;document.getElementById('report-title').textContent='Sign in to send a private report.';notice('Signing in helps limit duplicate reports and misuse.');return;}
     const {data,error}=await client.from('listings').select('id,title,owner_id').eq('id',id).eq('status','active').eq('moderation_status','approved').eq('is_test',false).maybeSingle();
     if(version!==sessionVersion)return;
