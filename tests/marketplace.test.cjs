@@ -18,7 +18,7 @@ function fixture(page, data = [], search = '', error = null) {
   const client = { from:() => query, storage:{from:() => ({getPublicUrl:p => ({data:{publicUrl:`https://example.com/photo/${p}`}})})} };
   w.supabase = {createClient:() => client};
   w.eval(source('inventory.js'));
-  return { dom, w, calls };
+  return { dom, w, calls, client };
 }
 const tick = () => new Promise(resolve => setImmediate(resolve));
 test('Public inventory excludes tests, drafts, and sold vehicles; price filters use dollars', () => {
@@ -102,4 +102,25 @@ test('Local page and script links resolve; old sample listing links are gone',()
     }
   }
   assert.doesNotMatch(source('index.html'),/listing-f150|listing-airstream|listing-tacoma|via.placeholder/);
+});
+
+test('Free activation uses the trusted server function and handles failures',async()=>{
+  for (const fail of [false,true]) {
+    const {w,client}=fixture('choose-plan.html',[{...real,status:'draft'}],'?id=real-vehicle');
+    client.auth={getUser:async()=>({data:{user:{id:'owner'}},error:null})};
+    const requests=[];
+    client.functions={invoke:async(name,args)=>{requests.push({name,args});return fail?{data:null,error:{message:'Activation unavailable'}}:{data:{free:true},error:null}}};
+    // A client-side table update is deliberately not available on the mock.
+    const script=[...w.document.scripts].find(s=>!s.src && s.textContent.includes('async function checkListing'));
+    w.eval(script.textContent); await tick();
+    w.document.querySelector('[data-plan="free"]').click(); await tick();
+    assert.equal(requests.length,1);
+    assert.equal(requests[0].name,'create-checkout-session');
+    assert.equal(requests[0].args.body.plan,'free');
+    assert.equal(requests[0].args.body.listingId,'real-vehicle');
+    const message=w.document.getElementById('message');
+    assert.match(message.textContent,fail?/Activation unavailable/:/Your free listing is active/);
+    assert.equal(message.classList.contains('error'),fail);
+    w.close();
+  }
 });
