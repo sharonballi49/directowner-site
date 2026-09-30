@@ -39,50 +39,22 @@
 <div class="filter-group"><label for="filter-type">Vehicle Type</label><select id="filter-type"><option value="">All Types</option><option value="car">Car</option><option value="rv">RV</option><option value="truck">Truck</option><option value="van">Van</option><option value="other">Other</option></select></div>
 <div class="filter-group"><label for="filter-price">Minimum Price</label><select id="filter-price"><option value="">Any Price</option><option value="10000">$10,000+</option><option value="20000">$20,000+</option><option value="30000">$30,000+</option><option value="50000">$50,000+</option></select></div>
 <div class="filter-group"><label for="filter-search">Search</label><input id="filter-search" type="search" placeholder="Make, model, or keyword"></div>
+<div class="filter-group"><label for="filter-max-price">Maximum Price</label><input id="filter-max-price" type="number" min="0" step="1" placeholder="No maximum"></div>
+<div class="filter-group"><label for="filter-location">Location</label><input id="filter-location" type="search" placeholder="City or state"></div>
 <div class="filter-group"><label for="filter-sort">Sort By</label><select id="filter-sort"><option value="newest">Newest</option><option value="price-low">Price: Low to High</option><option value="price-high">Price: High to Low</option></select></div>
 </form>
 <div class="browse-tools"><p id="result-count" class="result-count"></p><button id="clear-filters" class="clear-filters" type="button">Clear filters</button></div>
-<div id="browse-message" class="browse-message" role="status" aria-live="polite">Loading active listings...</div><div id="public-listings" class="public-listing-grid"></div>
+<div id="inventory-status" class="browse-message" role="status" aria-live="polite">Loading active listings...</div><div id="public-listings" class="listing-grid"></div>
 </div></section></main>
 <footer class="site-footer"><div class="container footer-content"><div class="footer-links footer-links-organized">
   <div class="footer-group"><span class="footer-group-title">Marketplace</span><a href="browse.html">Browse Vehicles</a><a href="sell.html">List Your Vehicle</a></div>
   <div class="footer-group"><span class="footer-group-title">Resources</span><a href="how-it-works.html">How It Works</a><a href="guide.html">Buyer &amp; Seller Guide</a><a href="trust.html">Trust &amp; Safety</a><a href="financing.html">Financing</a></div>
   <div class="footer-group"><span class="footer-group-title">Company</span><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
 </div><p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. Buyers and sellers should independently verify information, inspect vehicles, and complete appropriate documentation.</p><p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script>
-const client=window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL,window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY),message=document.getElementById('browse-message'),results=document.getElementById('public-listings'),count=document.getElementById('result-count'),typeFilter=document.getElementById('filter-type'),priceFilter=document.getElementById('filter-price'),searchFilter=document.getElementById('filter-search'),sortFilter=document.getElementById('filter-sort'),clearButton=document.getElementById('clear-filters');let listings=[];
-const money=c=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format((c||0)/100);
-function show(text,error=false){message.textContent=text;message.className='browse-message'+(error?' error':'')}
-function matches(item){const search=searchFilter.value.trim().toLowerCase(),hay=`${item.title} ${item.make} ${item.model} ${item.description} ${item.seller_location||''}`.toLowerCase();return(!typeFilter.value||item.vehicle_type===typeFilter.value)&&item.price_cents>=Number(priceFilter.value||0)&&(!search||hay.includes(search))}
-function render(){
-  let visible=listings.filter(matches);
-  if(sortFilter.value==='price-low')visible.sort((a,b)=>a.price_cents-b.price_cents);
-  else if(sortFilter.value==='price-high')visible.sort((a,b)=>b.price_cents-a.price_cents);
-  else visible.sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
-  results.innerHTML='';
-  count.textContent=`${visible.length} active listing${visible.length===1?'':'s'} found`;
-  if(!visible.length){results.innerHTML='<div class="empty-state" style="grid-column:1/-1"><h2>No active listings found</h2><p>Try changing your filters, or check back as owners publish more vehicles.</p><a class="btn btn-primary" href="sell.html">List Your Vehicle</a></div>';show('No active listings match your filters.');return}
-  show('Listings are shown directly from active owner listings.');
-  visible.forEach(item=>{
-    const card=document.createElement('article');card.className='public-listing-card';
-    const image=document.createElement('img');image.className='public-listing-image';
-    const primaryPath=Array.isArray(item.photo_paths)&&item.photo_paths.length?item.photo_paths[0]:null;
-    if(primaryPath){image.src=client.storage.from('vehicle-photos').getPublicUrl(primaryPath).data.publicUrl;image.alt=`${item.title} vehicle photo`;}
-    else{image.src='data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="600" height="380" viewBox="0 0 600 380"%3E%3Crect width="600" height="380" fill="%23e8eef4"/%3E%3Ctext x="300" y="195" text-anchor="middle" font-family="Arial" font-size="28" fill="%2364748b"%3EDirectOwner%3C/text%3E%3C/svg%3E';image.alt=`${item.title} placeholder`;}
-    const content=document.createElement('div');content.className='public-listing-content';
-    const type=document.createElement('span');type.className='public-listing-type';type.textContent=item.vehicle_type;
-    const title=document.createElement('h2');title.textContent=item.title;
-    const price=document.createElement('p');price.className='public-listing-price';price.textContent=money(item.price_cents);
-    const meta=document.createElement('p');meta.className='public-listing-meta';meta.textContent=`${item.year} ${item.make} ${item.model} • ${item.mileage == null ? 'Mileage not provided' : Number(item.mileage).toLocaleString('en-US') + ' miles'}${item.seller_location ? ' • ' + item.seller_location : ''}`;
-    const photos=document.createElement('span');photos.className='photo-count';photos.textContent=`${Array.isArray(item.photo_paths)?item.photo_paths.length:0} photo${Array.isArray(item.photo_paths)&&item.photo_paths.length===1?'':'s'}`;
-    const description=document.createElement('p');description.className='public-listing-meta';const desc=item.description||'';description.textContent=desc.length>150?`${desc.slice(0,150)}…`:desc;
-    const link=document.createElement('a');link.className='btn btn-primary';link.href=`active-listing.html?id=${encodeURIComponent(item.id)}`;link.textContent='View Details';
-    content.append(type,title,price,meta,photos,description,link);card.append(image,content);results.appendChild(card)
-  })
-}
-[typeFilter,priceFilter,searchFilter,sortFilter].forEach(input=>input.addEventListener('input',render));
-clearButton.addEventListener('click',()=>{typeFilter.value='';priceFilter.value='';searchFilter.value='';sortFilter.value='newest';render()});
-document.getElementById('browse-filters').addEventListener('submit',e=>e.preventDefault());
-async function load(){const{data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,mileage,seller_location,created_at,photo_paths').eq('status','active').order('created_at',{ascending:false});if(error){show(error.message||'We could not load active listings.',true);return}listings=data||[];render()}
-load().catch(e=>show(e.message||'We could not load active listings.',true));
-</script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="supabase-config.js"></script>
+<script src="inventory.js"></script>
+<script src="public-listings.js"></script>
+<noscript><p>Enable JavaScript to search current listings, or contact DirectOwner support for help.</p></noscript>
+<script src="navigation.js" defer></script>
+</body></html>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Buy & Sell Cars & RVs Directly From Owners | DirectOwner</title>
-  <meta name="description" content="DirectOwner: A safer, more transparent marketplace to buy and sell cars and RVs directly from private owners. Browse listings, connect with sellers, and get safety guidance." />
+  <title>Buy & Sell Cars, Trucks & RVs Directly From Owners | DirectOwner</title>
+  <meta name="description" content="DirectOwner: An owner-to-owner marketplace to buy and sell cars, trucks, and RVs directly from private owners. Browse listings, request seller contact, and get safety guidance." />
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -38,24 +38,23 @@
   <main>
     <section class="hero-section">
       <div class="container hero-content">
-        <h1>Buy Cars and RVs Directly From Owners</h1>
+        <h1>Buy and Sell Cars, Trucks, and RVs Directly With Owners</h1>
         <p class="hero-tagline">
-          Browse listings, compare important details, and connect directly with sellers
-          without the traditional dealership experience.
+          Browse vehicles from private owners, compare the details, and request seller contact through our support team.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="browse.html">Browse Listings</a>
           <a class="btn btn-secondary" href="sell.html">Sell Your Vehicle</a>
         </div>
         <p class="hero-trust-line">
-          Vehicle-focused marketplace &bull; Direct owner communication &bull; Practical safety guidance
+          Vehicle-focused marketplace &bull; Private owner listings &bull; Practical safety guidance
         </p>
       </div>
     </section>
 
     <section class="search-panel-section">
       <div class="container">
-        <form class="search-panel">
+        <form class="search-panel" action="browse.html" method="get">
           <div class="search-field">
             <label for="search-type" class="sr-only">Vehicle Type</label>
             <select id="search-type" name="type">
@@ -71,7 +70,7 @@
           </div>
           <div class="search-field">
             <label for="search-location" class="sr-only">Location</label>
-            <input type="text" id="search-location" name="location" placeholder="City or ZIP" />
+            <input type="text" id="search-location" name="location" placeholder="City or state" />
           </div>
           <button type="submit" class="btn btn-primary search-button">Search Listings</button>
         </form>
@@ -81,43 +80,12 @@
     <section class="section featured-listings-section">
       <div class="container">
         <div class="section-heading">
-          <h2>Featured Listings</h2>
+          <h2>Latest Owner Listings</h2>
           <p>Explore some of the latest vehicles listed by private owners.</p>
         </div>
-        <div class="listing-grid">
-          <article class="listing-card">
-            <img src="https://via.placeholder.com/400x250/f0f4f8/64748b?text=2018+Ford+F-150" alt="2018 Ford F-150" class="listing-image" />
-            <div class="listing-content">
-              <span class="listing-type">Truck</span>
-              <h3>2018 Ford F-150</h3>
-              <p class="listing-price">$28,500</p>
-              <p class="listing-meta">85,000 miles &bull; San Antonio, TX</p>
-              <a href="listing-f150.html" class="btn-text">View Details &rarr;</a>
-            </div>
-          </article>
-
-          <article class="listing-card">
-            <img src="https://via.placeholder.com/400x250/f0f4f8/64748b?text=2020+Airstream+RV" alt="2020 Airstream RV" class="listing-image" />
-            <div class="listing-content">
-              <span class="listing-type">RV</span>
-              <h3>2020 Airstream RV</h3>
-              <p class="listing-price">$65,000</p>
-              <p class="listing-meta">Excellent condition &bull; Austin, TX</p>
-              <a href="listing-airstream.html" class="btn-text">View Details &rarr;</a>
-            </div>
-          </article>
-
-          <article class="listing-card">
-            <img src="https://via.placeholder.com/400x250/f0f4f8/64748b?text=2016+Toyota+Tacoma" alt="2016 Toyota Tacoma" class="listing-image" />
-            <div class="listing-content">
-              <span class="listing-type">Truck</span>
-              <h3>2016 Toyota Tacoma</h3>
-              <p class="listing-price">$24,900</p>
-              <p class="listing-meta">110,000 miles &bull; Dallas, TX</p>
-              <a href="listing-tacoma.html" class="btn-text">View Details &rarr;</a>
-            </div>
-          </article>
-        </div>
+        <p id="inventory-status" class="inventory-status" role="status" aria-live="polite">Loading listings...</p>
+        <div id="public-listings" class="listing-grid" data-limit="3"></div>
+        <noscript><p>Enable JavaScript to view current listings. You can also <a href="contact.html">contact us for help</a>.</p></noscript>
       </div>
     </section>
 
@@ -133,8 +101,8 @@
             <p>Unlike general online marketplaces, DirectOwner is built specifically for cars, trucks, and RVs.</p>
           </div>
           <div class="feature-card">
-            <h3>Direct Communication</h3>
-            <p>Connect directly with private owners to ask questions and get all the details straight from the source.</p>
+            <h3>Help Connecting With Owners</h3>
+            <p>Request seller contact through DirectOwner support. Our team helps coordinate the introduction.</p>
           </div>
           <div class="feature-card">
             <h3>Transparent Listing Information</h3>
@@ -158,7 +126,7 @@
           <div class="step-card">
             <div class="step-number">1</div>
             <h3>Browse Listings</h3>
-            <p>Explore a wide selection of cars and RVs listed by private owners.</p>
+            <p>Explore available cars, trucks, and RVs listed by private owners.</p>
           </div>
           <div class="step-card">
             <div class="step-number">2</div>
@@ -167,8 +135,8 @@
           </div>
           <div class="step-card">
             <div class="step-number">3</div>
-            <h3>Connect Directly</h3>
-            <p>Contact the owner with your questions and discuss the vehicle one-on-one.</p>
+            <h3>Request Seller Contact</h3>
+            <p>Email our support team from a listing to request an introduction to its owner.</p>
           </div>
           <div class="step-card">
             <div class="step-number">4</div>
@@ -206,6 +174,11 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="inventory.js"></script>
+  <script src="public-listings.js"></script>
   <script src="script.js"></script>
+<script src="navigation.js" defer></script>
 </body>
 </html>

@@ -72,12 +72,14 @@
           <article id="card" class="detail-card"></article>
           <aside class="buyer-card">
             <h2>Interested in this vehicle?</h2>
-            <p>Review the listing carefully, then reach out with questions before making any purchase decision.</p>
+            <p>Email DirectOwner support to request an introduction to the seller. This opens your email app; it does not send a message automatically.</p>
             <div class="buyer-actions">
-              <a id="ask-link" class="btn btn-primary" href="#">Ask About This Vehicle</a>
+              <a id="ask-link" class="btn btn-primary" href="#">Request Seller Contact</a>
               <a class="btn btn-secondary" href="browse.html">Browse More Vehicles</a>
+              <a id="report-link" class="btn btn-secondary" href="contact.html">Report This Listing</a>
             </div>
-            <div class="buyer-note"><strong>DirectOwner connects you directly.</strong> Verify the vehicle, title, ownership, condition, and transaction details independently before paying or signing anything.</div>
+            <p class="buyer-note"><strong>Seller-provided information.</strong> This listing does not carry an identity, ownership, or inspection verification badge.</p>
+            <div class="buyer-note"><strong>Our support team coordinates introductions.</strong> Verify the vehicle, title, ownership, condition, and transaction details independently before paying or signing anything.</div>
             <div class="safety-panel"><strong>Meet safely.</strong> Use a public, busy location or designated safe exchange zone, preferably during daylight. See our <a href="trust.html">Trust &amp; Safety guidance</a>.</div>
           </aside>
         </div>
@@ -99,14 +101,15 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
+  <script src="inventory.js"></script>
   <script>
     const client=window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL,window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY);
     const message=document.getElementById('message'),layout=document.getElementById('layout'),card=document.getElementById('card'),askLink=document.getElementById('ask-link');
     const id=new URLSearchParams(location.search).get('id');
     const money=c=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format((c||0)/100);
-    function escapeText(value){return String(value??'');}
+    function escapeText(value){return String(value??'').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));}
     async function load(){
-      if(!id){message.textContent='This listing link is missing an ID.';message.classList.add('error');return}
+      if(!id || window.DirectOwnerInventory.isTestId(id)){message.textContent='This listing is not available for sale. Browse current listings using the navigation above.';return}
       const {data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,mileage,seller_location,created_at,status,photo_paths').eq('id',id).eq('status','active').maybeSingle();
       if(error||!data){message.textContent='This listing is unavailable or no longer active.';message.classList.add('error');return}
 
@@ -149,21 +152,25 @@
       });
       if(urls.length){setMain(0)}else{photoWrap.innerHTML='<div class="buyer-note" style="width:100%">No photos have been added to this listing yet.</div>'}
 
-      const subject=encodeURIComponent(`Question about DirectOwner listing: ${data.title}`);
+      const subject=encodeURIComponent(`Seller contact request: ${data.title}`);
       const body=encodeURIComponent(`Hello DirectOwner Support,
 
 I am interested in this vehicle listing:
 ${data.title}
 Listing ID: ${data.id}
 
-I would like more information about this vehicle.
+Please help me connect with the owner of this vehicle.
 
 Thank you.`);
       askLink.href=`mailto:support@getdirectowner.com?subject=${subject}&body=${body}`;
+      const reportSubject=encodeURIComponent(`Report listing: ${data.title}`);
+      const reportBody=encodeURIComponent(`Hello DirectOwner Support,\n\nI would like to report listing ${data.id}: ${data.title}.\n\nReason for this report:\n\nPlease do not include identity documents, payment details, or other sensitive information.`);
+      document.getElementById('report-link').href=`mailto:support@getdirectowner.com?subject=${reportSubject}&body=${reportBody}`;
 
       layout.hidden=false;message.hidden=true;
     }
     load().catch(()=>{message.textContent='We could not load this listing right now.';message.classList.add('error')});
   </script>
+<script src="navigation.js" defer></script>
 </body>
 </html>
