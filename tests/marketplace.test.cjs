@@ -6,7 +6,7 @@ const { JSDOM } = require('jsdom');
 const root = path.resolve(__dirname, '..');
 const source = file => fs.readFileSync(path.join(root, file), 'utf8');
 const testId = '3dcae366-5b6a-4a34-93a7-a7605c526925';
-const real = { id:'real-vehicle', title:'2019 Honda Civic', vehicle_type:'car', status:'active', price_cents:1500000, mileage:40000, seller_location:'Austin, TX', make:'Honda', model:'Civic', year:2019, description:'An owner supplied vehicle description.', created_at:'2026-09-20', photo_paths:[] };
+const real = { id:'real-vehicle', title:'2019 Honda Civic', vehicle_type:'car', status:'active', moderation_status:'approved', price_cents:1500000, mileage:40000, seller_location:'Austin, TX', make:'Honda', model:'Civic', year:2019, description:'An owner supplied vehicle description.', created_at:'2026-09-20', photo_paths:[] };
 function fixture(page, data = [], search = '', error = null) {
   const dom = new JSDOM(source(page), { url:`https://example.com/${page}${search}`, runScripts:'outside-only' });
   const { window:w } = dom;
@@ -24,7 +24,7 @@ const tick = () => new Promise(resolve => setImmediate(resolve));
 test('Public inventory excludes tests, drafts, and sold vehicles; price filters use dollars', () => {
   const {w}=fixture('browse.html'); const rules=w.DirectOwnerInventory;
   assert.equal(rules.isPublic(real),true);
-  for(const item of [{...real,id:testId},{...real,is_test:true},{...real,status:'draft'},{...real,status:'sold'}]) assert.equal(rules.isPublic(item),false);
+  for(const item of [{...real,id:testId},{...real,is_test:true},{...real,status:'draft'},{...real,status:'sold'},{...real,moderation_status:'pending'},{...real,moderation_status:'rejected'},{...real,moderation_status:undefined}]) assert.equal(rules.isPublic(item),false);
   assert.equal(rules.matches(real,{minPrice:'20000'}),false);
   assert.equal(rules.matches(real,{maxPrice:'14000'}),false);
   assert.equal(rules.matches(real,{type:'car',minPrice:'10000',maxPrice:'15000',query:'HONDA',location:'austin'}),true);
@@ -119,7 +119,7 @@ test('Free activation uses the trusted server function and handles failures',asy
     assert.equal(requests[0].args.body.plan,'free');
     assert.equal(requests[0].args.body.listingId,'real-vehicle');
     const message=w.document.getElementById('message');
-    assert.match(message.textContent,fail?/Activation unavailable/:/Your free listing is active/);
+    assert.match(message.textContent,fail?/Activation unavailable/:/submitted for review/);
     assert.equal(message.classList.contains('error'),fail);
     w.close();
   }

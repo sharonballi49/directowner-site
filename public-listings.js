@@ -96,7 +96,7 @@
     try {
       if (!window.supabase || !rules) throw new Error('Inventory service unavailable');
       client = window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL, window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY);
-      let query = client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,mileage,seller_location,created_at,status,photo_paths').eq('status', 'active');
+      let query = client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,mileage,seller_location,created_at,status,moderation_status,is_test,photo_paths').eq('status', 'active').eq('moderation_status', 'approved');
       rules.testIds.forEach(id => { query = query.neq('id', id); });
       const { data, error } = await query.order('created_at', { ascending: false });
       if (error) throw error;
