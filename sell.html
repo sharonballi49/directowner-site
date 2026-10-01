@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     .sell-hero{background:linear-gradient(135deg,var(--navy-950),var(--navy-800));color:#fff;border-radius:18px;padding:clamp(30px,6vw,64px)}
     .sell-hero h1{margin:0 0 16px;font-size:clamp(2.1rem,5vw,3.8rem);line-height:1.08}
@@ -47,13 +47,14 @@
     @media(max-width:700px){.pricing-grid,.sell-grid{grid-template-columns:1fr}.price-card.featured{transform:none}.sell-field.full{grid-column:auto}}
   </style>
 <link rel="stylesheet" href="disclosures.css">
+<link rel="stylesheet" href="readability.css">
 </head>
-<body>
+<body class="site-page">
   <header class="site-header">
     <div class="container header-content">
       <a href="index.html" class="site-logo">DirectOwner</a>
-      <nav class="site-nav">
-        <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="menu-toggle" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
         <ul class="nav-links">
           <li><a href="browse.html">Browse Vehicles</a></li>
           <li><a href="how-it-works.html">How It Works</a></li>
@@ -61,24 +62,26 @@
           <li><a href="financing.html">Financing</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="auth.html">Sign In</a></li>
-          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell" aria-current="page">List Your Vehicle</a></li>
+          <li><a href="dashboard.html">My Listings</a></li>
+          <li><a href="sell.html" aria-current="page" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="section">
+    <section class="page-hero">
       <div class="container">
-        <div class="sell-hero">
           <h1>Sell Your Vehicle Directly</h1>
           <p>List your car, truck, or RV with DirectOwner. Share the details buyers need, add photos, and stay in control of your sale.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#listing-form">Start Your Listing</a>
             <a class="btn btn-secondary" href="browse.html">Browse Vehicles</a>
           </div>
-        </div>
-
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
         <section class="pricing" aria-labelledby="pricing-title">
           <h2 id="pricing-title">Choose Your Listing Package</h2>
           <p class="pricing-intro">Start for free, or choose a paid option to give your vehicle more visibility. Paid plans open Stripe Checkout securely when you choose a paid package.</p>

@@ -1,0 +1,136 @@
+/* Shared presentation for the seven main marketplace pages. Loaded after page-specific styles. */
+.site-page {
+  --navy-950: #0b1f33;
+  --navy-900: #102a43;
+  --navy-800: #173f5f;
+  --orange: #f28c28;
+  --orange-500: #f28c28;
+  --text: #172b3a;
+  --muted: #4b5e6d;
+  font-family: "Inter", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+.site-page .container { width: min(1200px, calc(100% - 48px)); }
+.site-page h1, .site-page h2, .site-page h3 { font-weight: 700; text-wrap: balance; }
+.site-page h2 { line-height: 1.25; }
+.site-page h3 { line-height: 1.35; }
+.site-page p, .site-page li { overflow-wrap: break-word; }
+.site-page .section { padding-block: 64px; }
+.site-page .section-heading { max-width: 720px; }
+.site-page .section-heading h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); line-height: 1.25; }
+.site-page .section-heading p { font-size: 1.0625rem; }
+
+/* Consistent full-width introduction, readable measure and action placement. */
+.site-page .page-hero {
+  background: linear-gradient(120deg, #102a43, #173f5f);
+  color: #fff;
+  padding: 64px 0;
+  border: 0;
+  border-radius: 0;
+  text-align: left;
+  overflow: visible;
+}
+.site-page .page-hero::before { content: none; }
+.site-page .page-hero .container { max-width: 1200px; }
+.site-page .page-hero h1 {
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.15;
+  letter-spacing: -.025em;
+  color: #fff;
+  max-width: 27ch;
+  margin: 0 0 20px;
+}
+.site-page .page-hero p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #edf3f8;
+  max-width: 68ch;
+  margin: 0;
+}
+.site-page .page-hero .eyebrow {
+  color: #ffd09b;
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin: 0 0 16px;
+}
+.site-page .page-hero .hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 12px;
+  margin: 28px 0 0;
+}
+.site-page .page-hero .hero-trust-line,
+.site-page .page-hero .policy-meta { font-size: .9375rem; color: #dce8f1; margin: 24px 0 0; }
+.site-page .page-hero .trust-badge { font-size: .9375rem; font-weight: 600; }
+.site-page .search-panel-section { margin-top: 0; padding: 32px 0; }
+
+/* Shared button contrast, sizing and keyboard focus. */
+.site-page .btn { font-size: 1rem; line-height: 1.5; min-height: 48px; padding: 12px 22px; border-radius: 8px; font-weight: 700; }
+.site-page .btn-primary, .site-page .price-badge, .site-page .step-number { color: #0b1f33; background: #f28c28; }
+.site-page .btn-primary:hover { background: #ffad52; }
+.site-page .btn-secondary { color: #0b1f33; background: #fff; border-color: #becbd5; }
+.site-page .btn-secondary:hover { background: #edf3f8; }
+.site-page :focus-visible { outline: 3px solid #9a4700; outline-offset: 4px; }
+.site-page .site-header :focus-visible, .site-page .page-hero :focus-visible, .site-page .site-footer :focus-visible { outline-color: #ffd09b; }
+.site-page input, .site-page select, .site-page textarea { font-size: 1rem; line-height: 1.5; }
+.site-page input::placeholder, .site-page textarea::placeholder { color: #526575; opacity: 1; }
+.site-page label { line-height: 1.5; }
+.site-page summary { line-height: 1.6; }
+.site-page .pricing-intro, .site-page .plans-help { max-width: 68ch; margin-inline: auto; }
+.site-page .price-card p { line-height: 1.7; }
+.site-page .financing-card p { color: var(--muted); }
+.site-page .pricing { margin-top: 0; }
+
+/* One navigation layout and visible current-page indicator. */
+.site-page .site-header { position: relative; z-index: 10; background: #0b1f33; padding: 18px 0; }
+.site-page .header-content { gap: 24px; flex-wrap: nowrap; align-items: center; }
+.site-page .site-logo { flex-shrink: 0; font-size: 1.6rem; }
+.site-page .site-logo::after { font-size: .6875rem; line-height: 1.4; color: #dce8f1; opacity: 1; }
+.site-page .site-nav { display: block; width: auto; order: 0; margin: 0; min-height: 0; }
+.site-page .site-nav .nav-links { display: flex; gap: 18px; flex-wrap: nowrap; padding: 0; margin: 0; align-items: center; background: transparent; transform: none; }
+.site-page .site-nav .nav-links a { font-size: .9375rem; line-height: 1.5; font-weight: 600; white-space: nowrap; }
+.site-page .site-nav .nav-links a[aria-current="page"] { color: #ffd09b; text-decoration: underline; text-underline-offset: 7px; text-decoration-thickness: 2px; }
+.site-page .site-nav .nav-links .nav-btn-sell { color: #fff; background: transparent; border-color: #8fa5b7; padding: 10px 16px; min-height: 44px; }
+.site-page .site-nav .nav-links .nav-btn-sell[aria-current="page"] { color: #ffd09b; border-color: #ffd09b; }
+.site-page .site-footer { font-size: .9375rem; line-height: 1.7; color: #dce8f1; }
+.site-page .footer-links-organized .footer-group a { color: #dce8f1; padding-block: 4px; }
+.site-page .footer-disclaimer { max-width: 85ch; line-height: 1.7; }
+
+@media (max-width: 1240px) {
+  .site-page .site-header .header-content { flex-wrap: wrap; }
+  .site-page .site-header .site-nav { width: 100%; }
+  .site-page .site-header .site-nav .nav-links { display: flex; flex-wrap: wrap; gap: 16px; }
+  .site-page .site-header .site-nav.has-menu { width: auto; margin-left: auto; }
+  .site-page .site-header .site-nav.has-menu .menu-toggle { display: block; width: 44px; height: 44px; padding: 0; }
+  .site-page .menu-toggle span { left: 10px; width: 24px; }
+  .site-page .menu-toggle span:nth-child(1) { top: 12px; }
+  .site-page .menu-toggle span:nth-child(2) { top: 21px; }
+  .site-page .menu-toggle span:nth-child(3) { top: 30px; }
+  .site-page .site-header .site-nav.has-menu .nav-links { display: none; }
+  .site-page .site-header .site-nav.has-menu.is-open .nav-links {
+    display: flex; position: absolute; top: 100%; left: 0; width: 100%; margin: 0;
+    flex-direction: column; align-items: stretch; gap: 4px; padding: 20px 24px;
+    background: #0b1f33; border-radius: 0 0 12px 12px; box-shadow: 0 12px 24px #0b1f3333;
+  }
+  .site-page .site-nav.has-menu.is-open .nav-links a { display: flex; align-items: center; min-height: 44px; padding: 10px 8px; }
+}
+@media (max-width: 600px) {
+  .site-page .container { width: calc(100% - 32px); }
+  .site-page .page-hero { padding: 40px 0; }
+  .site-page .page-hero h1 { font-size: 2rem; }
+  .site-page .page-hero p { font-size: 1.0625rem; }
+  .site-page .section { padding-block: 44px; }
+  .site-page .page-hero .hero-actions { flex-direction: column; align-items: stretch; }
+  .site-page .page-hero .btn { width: 100%; margin: 0; }
+  .site-page .trust-badge-row { gap: 8px; }
+  .site-page .trust-badge { border-radius: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .site-page *, .site-page *::before, .site-page *::after { transition: none !important; animation: none !important; }
+}

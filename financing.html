@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     .site-header{position:relative;z-index:10;background:#0b1f33;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.14)}
     .site-nav{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:42px}
@@ -30,21 +30,24 @@
     .financing-panel li{margin:10px 0}
     .financing-disclaimer{border-left:4px solid #f28c28;background:#fff7ed;padding:18px 20px;border-radius:8px;color:#5f4630;margin-top:24px}
     @media(max-width:900px){.site-nav{align-items:flex-start;flex-direction:column;gap:14px}.site-nav .nav-links{justify-content:flex-start;gap:12px 18px}.financing-grid{grid-template-columns:1fr}}
-    @media(max-width:600px){.site-header{padding:14px 0}.site-nav .nav-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:10px 16px}.site-nav .nav-links a{font-size:.9rem}.financing-hero{padding:52px 0}.financing-hero .btn{width:100%;margin:0 0 10px!important}}
+    @media(max-width:600px){.site-header{padding:14px 0}.site-nav .nav-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;gap:10px 16px}.site-nav .nav-links a{font-size:.9rem}.financing-hero{padding:52px 0}.financing-hero .btn{width:100%;margin:0}}
   </style>
+<link rel="stylesheet" href="readability.css">
 </head>
-<body>
+<body class="site-page">
   <header class="site-header">
     <div class="container header-content">
       <a href="index.html" class="site-logo">DirectOwner</a>
       <nav class="site-nav" aria-label="Main navigation">
-        <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <button class="menu-toggle" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
         <ul class="nav-links">
           <li><a href="browse.html">Browse Vehicles</a></li>
           <li><a href="how-it-works.html">How It Works</a></li>
           <li><a href="trust.html">Trust &amp; Safety</a></li>
           <li><a href="financing.html" aria-current="page">Financing</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="auth.html">Sign In</a></li>
+          <li><a href="dashboard.html">My Listings</a></li>
           <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
         </ul>
       </nav>
@@ -52,13 +55,13 @@
   </header>
 
   <main>
-    <section class="financing-hero">
+    <section class="financing-hero page-hero">
       <div class="container">
         <div class="eyebrow">Flexible purchase resources</div>
         <h1>Explore financing for your next vehicle.</h1>
         <p>Buying from a private owner does not always require paying the entire amount in cash. Learn how third-party financing may support eligible private-party purchases.</p>
-        <a class="btn btn-primary" href="contact.html">Request Financing Help</a>
-        <a class="btn btn-secondary" href="browse.html" style="margin-left:8px">Browse Vehicles</a>
+        <div class="hero-actions"><a class="btn btn-primary" href="contact.html">Request Financing Help</a>
+        <a class="btn btn-secondary" href="browse.html">Browse Vehicles</a></div>
       </div>
     </section>
 
