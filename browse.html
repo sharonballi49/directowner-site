@@ -29,12 +29,14 @@
 @media(max-width:900px){.browse-filters{grid-template-columns:1fr 1fr}.public-listing-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.browse-filters,.public-listing-grid{grid-template-columns:1fr}.browse-section{padding-top:40px}}
 </style>
+<link rel="stylesheet" href="buyer-tools.css">
 </head>
 <body>
 <header class="site-header"><div class="container header-content"><a href="index.html" class="site-logo">DirectOwner</a><nav class="site-nav"><button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="browse.html" aria-current="page">Browse Vehicles</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="trust.html">Trust &amp; Safety</a></li><li><a href="financing.html">Financing</a></li><li><a href="contact.html">Contact</a></li><li><a href="auth.html">Sign In</a></li><li><a href="dashboard.html">My Listings</a></li><li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li></ul></nav></div></header>
 <main>
 <section class="section page-intro-section" style="background:var(--navy-950);color:#fff;padding:64px 0"><div class="container"><h1 class="page-title" style="color:#fff">Browse Owner Listings</h1><p class="page-description" style="color:#e8eef4">Explore active vehicles listed directly by owners. Compare photos, details, and prices before you reach out.</p></div></section>
 <section class="browse-section"><div class="container">
+<div class="tools-callout"><div><h2>Before you buy, build a plan.</h2><p>Compare vehicles, estimate the costs beyond the price, and track your own title, history, and inspection checks.</p></div><div class="tools-actions"><a href="buyer-tools.html" class="btn btn-primary">Explore buyer tools</a><a href="buyer-tools.html?view=compare" class="btn btn-secondary" data-compare-count>Compare vehicles</a></div></div><p id="buyer-save-status" class="tools-status" role="status"></p>
 <form id="browse-filters" class="browse-filters">
 <div class="filter-group"><label for="filter-type">Vehicle Type</label><select id="filter-type"><option value="">All Types</option><option value="car">Car</option><option value="rv">RV</option><option value="truck">Truck</option><option value="van">Van</option><option value="other">Other</option></select></div>
 <div class="filter-group"><label for="filter-price">Minimum Price</label><select id="filter-price"><option value="">Any Price</option><option value="10000">$10,000+</option><option value="20000">$20,000+</option><option value="30000">$30,000+</option><option value="50000">$50,000+</option></select></div>
@@ -48,12 +50,13 @@
 </div></section></main>
 <footer class="site-footer"><div class="container footer-content"><div class="footer-links footer-links-organized">
   <div class="footer-group"><span class="footer-group-title">Marketplace</span><a href="browse.html">Browse Vehicles</a><a href="sell.html">List Your Vehicle</a></div>
-  <div class="footer-group"><span class="footer-group-title">Resources</span><a href="how-it-works.html">How It Works</a><a href="guide.html">Buyer &amp; Seller Guide</a><a href="trust.html">Trust &amp; Safety</a><a href="financing.html">Financing</a></div>
+  <div class="footer-group"><span class="footer-group-title">Resources</span><a href="how-it-works.html">How It Works</a><a href="guide.html">Buyer &amp; Seller Guide</a><a href="buyer-tools.html">Buyer Tools &amp; Compare</a><a href="trust.html">Trust &amp; Safety</a><a href="financing.html">Financing</a></div>
   <div class="footer-group"><span class="footer-group-title">Company</span><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
 </div><p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. Buyers and sellers should independently verify information, inspect vehicles, and complete appropriate documentation.</p><p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p></div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase-config.js"></script>
 <script src="inventory.js"></script>
+<script src="buyer-tools.js"></script>
 <script src="public-listings.js"></script>
 <noscript><p>Enable JavaScript to search current listings, or contact DirectOwner support for help.</p></noscript>
 <script src="navigation.js" defer></script>

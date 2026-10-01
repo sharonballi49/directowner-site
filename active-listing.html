@@ -43,6 +43,7 @@
     @media(max-width:850px){.detail-layout{grid-template-columns:1fr}.buyer-card{position:static}.detail-main-photo{height:55vw}.detail-details{grid-template-columns:1fr 1fr}}
     @media(max-width:520px){.detail-card,.buyer-card{padding:20px}.detail-main-photo{height:65vw;min-height:220px}.detail-details{grid-template-columns:1fr}.detail-thumb{flex-basis:72px;width:72px;height:56px}}
   </style>
+<link rel="stylesheet" href="buyer-tools.css">
 </head>
 <body>
   <header class="site-header">
@@ -74,6 +75,10 @@
             <h2>Interested in this vehicle?</h2>
             <p>Email DirectOwner support to request an introduction to the seller. This opens your email app; it does not send a message automatically.</p>
             <div class="buyer-actions">
+              <a id="buyer-plan-link" class="btn btn-secondary" href="buyer-tools.html">Build my buying plan</a>
+              <div id="save-vehicle-action"></div>
+              <a href="buyer-tools.html?view=compare" class="btn btn-secondary" data-compare-count>Compare vehicles</a>
+              <p id="buyer-save-status" class="tools-status" role="status"></p>
               <a id="ask-link" class="btn btn-primary" href="#">Request Seller Contact</a>
               <a class="btn btn-secondary" href="browse.html">Browse More Vehicles</a>
               <a id="report-link" class="btn btn-secondary" href="contact.html">Report This Listing</a>
@@ -91,7 +96,7 @@
     <div class="container footer-content">
       <div class="footer-links footer-links-organized">
   <div class="footer-group"><span class="footer-group-title">Marketplace</span><a href="browse.html">Browse Vehicles</a><a href="sell.html">List Your Vehicle</a></div>
-  <div class="footer-group"><span class="footer-group-title">Resources</span><a href="how-it-works.html">How It Works</a><a href="guide.html">Buyer &amp; Seller Guide</a><a href="trust.html">Trust &amp; Safety</a><a href="financing.html">Financing</a></div>
+  <div class="footer-group"><span class="footer-group-title">Resources</span><a href="how-it-works.html">How It Works</a><a href="guide.html">Buyer &amp; Seller Guide</a><a href="buyer-tools.html">Buyer Tools &amp; Compare</a><a href="trust.html">Trust &amp; Safety</a><a href="financing.html">Financing</a></div>
   <div class="footer-group"><span class="footer-group-title">Company</span><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
 </div>
       <p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. Buyers and sellers should independently verify information, inspect vehicles, and complete appropriate documentation.</p>
@@ -102,6 +107,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
   <script src="inventory.js"></script>
+<script src="buyer-tools.js"></script>
   <script>
     const client=window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL,window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY);
     const message=document.getElementById('message'),layout=document.getElementById('layout'),card=document.getElementById('card'),askLink=document.getElementById('ask-link');
@@ -165,6 +171,8 @@ Thank you.`);
       askLink.href=`mailto:support@getdirectowner.com?subject=${subject}&body=${body}`;
       document.getElementById('report-link').href=`report-listing.html?id=${encodeURIComponent(data.id)}`;
 
+      document.getElementById('buyer-plan-link').href=`buyer-tools.html?id=${encodeURIComponent(data.id)}`;
+      if(window.DirectOwnerBuyerTools) document.getElementById('save-vehicle-action').append(window.DirectOwnerBuyerTools.saveButton(data));
       layout.hidden=false;message.hidden=true;
     }
     load().catch(()=>{message.textContent='We could not load this listing right now.';message.classList.add('error')});

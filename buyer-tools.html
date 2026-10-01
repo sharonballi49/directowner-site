@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Buyer Tools | DirectOwner</title><meta name="description" content="Build a vehicle buying plan, track your checks, estimate purchase costs, and compare owner listings."><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="buyer-tools.css"></head><body><header class="site-header">
+  <div class="container header-content">
+    <a href="index.html" class="site-logo">DirectOwner</a>
+    <nav class="site-nav">
+      <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <ul class="nav-links">
+        <li><a href="browse.html">Browse Vehicles</a></li>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="trust.html">Trust &amp; Safety</a></li>
+        <li><a href="financing.html">Financing</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="auth.html">Sign In</a></li>
+        <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main><section class="tools-hero"><div class="container"><p class="tools-eyebrow">DirectOwner / Buyer tools</p><h1 id="workspace-title">Know what to check. Know what to ask.</h1><p>A practical workspace for your next vehicle purchase. Compare your options, prepare questions, and keep the checks that matter in one place.</p></div></section>
+<section class="tools-main"><div class="container">
+<div class="tools-toolbar"><div class="tools-actions"><a class="btn btn-secondary" href="browse.html">Browse vehicles</a><a class="btn btn-secondary" href="buyer-tools.html?view=compare" data-compare-count>Compare vehicles</a><a class="btn btn-secondary" href="buyer-tools.html">General checklist</a></div><button class="btn btn-secondary" id="print-plan" type="button">Print / Save as PDF</button></div>
+<p id="local-status" class="tools-muted">Your plan stays on this browser. Do not enter sensitive information.</p><p id="buyer-save-status" class="tools-status" role="status"></p>
+<div id="buyer-workspace">Loading buyer tools…</div>
+<section class="tools-panel tools-resources-section"><h2>Check with independent sources</h2><p class="tools-muted">These links open external websites. DirectOwner does not retrieve reports, verify results, arrange inspections, or handle vehicle payments. A history report is not a substitute for a physical inspection.</p><ul class="tools-resources"><li><a href="https://www.nhtsa.gov/recalls" target="_blank" rel="noopener noreferrer">NHTSA recall lookup</a></li><li><a href="https://vehiclehistory.bja.ojp.gov/nmvtis_vehiclehistory" target="_blank" rel="noopener noreferrer">NMVTIS vehicle-history providers</a></li><li><a href="https://www.txdmv.gov/motorists/buying-or-selling-a-vehicle" target="_blank" rel="noopener noreferrer">Texas buying &amp; title-transfer guidance</a></li><li><a href="trust.html">DirectOwner safety guidance</a></li></ul><p class="tools-muted">Outside Texas? Check your own state’s motor vehicle agency for transfer requirements. Avoid paying a deposit just to view a vehicle or buying a report from an unfamiliar link a stranger insists you use.</p></section>
+<button id="clear-buyer-data" class="tools-text-button" type="button">Clear my shortlist, checks, and estimates from this browser</button>
+<noscript><p>Enable JavaScript to use the interactive tools. Our <a href="guide.html">Buyer &amp; Seller Guide</a><a href="buyer-tools.html">Buyer Tools &amp; Compare</a> is available without them.</p></noscript>
+</div></section></main><footer class="site-footer"><div class="container footer-content"><div class="footer-links footer-links-organized">
+  <div class="footer-group"><span class="footer-group-title">Marketplace</span><a href="browse.html">Browse Vehicles</a><a href="sell.html">List Your Vehicle</a></div>
+  <div class="footer-group"><span class="footer-group-title">Resources</span><a href="how-it-works.html">How It Works</a><a href="guide.html">Buyer &amp; Seller Guide</a><a href="buyer-tools.html">Buyer Tools &amp; Compare</a><a href="trust.html">Trust &amp; Safety</a><a href="financing.html">Financing</a></div>
+  <div class="footer-group"><span class="footer-group-title">Company</span><a href="contact.html">Contact Us</a><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+</div><p class="footer-disclaimer"><strong>Disclaimer:</strong> DirectOwner connects private buyers and sellers. Buyers and sellers should independently verify information, inspect vehicles, and complete appropriate documentation.</p><p class="footer-copyright">&copy; 2026 DirectOwner. All rights reserved.</p></div></footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="supabase-config.js"></script><script src="inventory.js"></script><script src="buyer-tools.js"></script><script src="navigation.js" defer></script></body></html>

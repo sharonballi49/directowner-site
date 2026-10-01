@@ -62,6 +62,13 @@
       element('p', 'listing-meta', `${mileage} • ${item.seller_location || 'Location not provided'}`),
       link
     );
+    if (window.DirectOwnerBuyerTools) {
+      const actions = element('div', 'buyer-listing-actions');
+      const plan = element('a', 'btn btn-secondary', 'Buyer tools');
+      plan.href = `buyer-tools.html?id=${encodeURIComponent(item.id)}`;
+      actions.append(plan, window.DirectOwnerBuyerTools.saveButton(item));
+      content.append(actions);
+    }
     article.append(content);
     return article;
   }
