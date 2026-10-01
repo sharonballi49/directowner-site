@@ -31,13 +31,14 @@
     @media (max-width: 760px) { .contact-grid { grid-template-columns: 1fr; } }
     @media (max-width: 700px) { .policy-hero { padding: 44px 0; } .contact-card { padding: 22px; } }
   </style>
+<link rel="stylesheet" href="readability.css">
 </head>
-<body>
+<body class="site-page">
   <header class="site-header">
     <div class="container header-content">
       <a href="index.html" class="site-logo">DirectOwner</a>
-      <nav class="site-nav">
-        <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="menu-toggle" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
         <ul class="nav-links">
           <li><a href="browse.html">Browse Vehicles</a></li>
           <li><a href="how-it-works.html">How It Works</a></li>
@@ -53,12 +54,12 @@
   </header>
 
   <main>
-    <section class="policy-hero">
+    <section class="policy-hero page-hero">
       <div class="container">
-        <p style="color:#ffbd78; font-weight:800; text-transform:uppercase; letter-spacing:.08em; margin-bottom:14px;">We're here to help</p>
+        <p class="eyebrow">We're here to help</p>
         <h1>Contact DirectOwner</h1>
         <p>Questions about buying, selling, listings, or safety? Our team can help you understand the owner-to-owner marketplace and find the next step.</p>
-        <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:28px;">
+        <div class="hero-actions">
           <a class="btn btn-primary" href="mailto:support@getdirectowner.com?subject=DirectOwner%20Support%20Request">Email Support</a>
           <a class="btn btn-secondary" href="browse.html">Browse Listings</a>
         </div>
@@ -92,7 +93,7 @@
 
         <section class="contact-section contact-faq">
           <h2 class="section-title">Frequently Asked Questions</h2>
-          <details><summary>How do I list my car or RV?</summary><p>Sign in, add your vehicle details and photos on the Sell page, and save a draft. Open My Listings to choose a plan. The Free plan publishes your listing without payment; paid plans activate after successful payment.</p></details>
+          <details><summary>How do I list my car or RV?</summary><p>Sign in, add your vehicle details and photos on the Sell page, and save a draft. Open My Listings to choose a plan. Free listings enter review without payment; paid listings enter review after successful payment. All listings need approval before buyers can see them.</p></details>
           <details><summary>How do I contact a seller?</summary><p>Open a vehicle listing and select Request Seller Contact. Your email app opens a request to DirectOwner support, and our team helps coordinate an introduction.</p></details>
           <details><summary>Does DirectOwner handle payments or title transfer?</summary><p>No. DirectOwner connects private buyers and sellers. Transactions and title transfer occur directly between the parties.</p></details>
           <details><summary>Are you a dealer or lender?</summary><p>No. DirectOwner is not a dealership or lender. Financing, where available, is provided by independent third-party partners.</p></details>

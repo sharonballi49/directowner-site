@@ -8,20 +8,23 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="readability.css">
 </head>
-<body>
+<body class="site-page">
   <header class="site-header">
     <div class="container header-content">
       <a href="index.html" class="site-logo">DirectOwner</a>
-      <nav class="site-nav">
-        <button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="menu-toggle" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
         <ul class="nav-links">
           <li><a href="browse.html">Browse Vehicles</a></li>
           <li><a href="how-it-works.html">How It Works</a></li>
           <li><a href="trust.html" aria-current="page">Trust &amp; Safety</a></li>
           <li><a href="financing.html">Financing</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="auth.html">Sign In</a></li>
+          <li><a href="dashboard.html">My Listings</a></li>
           <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
         </ul>
       </nav>
@@ -29,9 +32,8 @@
   </header>
 
   <main>
-    <section class="section">
+    <section class="page-hero">
       <div class="container">
-        <div class="trust-hero">
           <h1>Trust &amp; Safety</h1>
           <p>Buying or selling a car or RV is a major decision. DirectOwner provides practical guidance to help people verify information, recognize scams, meet safely, and make informed private-party decisions.</p>
           <div class="trust-badge-row" aria-label="Trust principles">
@@ -44,7 +46,6 @@
             <a class="btn btn-primary" href="browse.html">Browse Listings</a>
             <a class="btn btn-secondary" href="sell.html">List Your Vehicle</a>
           </div>
-        </div>
       </div>
     </section>
 

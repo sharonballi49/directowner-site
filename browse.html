@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Browse Listings | DirectOwner</title><meta name="description" content="Browse active vehicles listed directly by owners on DirectOwner."><link rel="stylesheet" href="styles.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Browse Listings | DirectOwner</title><meta name="description" content="Browse active vehicles listed directly by owners on DirectOwner."><link rel="stylesheet" href="styles.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 .browse-section{padding:56px 0 72px;background:#f8fafc;min-height:68vh}
 .browse-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-bottom:18px}
@@ -30,11 +30,29 @@
 @media(max-width:600px){.browse-filters,.public-listing-grid{grid-template-columns:1fr}.browse-section{padding-top:40px}}
 </style>
 <link rel="stylesheet" href="buyer-tools.css">
+<link rel="stylesheet" href="readability.css">
 </head>
-<body>
-<header class="site-header"><div class="container header-content"><a href="index.html" class="site-logo">DirectOwner</a><nav class="site-nav"><button class="menu-toggle" aria-label="Open menu"><span></span><span></span><span></span></button><ul class="nav-links"><li><a href="browse.html" aria-current="page">Browse Vehicles</a></li><li><a href="how-it-works.html">How It Works</a></li><li><a href="trust.html">Trust &amp; Safety</a></li><li><a href="financing.html">Financing</a></li><li><a href="contact.html">Contact</a></li><li><a href="auth.html">Sign In</a></li><li><a href="dashboard.html">My Listings</a></li><li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li></ul></nav></div></header>
+<body class="site-page">
+<header class="site-header">
+    <div class="container header-content">
+      <a href="index.html" class="site-logo">DirectOwner</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="menu-toggle" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
+        <ul class="nav-links">
+          <li><a href="browse.html" aria-current="page">Browse Vehicles</a></li>
+          <li><a href="how-it-works.html">How It Works</a></li>
+          <li><a href="trust.html">Trust &amp; Safety</a></li>
+          <li><a href="financing.html">Financing</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="auth.html">Sign In</a></li>
+          <li><a href="dashboard.html">My Listings</a></li>
+          <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 <main>
-<section class="section page-intro-section" style="background:var(--navy-950);color:#fff;padding:64px 0"><div class="container"><h1 class="page-title" style="color:#fff">Browse Owner Listings</h1><p class="page-description" style="color:#e8eef4">Explore active vehicles listed directly by owners. Compare photos, details, and prices before you reach out.</p></div></section>
+<section class="page-intro-section page-hero"><div class="container"><h1 class="page-title">Browse Owner Listings</h1><p class="page-description">Explore active vehicles listed directly by owners. Compare photos, details, and prices before you reach out.</p></div></section>
 <section class="browse-section"><div class="container">
 <div class="tools-callout"><div><h2>Before you buy, build a plan.</h2><p>Compare vehicles, estimate the costs beyond the price, and track your own title, history, and inspection checks.</p></div><div class="tools-actions"><a href="buyer-tools.html" class="btn btn-primary">Explore buyer tools</a><a href="buyer-tools.html?view=compare" class="btn btn-secondary" data-compare-count>Compare vehicles</a></div></div><p id="buyer-save-status" class="tools-status" role="status"></p>
 <form id="browse-filters" class="browse-filters">

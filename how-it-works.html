@@ -8,22 +8,23 @@
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="readability.css">
 </head>
-<body>
+<body class="site-page">
   <header class="site-header">
     <div class="container header-content">
       <a href="index.html" class="site-logo">DirectOwner</a>
-      <nav class="site-nav">
-        <button class="menu-toggle" aria-label="Open menu" type="button">
-          <span></span><span></span><span></span>
-        </button>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="menu-toggle" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
         <ul class="nav-links">
           <li><a href="browse.html">Browse Vehicles</a></li>
           <li><a href="how-it-works.html" aria-current="page">How It Works</a></li>
           <li><a href="trust.html">Trust &amp; Safety</a></li>
           <li><a href="financing.html">Financing</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><a href="auth.html">Sign In</a></li>
+          <li><a href="dashboard.html">My Listings</a></li>
           <li><a href="sell.html" class="btn btn-secondary nav-btn-sell">List Your Vehicle</a></li>
         </ul>
       </nav>
@@ -31,7 +32,7 @@
   </header>
 
   <main>
-    <section class="hero-section page-hero-section">
+    <section class="hero-section page-hero">
       <div class="container hero-content">
         <p class="eyebrow">A simpler way to buy and sell</p>
         <h1>How DirectOwner Works</h1>
