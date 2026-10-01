@@ -46,6 +46,7 @@
     .sell-status{margin-top:18px;color:var(--navy-950);font-weight:700}
     @media(max-width:700px){.pricing-grid,.sell-grid{grid-template-columns:1fr}.price-card.featured{transform:none}.sell-field.full{grid-column:auto}}
   </style>
+<link rel="stylesheet" href="disclosures.css">
 </head>
 <body>
   <header class="site-header">
@@ -118,6 +119,7 @@
             <div class="sell-field full"><label for="description">Description *</label><textarea id="description" name="description" placeholder="Describe condition, features, maintenance, and anything buyers should know. Minimum 20 characters." minlength="20" required></textarea></div>
           </div>
 
+          <div id="seller-disclosure-form" data-disclosure-form></div>
           <h2 style="margin-top:32px">Vehicle photos</h2>
           <p class="sell-help">Add clear photos from your phone or computer. These photos will appear with your vehicle when you publish it.</p>
           <div class="photo-box">
@@ -187,7 +189,8 @@
       });
     }
   </script>
-  <script src="script.js"></script>
+  <script src="disclosures.js"></script>
+<script src="script.js"></script>
 <script src="navigation.js" defer></script>
 </body>
 </html>

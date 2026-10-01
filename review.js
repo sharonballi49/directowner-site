@@ -16,6 +16,7 @@
     card.append(el('p',`${item.year} ${item.make} ${item.model} · ${item.vehicle_type} · $${(item.price_cents/100).toLocaleString('en-US')} · ${item.plan} plan`));
     card.append(el('p',`${item.mileage==null?'Mileage not provided':Number(item.mileage).toLocaleString('en-US')+' miles'} · ${item.seller_location||'Location not provided'} · ${item.status} · ${item.moderation_status}`));
     card.append(el('p',item.description));
+    if(window.DirectOwnerDisclosures)card.append(window.DirectOwnerDisclosures.render(item.seller_disclosures));
     const photos=el('div',null,'review-photos');
     (item.photo_paths||[]).forEach((path,i)=>{
       const url=client.storage.from('vehicle-photos').getPublicUrl(path).data.publicUrl;
@@ -30,7 +31,7 @@
     }
     const form=el('form');
     const checklist=el('label',null,'review-check'); const checked=el('input'); checked.type='checkbox';
-    checklist.append(checked,el('span','I reviewed the vehicle details and every available photo for misleading claims, prohibited content, and scam warning signs.'));
+    checklist.append(checked,el('span','I reviewed the vehicle details, seller disclosures, and every available photo for misleading claims, prohibited content, and scam warning signs.'));
     if(!report)form.append(checklist);
     const label=el('label',report?'Decision notes':'Reason if rejecting (shown to seller)');
     const feedback=el('textarea'); feedback.id=`feedback-${report?.report_id||item.id}`; feedback.maxLength=1000; feedback.rows=3; label.htmlFor=feedback.id;
