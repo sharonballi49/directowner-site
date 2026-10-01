@@ -84,7 +84,7 @@
   if(!root)return;
   persist();
   let client;
-  const fields='id,title,vehicle_type,year,make,model,price_cents,mileage,seller_location,description,status,moderation_status,is_test,review_revision';
+  const fields='id,title,vehicle_type,year,make,model,price_cents,mileage,seller_location,description,status,moderation_status,is_test,review_revision,seller_disclosures';
   async function getListing(id) {
     if(!validId(id))return null;
     if(!client) {
@@ -129,6 +129,7 @@
       overview.append(el('p','tools-muted','Title, ownership, liens, history, and condition are not independently verified by DirectOwner. Content review is not a vehicle inspection.'));
       const actions=el('div','tools-actions'); actions.append(link('View current listing',`active-listing.html?id=${encodeURIComponent(id)}`,'btn btn-secondary'),saveButton(item),link('Compare vehicles', 'buyer-tools.html?view=compare','btn btn-secondary'));
       overview.append(actions); root.append(overview);
+      if(window.DirectOwnerDisclosures)root.append(window.DirectOwnerDisclosures.render(item.seller_disclosures));
     } else root.append(el('p','tools-notice','This is a general planning checklist. Open Buyer tools on a current listing for its asking price, comparison, and a seller-specific inquiry.'));
     const grid=el('div','tools-grid'); const checklist=el('section','tools-panel');
     checklist.append(el('p','tools-eyebrow','01 / Check before you commit'),el('h2','','Keep track of your checks'),el('p','tools-muted','Tick an item only after you have done the check yourself. Completion does not certify a vehicle or guarantee a safe purchase.'));
@@ -182,6 +183,9 @@
         panel.append(el('p','tools-eyebrow',item.vehicle_type),el('h2','',item.title));
         const facts=el('dl','tools-facts');
         for(const [label,value] of [['Asking price',money(item.price_cents)],['Mileage',item.mileage == null?'Not provided':Number(item.mileage).toLocaleString()+' miles'],['Location',item.seller_location||'Not provided'],['Your purchase subtotal',summary(item,plan)],['Your checks',`${checks.filter(([key])=>plan.checks[key]).length} of ${checks.length} marked done`],['Title / ownership / condition','Not verified by DirectOwner']]){facts.append(el('dt','',label),el('dd','',value));}
+        if(window.DirectOwnerDisclosures){
+          for(const [label,key] of [['Title (seller reported)','title_status'],['Lien (seller reported)','lien_status'],['Inspection (seller reported)','inspection_status']])facts.append(el('dt','',label),el('dd','',window.DirectOwnerDisclosures.summary(item.seller_disclosures,key)));
+        }
         panel.append(facts);if(changed)panel.append(el('p','tools-notice','Listing changed. Checks reset; review your estimates.'));
         panel.append(link('Open buying plan',`buyer-tools.html?id=${encodeURIComponent(id)}`,'btn btn-primary'));
       } else {

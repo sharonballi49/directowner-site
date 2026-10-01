@@ -84,6 +84,8 @@
             throw new Error('Please enter a description with at least 20 characters.');
           }
 
+          if (!window.DirectOwnerDisclosures) throw new Error('Seller disclosures are unavailable. Refresh before saving.');
+          const disclosures = window.DirectOwnerDisclosures.collect(document.getElementById('seller-disclosure-form'));
           const title = `${year} ${make} ${model}`.slice(0, 160);
           const detailDescription = [description, `Seller name: ${sellerName}`].filter(Boolean).join('\n\n');
 
@@ -116,7 +118,8 @@
             price_cents: Math.round(price * 100),
             plan: 'free',
             status: 'draft',
-            photo_paths: photoPaths
+            photo_paths: photoPaths,
+            seller_disclosures: disclosures
           }).select('id').single();
 
           if (listingError) {

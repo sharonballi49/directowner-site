@@ -44,6 +44,7 @@
     @media(max-width:520px){.detail-card,.buyer-card{padding:20px}.detail-main-photo{height:65vw;min-height:220px}.detail-details{grid-template-columns:1fr}.detail-thumb{flex-basis:72px;width:72px;height:56px}}
   </style>
 <link rel="stylesheet" href="buyer-tools.css">
+<link rel="stylesheet" href="disclosures.css">
 </head>
 <body>
   <header class="site-header">
@@ -106,7 +107,8 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="supabase-config.js"></script>
-  <script src="inventory.js"></script>
+  <script src="disclosures.js"></script>
+<script src="inventory.js"></script>
 <script src="buyer-tools.js"></script>
   <script>
     const client=window.supabase.createClient(window.DIRECTOWNER_SUPABASE_URL,window.DIRECTOWNER_SUPABASE_PUBLISHABLE_KEY);
@@ -116,7 +118,7 @@
     function escapeText(value){return String(value??'').replace(/[&<>"']/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[character]));}
     async function load(){
       if(!id || window.DirectOwnerInventory.isTestId(id)){message.textContent='This listing is not available for sale. Browse current listings using the navigation above.';return}
-      const {data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,mileage,seller_location,created_at,status,moderation_status,is_test,photo_paths').eq('id',id).eq('status','active').eq('moderation_status','approved').maybeSingle();
+      const {data,error}=await client.from('listings').select('id,title,description,vehicle_type,year,make,model,price_cents,mileage,seller_location,created_at,status,moderation_status,is_test,photo_paths,seller_disclosures').eq('id',id).eq('status','active').eq('moderation_status','approved').maybeSingle();
       if(error||!data||!window.DirectOwnerInventory.isPublic(data)){message.textContent='This listing is unavailable or no longer active.';message.classList.add('error');return}
 
       card.innerHTML=`
@@ -144,6 +146,7 @@
       `;
 
       card.querySelector('.detail-description').textContent=data.description||'No description provided.';
+      if(window.DirectOwnerDisclosures)card.append(window.DirectOwnerDisclosures.render(data.seller_disclosures));
       const photoWrap=card.querySelector('#detail-thumbs'),mainPhoto=card.querySelector('#main-photo');
       const paths=Array.isArray(data.photo_paths)?data.photo_paths:[];
       const urls=paths.map(path=>client.storage.from('vehicle-photos').getPublicUrl(path).data.publicUrl).filter(Boolean);
